@@ -55,7 +55,7 @@ Bajo los siguientes términos:
 >link
 
 - Enlace a Figma - Mockups visuales 🎨
->link
+>https://shorturl.at/eAB08
 
 - Enlace a recursos variados sobre nuestro sitio web - Incluyendo perfil de proyecto, anteproyecto, manual de usuario y técnico 📌
->link
+>https://shorturl.at/lIKPV
