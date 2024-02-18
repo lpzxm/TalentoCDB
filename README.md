@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="" >
-</p>
-
 ## Talento CDB, la solución tecnologica para entrenadores y atletas 🏃
 Talento CDB es un proyecto escolar-social el cual consiste en un sitio web a nivel institucional en el cual se puede realizar y observar la selección de jugadores escolares de cualquier disciplina y categoria. Esto con el objetivo de agilizar procesos de selección, asi como de transparencia y organización.
 
