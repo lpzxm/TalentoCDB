@@ -52,7 +52,7 @@ Bajo los siguientes términos:
 
 ## Otros recursos 📚
 - Enlace a Notion - Organización y seguimiento de actividades 📋
->link
+>https://shorturl.at/egiKM
 
 - Enlace a Figma - Mockups visuales 🎨
 >https://shorturl.at/eAB08
