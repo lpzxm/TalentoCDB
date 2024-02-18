@@ -8,7 +8,7 @@ Talento CDB es un proyecto escolar-social el cual consiste en un sitio web a niv
 ## Guía de instalación 📦
 Por el momento, el proyecto trabaja de manera local, por lo tanto, se necesitan de algunas tecnologías y herramientas para hacer posible la ejecución del proyecto de manera correcta:
 
-| <img src="./client/public/assets/readme/vscodeicon.svg" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/nodejs.svg" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/mysqlicon.png" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/githubicon.png" align='center' height='30' width='30'>  |
+| <img src="./client/public/assets/readme/vscodeicon.png" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/nodejs.png" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/mysqlicon.png" align='center' height='30' width='30'>  | <img src="./client/public/assets/readme/githubicon.png" align='center' height='30' width='30'>  |
 |:---: | :---: | :---: | :---: |
 | [VsCode](https://code.visualstudio.com/) | [NodeJS](https://nodejs.org/en) | [Mysql Workbench](https://www.mysql.com/products/workbench/)  | [Github Desktop](https://desktop.github.com/)  |
 
