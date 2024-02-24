@@ -33,7 +33,7 @@ element: (
 )
 },
 {
-  path: "/Log_cat",
+  path: "/log_cat",
   element:(
     <>
     <Log_cat />
