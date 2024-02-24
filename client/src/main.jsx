@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Login } from './pages/Welcome/welcome.jsx';
 import { Form } from './pages/Login/form.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
+import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx'
 import "./index.css";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -38,7 +39,15 @@ element: (
     <Log_cat />
     </>
   )
-}
+},
+{
+  path: "/Reg_bkb",
+  element: (
+    <>
+    <Reg_bkb />
+    </>
+  ),
+},
 ]);
 
 
