@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        playFair: ["Playfair Display", "serif"]
+      },
+      backgroundImage: {
+        'welcomeImage': "url('/assets/thb.png')",
+        'backLogin': "url('/assets/bg-form.jpg')",
+      }
+    },
   },
   plugins: [],
 }
