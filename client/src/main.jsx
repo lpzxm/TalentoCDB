@@ -1,9 +1,9 @@
 // import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { Login } from './pages/Welcome/welcome.jsx';
-import { Form } from './pages/Login/form.jsx';
+import { Welcome } from './pages/Welcome/welcome.jsx';
+import { Login } from './pages/Login/login.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
-import { Reg_bkb } from './pages/RegistrarCategoria/Reg_bkb.jsx'
+import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx';
 import "./index.css";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-      <Login />
+      <Welcome />
       </>
     ),
   },
@@ -25,15 +25,7 @@ const router = createBrowserRouter([
   )
 },
 {
-path: "/form",
-element: (
-  <>
-    <Form />
-  </>
-)
-},
-{
-  path: "/log_cat",
+  path: "/add_category",
   element:(
     <>
     <Log_cat />
