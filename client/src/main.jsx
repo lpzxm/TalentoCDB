@@ -1,9 +1,8 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client'
-import {App} from './App.jsx'
-import { Login } from './pages/login.jsx';
-import { Form } from './pages/form.jsx';
-import { Log_cat } from './pages/log_cat.jsx'
+import { Login } from './pages/Welcome/welcome.jsx';
+import { Form } from './pages/Login/form.jsx';
+import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
 import "./index.css";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -12,7 +11,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-      <App />
+      <Login />
       </>
     ),
   },
