@@ -4,6 +4,7 @@ import { Welcome } from './pages/Welcome/welcome.jsx';
 import { Login } from './pages/Login/login.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
 import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx';
+import RegisterCategory from './pages/ListasCategoria/ListaCategoria.jsx';
 import "./index.css";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
   element:(
     <>
     <Reg_bkb />
+    </>
+  )
+},
+{
+  path: "/RegisterCategory",
+  element:(
+    <>
+    <RegisterCategory />
     </>
   )
 },
