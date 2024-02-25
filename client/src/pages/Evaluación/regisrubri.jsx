@@ -1,17 +1,8 @@
-<<<<<<<< HEAD:client/src/pages/Evaluación/regisrubri.jsx
-import react from "react";
 import donbo from '../../assets/donbosco.png'
 import user from '../../assets/usericon.png'
 import pelota from '../../assets/bola de blly.png'
-========
-import React from "react";
-import donbo from '../assets/donbosco.png'
-import user from '../assets/usericon.png'
-import pelota from '../assets/pelota voley 1.png'
->>>>>>>> 632f09205ae5f4e45ced765a5abf94ae6e8d1808:client/src/pages/Register/RegistrarRubrica/regisrubri.jsx
 
-
-export function RegistrarRubrica(){
+export function EvaluacionUsu(){
     return(
         <>
         <header className='h-24 md:visible md:relative fixed invisible'>
