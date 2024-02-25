@@ -1,6 +1,9 @@
 // import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Welcome } from './pages/Welcome/welcome.jsx';
+import { Registrar_Rubrica } from './pages/Registrar_Rubrica/Registrar_Rubrica.jsx';
+import { N_campo } from './pages/N_campo/N_campo.jsx';
+import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados.jsx';
 import { Login } from './pages/Login/login.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
 import {Home} from './pages/home.jsx';
@@ -62,11 +65,27 @@ const router = createBrowserRouter([
     </>
   )
 },
-{
-  path: "/RegisterCategory",
+  {
+  path: "/Registrar_rubrica",
   element:(
     <>
-    <RegisterCategory />
+    <Registrar_Rubrica />
+    </>
+  )
+},
+{
+  path: "/Tabla_Resultados",
+  element:(
+    <>
+    <Tabla_Resultados />
+    </>
+  )
+},
+{
+  path: "/N_campo",
+  element:(
+    <>
+    <N_campo />
     </>
   )
 },
