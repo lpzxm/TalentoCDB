@@ -1,12 +1,17 @@
 // import React from 'react';
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import { Welcome } from './pages/Welcome/welcome.jsx';
 import { Login } from './pages/Login/login.jsx';
-import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
-import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx';
+import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
+import {Home} from './pages/home.jsx';
+import { EvaluacionUsu } from './pages/Evaluación/regisrubri.jsx';
 import RegisterCategory from './pages/ListasCategoria/ListaCategoria.jsx';
 import "./index.css";
+import "./formstyles.css"
+import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat.jsx';
+import { Reg_bkb } from './pages/Register/RegistrarDeporte/Reg_bkb.jsx';
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +21,22 @@ const router = createBrowserRouter([
       <Welcome />
       </>
     ),
+  },
+  {
+    path:"/home",
+    element:(
+      <>
+      <Home/>
+      </>
+    ),
+  },
+  {
+    path: "/EvaluacionUsu",
+    element:(
+      <>
+      <EvaluacionUsu/>
+      </>
+    )
   },
 {
   path: "/login",
@@ -29,7 +50,7 @@ const router = createBrowserRouter([
   path: "/add_category",
   element:(
     <>
-    <Log_cat />
+    <RegisterCategory />
     </>
   )
 },
