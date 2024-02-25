@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { Welcome } from './pages/Welcome/welcome.jsx';
 import { Login } from './pages/Login/login.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
-import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx';
 import {Home} from './pages/home.jsx';
 import { EvaluacionUsu } from './pages/Evaluación/regisrubri.jsx';
 import "./index.css";
