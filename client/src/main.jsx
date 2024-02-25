@@ -61,6 +61,30 @@ const router = createBrowserRouter([
     </>
   )
 },
+  {
+  path: "/Registrar_rubrica",
+  element:(
+    <>
+    <Registrar_Rubrica />
+    </>
+  )
+},
+{
+  path: "/Tabla_Resultados",
+  element:(
+    <>
+    <Tabla_Resultados />
+    </>
+  )
+},
+{
+  path: "/N_campo",
+  element:(
+    <>
+    <N_campo />
+    </>
+  )
+},
 ]);
 
 
