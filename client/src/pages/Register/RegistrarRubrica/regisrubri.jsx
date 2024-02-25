@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import donbo from '../assets/donbosco.png'
 import user from '../assets/usericon.png'
 import pelota from '../assets/pelota voley 1.png'
@@ -11,7 +11,7 @@ export function RegistrarRubrica(){
                 <div className='bg-yellow-400 h-12'></div>
                 <img className='w-12 absolute top-3 left-12' src={donbo} alt="DB" />
                 <div className='bg-blue-700 h-12'></div>
-            </header>
+        </header>
             <main className="flex lg:flex-row flex-col">
                 <article className="items-center">
                     <div className="flex md:ml-24 ml-10 mt-10 space-x-2 items-center">

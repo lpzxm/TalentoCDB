@@ -12,7 +12,7 @@ import pelotas from '../assets/pelotas.png'
 export function Home(){
     return(
         <>
-        <body>
+        <div>
             <header className='h-24 md:visible md:relative fixed invisible'>
                 <div className='bg-yellow-400 h-12'></div>
                 <img className='w-12 absolute top-3 left-12' src={donbo} alt="DB" />
@@ -68,7 +68,7 @@ export function Home(){
                     </a>
                 </section>
             </main>
-        </body>
+        </div>
         </>
     )
 }
