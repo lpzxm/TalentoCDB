@@ -1,11 +1,9 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client'
-import {App} from './App.jsx'
-import { Login } from './pages/login.jsx';
-import { Form } from './pages/form.jsx';
-import {Home} from './pages/home.jsx'
-import { RegistrarRubrica } from './pages/regisrubri.jsx';
-import { Log_cat } from './pages/log_cat.jsx'
+import { Welcome } from './pages/Welcome/welcome.jsx';
+import { Login } from './pages/Login/login.jsx';
+import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx'
+import { Reg_bkb } from './pages/Registrar_BKB/Reg_bkb.jsx';
 import "./index.css";
 import "./formstyles.css"
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -15,7 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-      <App />
+      <Welcome />
       </>
     ),
   },
@@ -28,37 +26,21 @@ const router = createBrowserRouter([
   )
 },
 {
-path: "/form",
-element: (
-  <>
-    <Form />
-  </>
-)
-},
-{
-  path: "/home",
-  element:(
-    <>
-    <Home/>
-    </>
-  )
-},
-{
-  path: "/regisrubri",
-  element:(
-    <>
-    <RegistrarRubrica/>
-    </>
-  )
-},
-{
-  path: "/Log_cat",
+  path: "/add_category",
   element:(
     <>
     <Log_cat />
     </>
   )
-}
+},
+{
+  path: "/Reg_bkb",
+  element:(
+    <>
+    <Reg_bkb />
+    </>
+  )
+},
 ]);
 
 
