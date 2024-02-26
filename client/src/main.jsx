@@ -13,6 +13,7 @@ import { ReviewPlayer } from './pages/Register/CalificarRubrica/ReviewPlayer';
 import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
 import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
 import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
+import { RegisterAthlete } from './pages/Register/Registrar_Atleta/RegisterAthlete.jsx';
 // import { Registrar_Rubrica } from './pages/Registrar_Rubrica/Registrar_Rubrica';
 import { Tabla_Resultados} from './pages/Tabla_Resultados/Tabla_Resultados';
 
@@ -79,6 +80,15 @@ const router = createBrowserRouter([
     element: (
       <>
       <NewField/>
+      </>
+    ),
+  },
+  {
+    path: "/RegisterAthlete",
+    element: (
+      <>
+      <Header/>
+      <RegisterAthlete/>
       </>
     ),
   },
