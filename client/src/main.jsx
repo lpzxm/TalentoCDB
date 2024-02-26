@@ -55,6 +55,7 @@ const router = createBrowserRouter([
     path: "/players",
     element: (
       <>
+      <Header/>
       <Players/>
       </>
     ),
@@ -71,6 +72,7 @@ const router = createBrowserRouter([
     path: "/review_player",
     element: (
       <>
+      <Header/>
       <ReviewPlayer/>
       </>
     ),
