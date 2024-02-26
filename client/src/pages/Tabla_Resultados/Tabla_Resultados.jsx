@@ -2,7 +2,7 @@
 export function Tabla_Resultados() {
     return (
         <>
-<div class="border-4 border-amber-300 text-black text-center py-2">
+            <div class="border-4 border-amber-300 text-black text-center py-2">
                 <h1 class="text-2xl">Tabla de resultados</h1>
             </div>
             <div class="text-center my-5">
@@ -12,8 +12,8 @@ export function Tabla_Resultados() {
                     <option value="student3">Estudiante 3</option>
                 </select>
             </div>
-            <table class="w-full my-5">
-                <tr class="bg-white">
+            <table className="w-full my-5">
+                <tr className="bg-white">
                     <th class="px-4 py-2 text-left">Numero de evaluaciones</th>
                     <th class="px-4 py-2 text-left">Porcentajes</th>
                 </tr>

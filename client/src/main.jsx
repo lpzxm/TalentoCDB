@@ -1,94 +1,103 @@
 // import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Welcome } from './pages/Welcome/welcome.jsx';
-import { Registrar_Rubrica } from './pages/Registrar_Rubrica/Registrar_Rubrica.jsx';
-import { N_campo } from './pages/N_campo/N_campo.jsx';
-import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados.jsx';
-import { Login } from './pages/Login/login.jsx';
-import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
-import {Home} from './pages/home.jsx';
-import { EvaluacionUsu } from './pages/Evaluación/regisrubri.jsx';
-import RegisterCategory from './pages/ListasCategoria/ListaCategoria.jsx';
-import "./index.css";
-import "./formstyles.css"
-import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat.jsx';
-import { Reg_bkb } from './pages/Register/RegistrarDeporte/Reg_bkb.jsx';
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./index.css";
+
+// Importaciones componentes
+import { Header } from './components/Header/Header';
+import { Welcome } from './pages/Welcome/welcome';
+import { Login } from './pages/Login/login';
+import { Home } from './pages/Home/home';
+import { Players } from './pages/ListasCategoria/ListaCategoria';
+import { ReviewPlayer } from './pages/Register/CalificarRubrica/ReviewPlayer';
+import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
+import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
+import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
+// import { Registrar_Rubrica } from './pages/Registrar_Rubrica/Registrar_Rubrica';
+import { Tabla_Resultados} from './pages/Tabla_Resultados/Tabla_Resultados';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <>
-      <Welcome />
+      <Welcome/>
       </>
     ),
   },
   {
-    path:"/home",
-    element:(
+    path: "/login",
+    element: (
       <>
+      <Login/>
+      </>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <>
+      <Header/>
       <Home/>
       </>
     ),
   },
   {
-    path: "/EvaluacionUsu",
-    element:(
+    path: "/register_category",
+    element: (
       <>
-      <EvaluacionUsu/>
+      <RegisterCategory/>
       </>
-    )
+    ),
   },
-{
-  path: "/login",
-  element: (
-    <>
-      <Login />
-    </>
-  )
-},
-{
-  path: "/add_category",
-  element:(
-    <>
-    <RegisterCategory />
-    </>
-  )
-},
-{
-  path: "/Reg_bkb",
-  element:(
-    <>
-    <Reg_bkb />
-    </>
-  )
-},
   {
-  path: "/Registrar_rubrica",
-  element:(
-    <>
-    <Registrar_Rubrica />
-    </>
-  )
-},
-{
-  path: "/Tabla_Resultados",
-  element:(
-    <>
-    <Tabla_Resultados />
-    </>
-  )
-},
-{
-  path: "/N_campo",
-  element:(
-    <>
-    <N_campo />
-    </>
-  )
-},
+    path: "/players",
+    element: (
+      <>
+      <Players/>
+      </>
+    ),
+  },
+  {
+    path: "/view_categories",
+    element: (
+      <>
+      <ViewCategories/>
+      </>
+    ),
+  },
+  {
+    path: "/review_player",
+    element: (
+      <>
+      <ReviewPlayer/>
+      </>
+    ),
+  },
+  {
+    path: "/register_rubric/newField",
+    element: (
+      <>
+      <NewField/>
+      </>
+    ),
+  },
+  // {
+  //   path: "/register_rubric",
+  //   element: (
+  //     <>
+  //     <Registrar_Rubrica/>
+  //     </>
+  //   ),
+  // },
+  {
+    path: "/results",
+    element: (
+      <>
+      <Tabla_Resultados/>
+      </>
+    ),
+  },
 ]);
 
 

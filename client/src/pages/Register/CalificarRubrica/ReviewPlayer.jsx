@@ -1,8 +1,11 @@
-import donbo from '../../assets/donbosco.png'
-import user from '../../assets/usericon.png'
-import pelota from '../../assets/bola de blly.png'
 
-export function EvaluacionUsu(){
+// import react from "react";
+import donbo from '../../../assets/donbosco.png'
+import user from '../../../assets/usericon.png'
+import pelota from '../../../assets/bola de blly.png'
+
+
+export function ReviewPlayer(){
     return(
         <>
         <header className='h-24 md:visible md:relative fixed invisible'>

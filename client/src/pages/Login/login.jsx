@@ -20,7 +20,8 @@ export function Login() {
                         </div>
                         <label htmlFor="remember" className="relative right-12 space-x-4"><input type="checkbox" name="remember" id="remember" /> Recordar contraseña</label>
                     </div>
-                    <div className="w-64 h-28 border" id="sec">
+                    <div className="border-box w-full h-36 p-5 flex flex-col justify-end items-center border bg-white rounded-xl" id="sec">
+                        <input type="submit" value="Login" className="text-white rounded-3xl px-10 py-2 bg-blue-600 hover:bg-blue-400 " />
                     </div>
                 </div>
             </div>

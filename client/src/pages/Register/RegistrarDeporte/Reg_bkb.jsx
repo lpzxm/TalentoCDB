@@ -2,8 +2,8 @@ import img1 from "../../../assets/sub-u13_u18.png";
 import img2 from "../../../assets/sub-u15.png";
 import img3 from "../../../assets/sub-u17.png";
 
-export function Reg_bkb(){
-    return(
+export function ViewCategories() {
+    return (
         <>
             <div>
                 <div className="flex flex-col items-center justify-center">
@@ -32,7 +32,8 @@ export function Reg_bkb(){
                             <p>SUB-U15</p>
                             <img className="h-full w-full rounded p-8 md:w-auto" src={img2} alt="" />
                         </div>
-                    </div>                    <div className="outline rounded outline-offset-2 outline-gray-200 flex  m-6">
+                    </div>
+                    <div className="outline rounded outline-offset-2 outline-gray-200 flex  m-6">
                         <div className="flex flex-row items-center p-2">
                             <p>SUB-U17</p>
                             <img className="h-full w-full rounded p-8  md:w-auto" src={img3} alt="" />
