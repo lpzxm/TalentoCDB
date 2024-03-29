@@ -11,7 +11,7 @@ const SUB_U17_options = [
 
 export function Players() {
   //const [categoryName, setCategoryName] = React.useState('');
-  //const [selectedOption, setSelectedOption] = React.useState(null);
+  const [selectedOption, setSelectedOption] = React.useState(null);
 
   //const handleSubmit = (event) => {
  //   event.preventDefault();

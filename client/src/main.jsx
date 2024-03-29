@@ -1,6 +1,6 @@
-// import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 // Importaciones componentes
@@ -14,15 +14,15 @@ import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
 import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
 import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
 import { RegisterAthlete } from './pages/Register/Registrar_Atleta/RegisterAthlete.jsx';
-// import { Registrar_Rubrica } from './pages/Registrar_Rubrica/Registrar_Rubrica';
-import { Tabla_Resultados} from './pages/Tabla_Resultados/Tabla_Resultados';
+import { Registrar_Rubrica } from './pages/Register/Registrar_Rubrica/Registrar_Rubrica.jsx';
+import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <>
-      <Welcome/>
+        <Welcome />
       </>
     ),
   },
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <>
-      <Login/>
+        <Login />
       </>
     ),
   },
@@ -38,8 +38,8 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <>
-      <Header/>
-      <Home/>
+        <Header />
+        <Home />
       </>
     ),
   },
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     path: "/register_category",
     element: (
       <>
-      <RegisterCategory/>
+        <RegisterCategory />
       </>
     ),
   },
@@ -55,8 +55,8 @@ const router = createBrowserRouter([
     path: "/players",
     element: (
       <>
-      <Header/>
-      <Players/>
+        <Header />
+        <Players />
       </>
     ),
   },
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     path: "/view_categories",
     element: (
       <>
-      <ViewCategories/>
+        <ViewCategories />
       </>
     ),
   },
@@ -72,8 +72,16 @@ const router = createBrowserRouter([
     path: "/review_player",
     element: (
       <>
-      <Header/>
-      <ReviewPlayer/>
+        <Header />
+        <ReviewPlayer />
+      </>
+    ),
+  },
+  {
+    path: "/register_rubric",
+    element: (
+      <>
+        <Registrar_Rubrica />
       </>
     ),
   },
@@ -81,7 +89,7 @@ const router = createBrowserRouter([
     path: "/register_rubric/newField",
     element: (
       <>
-      <NewField/>
+        <NewField />
       </>
     ),
   },
@@ -89,8 +97,8 @@ const router = createBrowserRouter([
     path: "/RegisterAthlete",
     element: (
       <>
-      <Header/>
-      <RegisterAthlete/>
+        <Header />
+        <RegisterAthlete />
       </>
     ),
   },
@@ -106,7 +114,7 @@ const router = createBrowserRouter([
     path: "/results",
     element: (
       <>
-      <Tabla_Resultados/>
+        <Tabla_Resultados />
       </>
     ),
   },
@@ -115,5 +123,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 )
