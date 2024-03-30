@@ -44,7 +44,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/register_category",
+    path: "/registrarCategoria",
     element: (
       <>
         <RegisterCategory />
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/players",
+    path: "/jugadores",
     element: (
       <>
         <Header />
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/view_categories",
+    path: "/verCategorias",
     element: (
       <>
         <ViewCategories />
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/review_player",
+    path: "/evaluarJugador",
     element: (
       <>
         <Header />
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/register_rubric",
+    path: "/registrarRubrica",
     element: (
       <>
         <Registrar_Rubrica />
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/register_rubric/newField",
+    path: "/registrarRubrica/nuevoCampo",
     element: (
       <>
         <NewField />
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/RegisterAthlete",
+    path: "/registrarAtleta",
     element: (
       <>
         <Header />
@@ -111,7 +111,7 @@ const router = createBrowserRouter([
   //   ),
   // },
   {
-    path: "/results",
+    path: "/resultados",
     element: (
       <>
         <Tabla_Resultados />
