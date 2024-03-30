@@ -1,19 +1,27 @@
-import React from "react";
-import
-export const MobileNavBar = () =>{
-
-    return(
+import { RiHome5Fill } from "react-icons/ri";
+import { BiCategory } from "react-icons/bi";
+import { LuPenSquare } from "react-icons/lu";
+import { MdSportsKabaddi } from "react-icons/md";
+export const MobileNavBar = () => {
+    const icon = {
+        size: "35px",
+        color: "white"
+    }
+    return (
         <>
-            <header className="fixed bottom-0 flex w-full justify-center items-center bg-slate-300">
-                <div className="flex flex-row space-x-6 px-5 py-7 bg-orange-200">
+            <header className="fixed  z-10 bottom-0 flex w-full justify-center items-center bg-slate-300 rounded-full">
+                <div className="w-full flex flex-row justify-between px-16 py-5">
                     <div>
-                        icon1
+                        <RiHome5Fill size={icon.size} color={icon.color} />
                     </div>
                     <div>
-                        icon2
+                        <BiCategory size={icon.size} color={icon.color} />
                     </div>
                     <div>
-                        icon3
+                        <LuPenSquare size={icon.size} color={icon.color} />
+                    </div>
+                    <div>
+                        <MdSportsKabaddi size={icon.size} color={icon.color} />
                     </div>
                 </div>
             </header>

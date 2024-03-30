@@ -22,6 +22,6 @@ export const Header = () => {
         };
     }, []);
 
-    return <>{isDesktop ? <NavBar/> : <MobileNavBar/>}</>
+    return <>{isDesktop ? <NavBar/> : <MobileNavBar/> }</>
      
 }
