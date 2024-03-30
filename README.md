@@ -18,10 +18,10 @@ Y con estos sencillos pasos, puedes ejecutar el proyecto de manera simple, local
 
 # Integrantes del equipo 🤓
 - José Adrián López Medina 👨‍💻 | #2 - 20130119 - LM242664
-- David Fernando Murgas Hernández 👨‍💻 | #7 - - M242669
-- Christopher Tommy Núñez Pineda 👨‍💻 | #9 - - NP242671
-- Sara Yamileth Torres Henríquez 👩‍💻 | #22 - - TH242684
-- Xavier Alexander Zañas Chávez 👨‍💻 | #27 - - XA242689
+- David Fernando Murgas Hernández 👨‍💻 | #7 - 20160339 - M242669
+- Christopher Tommy Núñez Pineda 👨‍💻 | #9 - 20220311 - NP242671
+- Sara Yamileth Torres Henríquez 👩‍💻 | #22 - 20220319 - TH242684
+- Xavier Alexander Zañas Chávez 👨‍💻 | #27 - 20100477 - XA242689
 
 ## Licencia ⚖️
 Este proyecto está bajo la licencia Atribución-NoComercial-CompartirIgual 4.0 Internacional (**CC BY-NC-SA 4.0**) la cual establece:
