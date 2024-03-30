@@ -24,7 +24,7 @@ export function Home() {
                             <img className='m-3 lg:h-60' src={img4} alt="" />
                         </article>
                     </section>
-                    <section className='items-center text-center sm:w-1/2 :w-full'>
+                    <section className='items-center text-center sm:w-full w-1/2'>
                         <div className='text-2xl font-bold'>
                             <h1 className="font-sans m-10">Bienvenido</h1>
                             <h1 className='mb-5'>Leonel Najarro</h1>
