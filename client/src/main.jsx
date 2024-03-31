@@ -9,6 +9,9 @@ import { Welcome } from './pages/Welcome/welcome';
 import { Login } from './pages/Login/login';
 import { Home } from './pages/Home/home';
 import { Players } from './pages/ListasCategoria/ListaCategoria';
+import { Selecciones } from './pages/ListasCategoria/Selecciones.jsx';
+import { MiembrosCat } from './pages/ListasCategoria/MiembrosCat.jsx';
+import { AtletasSelec } from './pages/ListasCategoria/AtletasSeleccionados.jsx';
 import { ReviewPlayer } from './pages/Register/CalificarRubrica/ReviewPlayer';
 import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
 import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
@@ -57,6 +60,33 @@ const router = createBrowserRouter([
       <>
         <Header />
         <Players />
+      </>
+    ),
+  },
+   {
+    path: "/Selecciones",
+    element: (
+      <>
+        <Header />
+        <Selecciones />
+      </>
+    ),
+  },
+  {
+    path: "/MiembrosCat",
+    element: (
+      <>
+        <Header />
+        <MiembrosCat />
+      </>
+    ),
+  },
+  {
+    path: "/AtletasSelec",
+    element: (
+      <>
+        <Header />
+        <AtletasSelec />
       </>
     ),
   },
