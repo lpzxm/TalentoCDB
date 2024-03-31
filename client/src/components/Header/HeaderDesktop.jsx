@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import donbo from "../../assets/donbosco.png";
 
@@ -16,12 +15,12 @@ export const NavBar = () => {
                             <Link to="/home"><li className="hover:border-b-4 border-red-400 transition-border ease-in-out duration-100">
                                 Home
                             </li></Link>
-                            <li className="hover:border-b-4 border-red-400 transition-border ease-in-out duration-100">
+                            <Link to="/registrarCategoria"><li className="hover:border-b-4 border-red-400 transition-border ease-in-out duration-100">
                                 Registrar Categoria
-                            </li>
-                            <li className="hover:border-b-4 border-red-400 transition-border ease-in-out duration-100">
+                            </li></Link>
+                            <Link to="/verCategorias"><li className="hover:border-b-4 border-red-400 transition-border ease-in-out duration-100">
                                 Ver categorias
-                            </li>
+                            </li></Link>
                         </ul>
                     </div>
                 </div>

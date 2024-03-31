@@ -1,5 +1,4 @@
 // import react from 'react';
-import donbo from '../../assets/donbosco.png';
 import img1 from '../../assets/ini1.png';
 import img2 from '../../assets/ini2.png';
 import img3 from '../../assets/ini3.png';
