@@ -3,7 +3,7 @@ import img2 from "../../../assets/sub-u15.png";
 import img3 from "../../../assets/sub-u17.png";
 
 
-export function ViewCategories() {
+export const ViewCategories = () => {
     return (
         <>
             <div>

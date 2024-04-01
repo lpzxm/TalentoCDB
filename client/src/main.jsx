@@ -9,6 +9,9 @@ import { Welcome } from './pages/Welcome/welcome';
 import { Login } from './pages/Login/login';
 import { Home } from './pages/Home/home';
 import { Players } from './pages/ListasCategoria/ListaCategoria';
+import { Selecciones } from './pages/ListasCategoria/Selecciones.jsx';
+import { MiembrosCat } from './pages/ListasCategoria/MiembrosCat.jsx';
+import { AtletasSelec } from './pages/ListasCategoria/AtletasSeleccionados.jsx';
 import { ReviewPlayer } from './pages/Register/CalificarRubrica/ReviewPlayer';
 import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
 import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
@@ -16,8 +19,18 @@ import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
 import { RegisterAthlete } from './pages/Register/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/Register/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
+import { Error404 } from './pages/404Error/404err.jsx';
+import { FadeIn } from './components/fadeIn/fadeIn.jsx';
 
 const router = createBrowserRouter([
+  {
+    path: "*",
+    element: (
+      <>
+        <Error404 />
+      </>
+    ),
+  },
   {
     path: "/",
     element: (
@@ -38,8 +51,11 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <>
-        <Header />
-        <Home />
+        <FadeIn>
+          <Header />
+          <Home />
+        </FadeIn>
+
       </>
     ),
   },
@@ -47,6 +63,7 @@ const router = createBrowserRouter([
     path: "/registrarCategoria",
     element: (
       <>
+        <Header />
         <RegisterCategory />
       </>
     ),
@@ -61,10 +78,36 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/Selecciones",
+    element: (
+      <>
+        <Header />
+        <Selecciones />
+      </>
+    ),
+  },
+  {
+    path: "/MiembrosCat",
+    element: (
+      <>
+        <Header />
+        <MiembrosCat />
+      </>
+    ),
+  },
+  {
+    path: "/AtletasSelec",
+    element: (
+      <>
+        <Header />
+        <AtletasSelec />
+      </>
+    ),
+  },
+  {
     path: "/verCategorias",
     element: (
       <>
-       <Header />
         <ViewCategories />
       </>
     ),
@@ -117,6 +160,7 @@ const router = createBrowserRouter([
     path: "/resultados",
     element: (
       <>
+        <Header />
         <Tabla_Resultados />
       </>
     ),

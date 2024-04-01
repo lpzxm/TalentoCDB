@@ -2,7 +2,7 @@
 import backgroundImage from '../../../assets/sub-u17.png';
 
 
-export function Registrar_Rubrica() {
+export const Registrar_Rubrica = () => {
 
     return (
         <>

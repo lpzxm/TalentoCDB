@@ -1,5 +1,4 @@
 // import react from 'react';
-import donbo from '../../assets/donbosco.png';
 import img1 from '../../assets/ini1.png';
 import img2 from '../../assets/ini2.png';
 import img3 from '../../assets/ini3.png';
@@ -9,7 +8,9 @@ import rubrica from '../../assets/rubrica.png';
 import catego from '../../assets/categorías.png';
 import pelotas from '../../assets/pelotas.png';
 
-export function Home() {
+export const Home = () => {
+
+    
     return (
         <>
             <div>
