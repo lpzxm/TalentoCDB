@@ -14,7 +14,7 @@ export const Players = () => {
   const [selectedOption, setSelectedOption] = React.useState(null);
 
   //const handleSubmit = (event) => {
- //   event.preventDefault();
+  //   event.preventDefault();
 
   //}
 

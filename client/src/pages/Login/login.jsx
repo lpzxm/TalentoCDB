@@ -13,21 +13,18 @@ export const Login = () => {
         setSeePsw((prevShowPsw) => !prevShowPsw)
     }
 
-    const handleFormSubmit = () => {
-        const user = document.getElementById("user").value;
-        const password = document.getElementById("password").value;
+    // const handleFormSubmit = () => {
+    //     const user = document.getElementById("user").value;
+    //     const password = document.getElementById("password").value;
 
-        if (!user || !password) {
-            toast.error("Por favor, llena todos los campos.", {
-                position: "top-right",
-                autoClose: 3000,
-            });
-            return;
-        }
-
-        
-        
-    }
+    //     if (!user || !password) {
+    //         toast.error("Por favor, llena todos los campos.", {
+    //             position: "top-right",
+    //             autoClose: 3000,
+    //         });
+    //         return;
+    //     }
+    // }
 
     return (
         <>
@@ -57,7 +54,7 @@ export const Login = () => {
                     </div>
                     <div className="border-box w-full h-36 p-5 flex flex-col justify-end items-center border bg-white rounded-xl" id="sec">
                         <Link to="/home">
-                        <input type="submit" value="Login" className="text-white rounded-3xl px-10 py-2 bg-blue-600 hover:bg-blue-400 " /></Link>
+                            <input type="submit" value="Login" className="text-white rounded-3xl px-10 py-2 bg-blue-600 hover:bg-blue-400 " /></Link>
                     </div>
                 </div>
             </div>

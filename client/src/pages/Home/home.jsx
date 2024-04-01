@@ -9,6 +9,8 @@ import catego from '../../assets/categorías.png';
 import pelotas from '../../assets/pelotas.png';
 
 export const Home = () => {
+
+    
     return (
         <>
             <div>

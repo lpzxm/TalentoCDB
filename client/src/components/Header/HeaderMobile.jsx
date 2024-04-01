@@ -1,41 +1,70 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { RiHome5Fill } from "react-icons/ri";
 import { BiCategory } from "react-icons/bi";
 import { LuPenSquare } from "react-icons/lu";
 import { MdSportsKabaddi } from "react-icons/md";
 
-export const MobileNavBar = () => {
+const linkStyle = {
+    nonactive: "",
+    active: "w-fit p-2 bg-orange-600 rounded-full"
+}
 
-    const [currentRoute, setCurrentRoute] = useState('/')
+export const MobileNavBar = () => {
 
     const icon = {
         size: "30px",
         color: "white",
-        active: currentRoute === '/' ? "w-fit p-2 bg-orange-300 rounded-full" : 'transparent'
     }
+
+    const [activeLink, setActiveLink] = useState("");
+
+    const location = useLocation();
+
+    useEffect(() => {
+        setActiveLink(location.pathname)
+    }, [location])
 
     return (
         <>
             <header className="fixed  z-10 bottom-0 flex w-full justify-center items-center bg-slate-900">
                 <div className="w-full flex flex-row justify-between px-16 py-5">
-                    <Link to="/" onClick={() => setCurrentRoute('/home')}>
-                        <div className={{active: currentRoute === '/home' ? "w-fit p-2 bg-orange-300 rounded-full" : 'transparent'}}>
+                    <Link
+                        to="/home"
+                        className={
+                            activeLink === "/home"
+                            ? linkStyle.active
+                            : linkStyle.nonactive
+                        }
+                    >
+                        <div>
                             <RiHome5Fill size={icon.size} color={icon.color} />
                         </div>
                     </Link>
-                    <Link to="/registrarRubrica" onClick={ () => setCurrentRoute('/registrarRubrica')}>
-                        <div className={{active: currentRoute === '/registrarRubrica' ? "w-fit p-2 bg-orange-300 rounded-full" : 'transparent'}}>
+                    <Link to="/registrarRubrica" className={
+                            activeLink === "/registrarRubrica"
+                            ? linkStyle.active
+                            : linkStyle.nonactive
+                        }>
+                        <div >
                             <BiCategory size={icon.size} color={icon.color} />
                         </div>
                     </Link>
-                    <Link to="/registrarCategoria" onClick={ () => setCurrentRoute('/registrarCategoria')}>
-                        <div className={{active: currentRoute === '/registrarCategoria' ? "w-fit p-2 bg-orange-300 rounded-full" : 'transparent'}}>
+                    <Link to="/registrarCategoria" className={
+                            activeLink === "/registrarCategoria"
+                            ? linkStyle.active
+                            : linkStyle.nonactive
+                        }>
+                        <div>
                             <LuPenSquare size={icon.size} color={icon.color} />
                         </div>
                     </Link>
-                    <Link to="/jugadores" onClick={ () => setCurrentRoute('/jugadores')}>
-                        <div className={{active: currentRoute === '/jugadores' ? "w-fit p-2 bg-orange-300 rounded-full" : 'transparent'}}>
+                    <Link to="/jugadores" className={
+                            activeLink === "/jugadores"
+                            ? linkStyle.active
+                            : linkStyle.nonactive
+                        }>
+                        <div>
                             <MdSportsKabaddi size={icon.size} color={icon.color} />
                         </div>
                     </Link>
