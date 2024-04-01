@@ -64,6 +64,7 @@ const router = createBrowserRouter([
     path: "/verCategorias",
     element: (
       <>
+       <Header />
         <ViewCategories />
       </>
     ),
@@ -81,6 +82,7 @@ const router = createBrowserRouter([
     path: "/registrarRubrica",
     element: (
       <>
+      <Header />
         <Registrar_Rubrica />
       </>
     ),
@@ -89,6 +91,7 @@ const router = createBrowserRouter([
     path: "/registrarRubrica/nuevoCampo",
     element: (
       <>
+  
         <NewField />
       </>
     ),

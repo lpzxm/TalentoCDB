@@ -6,7 +6,7 @@ export const NavBar = () => {
 
     return (
         <>
-            <header className='h-32 md:visible md:relative fixed flex flex-col'>
+            <header className='h-32 md:visible md:relative fixed flex flex-col z-50'>
                 <div className='bg-yellow-400 h-full'></div>
                 <div className='bg-blue-700 h-full'></div>
                 <div className="absolute top-3 w-full px-3 ">
