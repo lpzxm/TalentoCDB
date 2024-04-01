@@ -2,7 +2,7 @@
 import bgfondo from "../../../assets/bg-form.jpg";
 
 
-export function RegisterCategory() {
+export const RegisterCategory = () => {
     return (
         <>
 

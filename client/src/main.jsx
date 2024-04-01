@@ -19,8 +19,18 @@ import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
 import { RegisterAthlete } from './pages/Register/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/Register/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
+import { Error404 } from './pages/404Error/404err.jsx';
+import { FadeIn } from './components/fadeIn/fadeIn.jsx';
 
 const router = createBrowserRouter([
+  {
+    path: "*",
+    element: (
+      <>
+        <Error404 />
+      </>
+    ),
+  },
   {
     path: "/",
     element: (
@@ -41,8 +51,11 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <>
-        <Header />
-        <Home />
+        <FadeIn>
+          <Header />
+          <Home />
+        </FadeIn>
+
       </>
     ),
   },
@@ -50,6 +63,7 @@ const router = createBrowserRouter([
     path: "/registrarCategoria",
     element: (
       <>
+        <Header />
         <RegisterCategory />
       </>
     ),
@@ -94,6 +108,7 @@ const router = createBrowserRouter([
     path: "/verCategorias",
     element: (
       <>
+        <Header />
         <ViewCategories />
       </>
     ),
@@ -144,6 +159,7 @@ const router = createBrowserRouter([
     path: "/resultados",
     element: (
       <>
+        <Header />
         <Tabla_Resultados />
       </>
     ),

@@ -8,7 +8,7 @@ import rubrica from '../../assets/rubrica.png';
 import catego from '../../assets/categorías.png';
 import pelotas from '../../assets/pelotas.png';
 
-export function Home() {
+export const Home = () => {
     return (
         <>
             <div>

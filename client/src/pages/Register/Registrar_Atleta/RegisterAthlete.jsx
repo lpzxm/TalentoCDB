@@ -1,5 +1,7 @@
 import img_usuario from "../../../assets/usuario.png";
-export function RegisterAthlete(){
+
+export const RegisterAthlete = () =>{
+    
     return(
         <>
         <div className="flex flex-col items-center">

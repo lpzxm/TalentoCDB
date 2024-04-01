@@ -3,7 +3,7 @@
 import user from '../../../assets/usericon.png'
 import voley from '../../../assets/voley.png'
 
-export function ReviewPlayer() {
+export const ReviewPlayer = () => {
     return (
         <>
             <main className="grid grid-cols-1 lg:grid-cols-2">

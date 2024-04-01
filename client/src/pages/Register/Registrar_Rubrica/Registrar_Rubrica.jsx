@@ -1,7 +1,7 @@
 // import react from "react";
 
 
-export function Registrar_Rubrica() {
+export const Registrar_Rubrica = () => {
 
     return (
         <>

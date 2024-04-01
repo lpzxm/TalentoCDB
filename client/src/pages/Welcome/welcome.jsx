@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import batu from "../../assets/batu.png";
 import inicio3 from "../../assets/inicio3.jpg";
 
-export function Welcome() {
+export const Welcome = () => {
     return (
         <>
             <div className="flex flex-row w-full h-screen justify-between bg-welcomeImage bg-cover bg-right-top gap-x-10">

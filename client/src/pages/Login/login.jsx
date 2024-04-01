@@ -5,7 +5,7 @@ import { FiLock } from "react-icons/fi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 
-export function Login() {
+export const Login = () => {
 
     const [seePsw, setSeePsw] = useState(false);
 

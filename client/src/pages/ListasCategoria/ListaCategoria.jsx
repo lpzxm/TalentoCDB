@@ -9,7 +9,7 @@ const SUB_U17_options = [
 ];
 
 
-export function Players() {
+export const Players = () => {
   //const [categoryName, setCategoryName] = React.useState('');
   const [selectedOption, setSelectedOption] = React.useState(null);
 

@@ -4,6 +4,7 @@ import { RiHome5Fill } from "react-icons/ri";
 import { BiCategory } from "react-icons/bi";
 import { LuPenSquare } from "react-icons/lu";
 import { MdSportsKabaddi } from "react-icons/md";
+
 export const MobileNavBar = () => {
 
     const [currentRoute, setCurrentRoute] = useState('/')
