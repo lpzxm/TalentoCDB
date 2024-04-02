@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiLock } from "react-icons/fi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
 
