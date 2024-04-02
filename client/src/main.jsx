@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { FadeIn } from './components/fadeIn/fadeIn.jsx';
 import "./index.css";
 
 // Importaciones componentes
@@ -20,14 +21,16 @@ import { RegisterAthlete } from './pages/Register/Registrar_Atleta/RegisterAthle
 import { Registrar_Rubrica } from './pages/Register/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 import { Error404 } from './pages/404Error/404err.jsx';
-import { FadeIn } from './components/fadeIn/fadeIn.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "*",
     element: (
       <>
-        <Error404 />
+        <FadeIn>
+          <Error404 />
+        </FadeIn>
       </>
     ),
   },
@@ -35,7 +38,10 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Welcome />
+        <FadeIn>
+          <Welcome />
+        </FadeIn>
+
       </>
     ),
   },
@@ -43,7 +49,9 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <>
-        <Login />
+        <FadeIn>
+          <Login />
+        </FadeIn>
       </>
     ),
   },
@@ -63,8 +71,10 @@ const router = createBrowserRouter([
     path: "/registrarCategoria",
     element: (
       <>
-        <Header />
-        <RegisterCategory />
+        <FadeIn>
+          <Header />
+          <RegisterCategory />
+        </FadeIn>
       </>
     ),
   },
@@ -72,8 +82,11 @@ const router = createBrowserRouter([
     path: "/jugadores",
     element: (
       <>
-        <Header />
-        <Players />
+        <FadeIn>
+          <Header />
+          <Players />
+        </FadeIn>
+
       </>
     ),
   },
@@ -81,8 +94,10 @@ const router = createBrowserRouter([
     path: "/Selecciones",
     element: (
       <>
-        <Header />
-        <Selecciones />
+        <FadeIn>
+          <Header />
+          <Selecciones />
+        </FadeIn>
       </>
     ),
   },
@@ -90,8 +105,10 @@ const router = createBrowserRouter([
     path: "/MiembrosCat",
     element: (
       <>
-        <Header />
-        <MiembrosCat />
+        <FadeIn>
+          <Header />
+          <MiembrosCat />
+        </FadeIn>
       </>
     ),
   },
@@ -99,8 +116,10 @@ const router = createBrowserRouter([
     path: "/AtletasSelec",
     element: (
       <>
-        <Header />
-        <AtletasSelec />
+        <FadeIn>
+          <Header />
+          <AtletasSelec />
+        </FadeIn>
       </>
     ),
   },
@@ -108,7 +127,11 @@ const router = createBrowserRouter([
     path: "/verCategorias",
     element: (
       <>
-        <ViewCategories />
+        <FadeIn>
+          <Header />
+          <ViewCategories />
+        </FadeIn>
+
       </>
     ),
   },
@@ -116,8 +139,10 @@ const router = createBrowserRouter([
     path: "/evaluarJugador",
     element: (
       <>
-        <Header />
-        <ReviewPlayer />
+        <FadeIn>
+          <Header />
+          <ReviewPlayer />
+        </FadeIn>
       </>
     ),
   },
@@ -125,8 +150,10 @@ const router = createBrowserRouter([
     path: "/registrarRubrica",
     element: (
       <>
-      <Header />
-        <Registrar_Rubrica />
+        <FadeIn>
+          <Header />
+          <Registrar_Rubrica />
+        </FadeIn>
       </>
     ),
   },
@@ -134,8 +161,10 @@ const router = createBrowserRouter([
     path: "/registrarRubrica/nuevoCampo",
     element: (
       <>
-  
-        <NewField />
+        <FadeIn>
+          <Header />
+          <NewField />
+        </FadeIn>
       </>
     ),
   },
@@ -143,25 +172,21 @@ const router = createBrowserRouter([
     path: "/registrarAtleta",
     element: (
       <>
-        <Header />
-        <RegisterAthlete />
+        <FadeIn>
+          <Header />
+          <RegisterAthlete />
+        </FadeIn>
       </>
     ),
   },
-  // {
-  //   path: "/register_rubric",
-  //   element: (
-  //     <>
-  //     <Registrar_Rubrica/>
-  //     </>
-  //   ),
-  // },
   {
     path: "/resultados",
     element: (
       <>
-        <Header />
-        <Tabla_Resultados />
+        <FadeIn>
+          <Header />
+          <Tabla_Resultados />
+        </FadeIn>
       </>
     ),
   },
