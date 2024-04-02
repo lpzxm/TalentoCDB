@@ -7,7 +7,7 @@ import { MdSportsKabaddi } from "react-icons/md";
 
 const linkStyle = {
     nonactive: "",
-    active: "w-fit p-2 bg-orange-600 rounded-full"
+    active: "w-fit p-2 bg-orange-600 rounded-full ease-in-out duration-100"
 }
 
 export const MobileNavBar = () => {
@@ -27,14 +27,14 @@ export const MobileNavBar = () => {
 
     return (
         <>
-            <header className="fixed  z-10 bottom-0 flex w-full justify-center items-center bg-slate-900">
+            <header className="fixed z-10 bottom-0 flex w-full justify-center items-center bg-slate-800">
                 <div className="w-full flex flex-row justify-between px-16 py-5">
                     <Link
                         to="/home"
                         className={
                             activeLink === "/home"
-                            ? linkStyle.active
-                            : linkStyle.nonactive
+                                ? linkStyle.active
+                                : linkStyle.nonactive
                         }
                     >
                         <div>
@@ -42,28 +42,28 @@ export const MobileNavBar = () => {
                         </div>
                     </Link>
                     <Link to="/registrarRubrica" className={
-                            activeLink === "/registrarRubrica"
+                        activeLink === "/registrarRubrica"
                             ? linkStyle.active
                             : linkStyle.nonactive
-                        }>
+                    }>
                         <div >
                             <BiCategory size={icon.size} color={icon.color} />
                         </div>
                     </Link>
                     <Link to="/registrarCategoria" className={
-                            activeLink === "/registrarCategoria"
+                        activeLink === "/registrarCategoria"
                             ? linkStyle.active
                             : linkStyle.nonactive
-                        }>
+                    }>
                         <div>
                             <LuPenSquare size={icon.size} color={icon.color} />
                         </div>
                     </Link>
                     <Link to="/jugadores" className={
-                            activeLink === "/jugadores"
+                        activeLink === "/jugadores"
                             ? linkStyle.active
                             : linkStyle.nonactive
-                        }>
+                    }>
                         <div>
                             <MdSportsKabaddi size={icon.size} color={icon.color} />
                         </div>
