@@ -17,7 +17,7 @@ export const FadeIn = ({ children }) => {
                 } else {
                     clearInterval(intervalID)
                 }
-            }, 30)
+            }, 60)
         };
 
         fadeIN();

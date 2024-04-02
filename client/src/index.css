@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-#prim{
+#prim {
     clip-path: polygon(0% 0, 100% 0%, 100% 80%, 0 100%);
 }
-#sec{
+
+#sec {
     clip-path: polygon(0% 38%, 100% 0%, 100% 100%, 0 100%);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

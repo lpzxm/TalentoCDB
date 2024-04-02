@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import donbo from "../../assets/donbosco.png";
 
 const linkStyle = {
-    nonactive: "hover:border-b-4 border-red-400 transition-border ease-in-out duration-100",
-    active: "w-fit p-2 bg-orange-600 rounded-full"
+    nonactive: "hover:border-b-4 border-black transition-border ease-in-out duration-100",
+    active: "w-fit p-2 bg-white rounded-lg"
 }
 
 export const NavBar = () => {
