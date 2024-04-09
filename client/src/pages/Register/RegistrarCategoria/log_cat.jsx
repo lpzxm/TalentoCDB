@@ -6,9 +6,9 @@ export const RegisterCategory = () => {
     return (
         <>
 
-            <div>
+            <div className="pb-28 lg:pb-0">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <img className="max-w-full h-auto p-4 m-2 " src={bgfondo} alt="" />
+                    <img className="max-w-full h-auto p-4 m-2 rounded-xl" src={bgfondo} alt="" />
                     <main className="grid justify-items-center p-2 relative md:mr-10">
                         <div className="flex gap-6 text-center border-solid border-2 border-amber-300 w-full lg:w-96 p-2 m-6">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

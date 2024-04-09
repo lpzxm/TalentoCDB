@@ -14,8 +14,8 @@ export const Home = () => {
     return (
         <>
             <div>
-                <main className='flex lg:flex-row flex-col items-center'>
-                    <section className="lg:m-5 m-1 flex-col">
+                <main className='flex lg:flex-row flex-col items-center pb-24 lg:pb-0'>
+                    <section className="lg:m-5 m-1 flex- md:block hidden">
                         <article className="flex">
                             <img className='lg:h-60 sm:h-30' src={img1} alt="" />
                             <img className='m-3 sm:h- lg:h-52' src={img2} alt="" />
@@ -25,6 +25,14 @@ export const Home = () => {
                             <img className='m-3 lg:h-60' src={img4} alt="" />
                         </article>
                     </section>
+                    <section className="lg:m-5 m-1 flex- md:hidden block w-14-">
+                        <article>
+                            <img className='ml-8' src={img2} alt="" />
+                            <br />
+                            <img className='mr-8' src={img3} alt="" />
+
+                        </article>
+                        </section>
                     <section className='items-center text-center sm:w-full w-1/2'>
                         <div className='text-2xl font-bold'>
                             <h1 className="font-sans m-10">Bienvenido</h1>
