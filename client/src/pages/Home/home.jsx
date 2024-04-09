@@ -25,7 +25,7 @@ export const Home = () => {
                             <img className='m-3 lg:h-60' src={img4} alt="" />
                         </article>
                     </section>
-                    <section className="lg:m-5 m-1 flex- md:hidden block w-14-">
+                    <section className="lg:m-5 m-1 md:hidden block w-14-">
                         <article>
                             <img className='ml-8' src={img2} alt="" />
                             <br />
