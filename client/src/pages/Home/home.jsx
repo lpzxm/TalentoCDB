@@ -33,7 +33,7 @@ export const Home = () => {
 
                         </article>
                         </section>
-                    <section className='items-center text-center sm:w-full w-1/2'>
+                    <section className='items-center text-center sm:w-full w-1/2 lg:ml-32 ml-0'>
                         <div className='text-2xl font-bold'>
                             <h1 className="font-sans m-10">Bienvenido</h1>
                             <h1 className='mb-5'>Leonel Najarro</h1>
@@ -41,7 +41,7 @@ export const Home = () => {
                         <a href="">
                             <img className='relative left-24 top-16 invisible sm:visible' src={bolly} alt="" />
                             <div className='border-2  m-5'>
-                                <p className='p-4'>
+                                <p className='pt-4 pb-4'>
                                     Entrenador de:
                                 </p>
                             </div>
@@ -49,7 +49,7 @@ export const Home = () => {
                         <a href="">
                             <img className='relative left-24 top-16 invisible md:visible' src={rubrica} alt="" />
                             <div className='border-2  w-69 m-5'>
-                                <p className='p-4'>
+                                <p className='pt-4 pb-4'>
                                     Registrar rúbrica
                                 </p>
                             </div>
@@ -57,7 +57,7 @@ export const Home = () => {
                         <a href="">
                             <img className='relative left-24 top-16 invisible md:visible' src={catego} alt="" />
                             <div className='border-2  m-5'>
-                                <p className='p-4'>
+                                <p className='pt-4 pb-4'>
                                     Registrar categoria
                                 </p>
                             </div>
@@ -65,7 +65,7 @@ export const Home = () => {
                         <a href="">
                             <img className='relative left-24 top-16 invisible md:visible ' src={pelotas} alt="" />
                             <div className='border-2 m-5'>
-                                <p className='p-4'>
+                                <p className='pt-4 pb-4'>
                                     Atletas seleccionados
                                 </p>
                             </div>
