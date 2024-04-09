@@ -9,7 +9,7 @@ export const ReviewPlayer = () => {
             <main className="grid grid-cols-1 lg:grid-cols-2">
                 <article className="flex flex-col items-center justify-center">
                     <div className='md:space-y-11 space-y-2 relative bottom-0 lg:bottom-14'>
-                        <div className="flex md:ml-24 ml-10 mt-10 space-x-4 items-center w-full">
+                        <div className="flex md:ml-24 ml-10 mt-10 md:mt-20 space-x-4 items-center w-full">
                             <p className="text-blue-500 text-2xl">Evaluando a:</p>
                             <img className="w-5 h-5" src={user} alt="" />
                             <p className="text-lg"> Sara Yamileth Torres Henríquez</p>

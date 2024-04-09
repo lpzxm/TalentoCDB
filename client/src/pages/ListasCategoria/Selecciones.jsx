@@ -27,7 +27,7 @@ export const Selecciones = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-around p-4">
+      <div className="flex flex-wrap justify-around p-4 pb-24 md:pb-4">
 
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
           <img className="w-128" src={img4} alt="Volleyball" />
@@ -35,7 +35,6 @@ export const Selecciones = () => {
             <div className="font-bold text-xl mb-2 ">Selección de baloncesto</div>
           </div>
         </div>
-
 
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
           <img className="w-128" src={img1} alt="Fútbol" />
