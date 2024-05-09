@@ -1,16 +1,14 @@
-
 export const AtletasSelec = () => {
-  
   return (
     <>
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 md:p-6 lg:p-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold text-gray-700">Volleyball</h2>
           <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
         </div>
 
-        <div className="bg-white shadow-md rounded my-6">
-          <table className="text-left w-full border-collapse">
+        <div className="bg-white shadow-md rounded my-6 overflow-x-auto">
+          <table className="text-left w-full border-collapse sm:table-fixed">
             <thead>
               <tr>
                 <th className="py-4 px-6 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">Nombre</th>
@@ -43,11 +41,11 @@ export const AtletasSelec = () => {
                 <td className="py-4 px-6 border-b border-gray-300">MasInfo</td>
               </tr>
               <tr className="hover:bg-gray-100">
-                <td className="py-4 px-6 border-b border-gray-300">TodaviaMasInfo</td>
-                <td className="py-4 px-6 border-b border-gray-300">TodaviaMasInfo</td>
-                <td className="py-4 px-6 border-b border-gray-300">TodaviaMasInfo</td>
-                <td className="py-4 px-6 border-b border-gray-300">TodaviaMasInfo</td>
-                <td className="py-4 px-6 border-b border-gray-300">TodaviaMasInfo</td>
+                <td className="py-4 px-6 border-b border-gray-300">AunMasInfo</td>
+                <td className="py-4 px-6 border-b border-gray-300">AunMasInfo</td>
+                <td className="py-4 px-6 border-b border-gray-300">AunMasInfo</td>
+                <td className="py-4 px-6 border-b border-gray-300">AunMasInfo</td>
+                <td className="py-4 px-6 border-b border-gray-300">AunMasInfo</td>
               </tr>
             </tbody>
           </table>
