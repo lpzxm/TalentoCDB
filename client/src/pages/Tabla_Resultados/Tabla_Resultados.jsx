@@ -3,10 +3,10 @@ import React from 'react';
 export const Tabla_Resultados = () => {
   return (
     <div className="container mx-auto">
-        <br></br>
+      <br></br>
       <div className="border-4 border-amber-300 text-black text-center py-2 rounded-lg shadow-md">
-  <h1 className="text-2xl font-bold">Tabla de resultados</h1>
-</div>
+        <h1 className="text-2xl font-bold">Tabla de resultados</h1>
+      </div>
       <div className="text-center my-5">
         <label htmlFor="students" className="text-gray-700 text-sm font-bold mb-2">
           Estudiante:
@@ -75,10 +75,10 @@ export const Tabla_Resultados = () => {
         </tbody>
       </table>
       <div className="flex justify-center">
-  <button className="bg-blue-200 text-blue-900 px-4 py-1 mx-2 my-4 cursor-pointer rounded-lg focus:outline-none focus:shadow-outline hover:bg-blue-300 transition duration-500 ease-in-out hover:scale-105">
-    Agregar nuevo campo
-  </button>
-</div>
+        <button className="bg-blue-200 text-blue-900 px-4 py-1 mx-2 my-4 cursor-pointer rounded-lg focus:outline-none focus:shadow-outline hover:bg-blue-300 transition duration-500 ease-in-out hover:scale-105">
+          Agregar nuevo campo
+        </button>
+      </div>
     </div>
   );
 };
