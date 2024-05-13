@@ -1,7 +1,6 @@
-
 // import react from "react";
-import user from '../../../assets/usericon.png'
-import voley from '../../../assets/voley.png'
+import user from '../../../../../assets/usericon.png'
+import voley from '../../../../../assets/voley.png'
 
 export const ReviewPlayer = () => {
     return (

@@ -1,4 +1,4 @@
-import img_usuario from "../../../assets/usuario.png";
+import img_usuario from "../../../../../assets/usuario.png";
 
 export const RegisterAthlete = () => {
 

@@ -1,5 +1,5 @@
 // import React from "react";
-import bgfondo from "../../../assets/bg-form.jpg";
+import bgfondo from "../../../../../assets/bg-form.jpg";
 
 
 export const RegisterCategory = () => {

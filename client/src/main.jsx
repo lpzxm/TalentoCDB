@@ -4,21 +4,23 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { FadeIn } from './components/fadeIn/fadeIn.jsx';
 import "./index.css";
 
-// Importaciones componentes
+// Importaciones componentes - publicos
 import { Header } from './components/Header/Header';
 import { Welcome } from './pages/Welcome/welcome';
 import { Login } from './pages/Login/login';
+
+
+// Privados - Coach
 import { Home } from './pages/Home/home.jsx';
 import { Players } from './pages/ListasCategoria_revisar/ListaCategoria.jsx';
 import { Selecciones } from './pages/ListasCategoria_revisar/Selecciones.jsx';
 import { MiembrosCat } from './pages/ListasCategoria_revisar/MiembrosCat.jsx';
 import { AtletasSelec } from './pages/ListasCategoria_revisar/AtletasSeleccionados.jsx';
-import { ReviewPlayer } from './pages/Register/CalificarRubrica/ReviewPlayer';
-import { RegisterCategory } from './pages/Register/RegistrarCategoria/log_cat';
-import { ViewCategories } from './pages/Register/RegistrarDeporte/Reg_bkb';
-import { NewField } from './pages/Tabla_Resultados/N_campo/N_campo';
+import { ReviewPlayer } from './pages/logged_in/Coach/Evaluaciones/CalificarRubrica/ReviewPlayer.jsx';
+import { RegisterCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/NuevaCategoria.jsx';
+import { ViewCategories } from './pages/logged_in/RegistrarDeporte/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
-import { Registrar_Rubrica } from './pages/Register/Registrar_Rubrica/Registrar_Rubrica.jsx';
+import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 import { Error404 } from './pages/404Error/404err.jsx';
 
@@ -163,7 +165,6 @@ const router = createBrowserRouter([
       <>
         <FadeIn>
           <Header />
-          <NewField />
         </FadeIn>
       </>
     ),

@@ -1,5 +1,5 @@
 // import react from "react";
-import backgroundImage from '../../../assets/sub-u17.png';
+import backgroundImage from '../../../../../assets/sub-u17.png';
 
 
 export const Registrar_Rubrica = () => {

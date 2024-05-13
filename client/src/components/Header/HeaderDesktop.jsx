@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { logout } from "./buttons/logout";
 import donbo from "../../assets/donbosco.png";
 
 const linkStyle = {
@@ -62,6 +63,9 @@ export const NavBar = () => {
                                     Ver categorias
                                 </li>
                             </Link>
+                        </ul>
+                        <ul>
+                            <button className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1">Cerrar Sesión</button>
                         </ul>
                     </div>
                 </div>
