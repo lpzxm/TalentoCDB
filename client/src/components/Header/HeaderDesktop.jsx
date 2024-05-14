@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { BtnProps } from "./buttons/BtnProps";
 import donbo from "../../assets/donbosco.png";
 
+import { NavButton } from "./buttons/NavBtns";
+
 
 const linkStyle = {
     nonactive: "hover:border-b-4 border-black transition-border ease-in-out duration-100",
@@ -11,13 +13,14 @@ const linkStyle = {
 
 export const NavBar = () => {
 
-    const [activeLink, setActiveLink] = useState("");
+    const [activeDeskLink, setActiveDeskLink] = useState("");
 
     const location = useLocation();
 
     useEffect(() => {
-        setActiveLink(location.pathname)
+        setActiveDeskLink(location.pathname)
     }, [location])
+
 
     return (
         <>
@@ -28,60 +31,34 @@ export const NavBar = () => {
                     <div className="w-full h-fit px-6 py-3 backdrop-blur-sm bg-white/80 flex flex-col md:flex-row justify-between items-center">
                         <img className='w-12 h-fit' src={donbo} alt="DB" />
                         <ul className="flex flex-col md:flex-row p-4 space-x-10 font-bold">
-                            <Link
-                                to="/home"
-                                className={
-                                    activeLink === "/home"
-                                        ? linkStyle.active
-                                        : linkStyle.nonactive
-                                }
-                            >
+                            <NavButton to="/home" activeDeskLink={activeDeskLink}>
                                 <li>
                                     Home
                                 </li>
-                            </Link>
-                            <Link
-                                to="/registrarCategoria"
-                                className={
-                                    activeLink === "/registrarCategoria"
-                                        ? linkStyle.active
-                                        : linkStyle.nonactive
-                                }
-                            >
+                            </NavButton>
+
+                            <NavButton to="/verCategorias" activeDeskLink={activeDeskLink}>
                                 <li>
                                     Ver categorias
                                 </li>
-                            </Link>
-                            <Link
-                                to="/verCategorias"
-                                className={
-                                    activeLink === "/verCategorias"
-                                        ? linkStyle.active
-                                        : linkStyle.nonactive
-                                }
-                            >
+                            </NavButton>
+
+                            <NavButton to="/registrarRubrica" activeDeskLink={activeDeskLink}>
                                 <li>
                                     Registrar rúbrica
                                 </li>
-                            </Link>
-                            <Link
-                                to="/verCategorias"
-                                className={
-                                    activeLink === "/verCategorias"
-                                        ? linkStyle.active
-                                        : linkStyle.nonactive
-                                }
-                            >
+                            </NavButton>
+                            <NavButton to="/coach" activeDeskLink={activeDeskLink}>
                                 <li>
-                                    Perfil personal
+                                    Perfil Personal
                                 </li>
-                            </Link>
+                            </NavButton>
                         </ul>
                         <ul>
                             <BtnProps
-                            className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1"
-                            to="/"
-                            text="Cerrar Sesion"
+                                className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1"
+                                to="/"
+                                text="Cerrar Sesion"
                             />
                         </ul>
                     </div>

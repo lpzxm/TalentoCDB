@@ -5,7 +5,7 @@ import { BiCategory } from "react-icons/bi";
 import { LuPenSquare } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
 
-import { NavButton } from "./buttons/MobileNavBtns";
+import { NavButton } from "./buttons/NavBtns";
 
 export const MobileNavBar = () => {
 
