@@ -30,31 +30,40 @@ export const Login = () => {
         <>
             <div className="flex justify-center items-center w-screen h-screen bg-backLogin bg-cover">
                 <div className="flex flex-col space-y-6 filter-none">
-                    <div className="w-96 px-10 py-24 bg-white rounded-xl flex flex-col justify-first items-center space-y-10 box-border" id="prim">
-                        <h1 className="text-2xl font-sans font-bold">Inicia sesión</h1>
-                        <div className="relative w-full box-border">
-                            <input type="email" name="user" id="user" placeholder="Correo institucional" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
-                            <AiTwotoneMail
-                                style={{ fontSize: '20px', color: 'gray' }} className="absolute right-14 top-3" />
-                        </div>
-                        <div className="relative w-full box-border">
-                            <input type={seePsw ? "text" : "password"} name="password" id="password" placeholder="Contraseña" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
-                            <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute right-14 top-3" />
-                            <div onClick={toggleSeePsw}>
-                                {seePsw ? (
-                                    <FaRegEyeSlash style={{ fontSize: '20px' }} className="absolute right-6 top-3" />
-                                ) : (
+                    <div className="w-72 800:w-96 py-24 bg-white rounded-xl flex flex-col justify-first items-center space-y-10 box-border" id="prim">
+                        <div className="space-y-10 w-full flex flex-col justify-around items-center">
+                            <h1 className="text-2xl font-sans font-bold">Inicia sesión</h1>
+                            <div className="relative flex w-full box-border px-5">
+                                <input type="email" name="user" id="user" placeholder="Correo institucional" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
 
-                                    <FaRegEye style={{ fontSize: '20px' }} className="absolute right-6 top-3" />
-                                )}
+                                <div className="absolute right-14 top-3">
+                                    <AiTwotoneMail
+                                        style={{ fontSize: '20px', color: 'gray' }} />
+                                </div>
                             </div>
+                            <div className="relative w-full box-border px-5">
+                                <input type={seePsw ? "text" : "password"} name="password" id="password" placeholder="Contraseña" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
+                                <div className="absolute right-[70px] top-3 space-x-7">
+                                    <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute" />
+                                    <div onClick={toggleSeePsw}>
+                                        {seePsw ? (
+                                            <FaRegEyeSlash style={{ fontSize: '20px' }} className="absolute" />
+                                        ) : (
 
+                                            <FaRegEye style={{ fontSize: '20px' }} className="absolute" />
+                                        )}
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
-                        <label htmlFor="remember" className="relative right-12 space-x-4"><input type="checkbox" name="remember" id="remember" /> Recordar contraseña</label>
+
+                        <label htmlFor="remember" className="relative right-12 space-x-4 font-medium"><input type="checkbox" name="remember" id="remember" /> Recordar contraseña</label>
                     </div>
                     <div className="border-box w-full h-36 p-5 flex flex-col justify-end items-center border bg-white rounded-xl" id="sec">
                         <Link to="/home">
-                            <input type="submit" value="Login" className="text-white rounded-3xl px-10 py-2 bg-blue-600 hover:bg-blue-400 " /></Link>
+                            <input type="submit" value="Login" className="text-white rounded-3xl px-10 py-2 bg-blue-600 hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-110 transition ease-in" /></Link>
                     </div>
                 </div>
             </div>

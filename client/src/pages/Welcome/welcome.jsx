@@ -22,6 +22,8 @@ export const Welcome = () => {
         };
     }, []);
 
+
+
     return <>{isDesktop ?
         <div className="flex flex-row w-full h-screen justify-between bg-welcomeImage bg-cover bg-right-top gap-x-10">
             <div className="flex w-full justify-center items-center">
@@ -52,8 +54,8 @@ export const Welcome = () => {
             </div>
             <div>
                 <Link to='/login'>
-                    <button className="rounded-xl bg-black radius w-64 m-24">
-                        <p className="p-3 text-white text-base font-sans">Iniciar</p>
+                    <button className="rounded-xl bg-black radius w-64 m-24 ">
+                        <p className="p-3 text-white font-sans ">Iniciar</p>
                     </button>
                 </Link>
             </div>

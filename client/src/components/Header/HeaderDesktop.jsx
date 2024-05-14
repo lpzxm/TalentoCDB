@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { logout } from "./buttons/logout";
+import { BtnProps } from "./buttons/BtnProps";
 import donbo from "../../assets/donbosco.png";
+
 
 const linkStyle = {
     nonactive: "hover:border-b-4 border-black transition-border ease-in-out duration-100",
-    active: "w-fit p-2 bg-white rounded-lg"
+    active: "border-b-4 border-black transition ease-in-out"
 }
 
 export const NavBar = () => {
@@ -48,7 +49,7 @@ export const NavBar = () => {
                                 }
                             >
                                 <li>
-                                    Registrar Categoria
+                                    Ver categorias
                                 </li>
                             </Link>
                             <Link
@@ -60,12 +61,28 @@ export const NavBar = () => {
                                 }
                             >
                                 <li>
-                                    Ver categorias
+                                    Registrar rúbrica
+                                </li>
+                            </Link>
+                            <Link
+                                to="/verCategorias"
+                                className={
+                                    activeLink === "/verCategorias"
+                                        ? linkStyle.active
+                                        : linkStyle.nonactive
+                                }
+                            >
+                                <li>
+                                    Perfil personal
                                 </li>
                             </Link>
                         </ul>
                         <ul>
-                            <button className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1">Cerrar Sesión</button>
+                            <BtnProps
+                            className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1"
+                            to="/"
+                            text="Cerrar Sesion"
+                            />
                         </ul>
                     </div>
                 </div>
