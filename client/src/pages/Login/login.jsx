@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom";
 import { AiTwotoneMail } from "react-icons/ai";
 import { FiLock } from "react-icons/fi";
@@ -35,7 +35,6 @@ export const Login = () => {
                             <h1 className="text-2xl font-sans font-bold">Inicia sesión</h1>
                             <div className="relative flex w-full box-border px-5">
                                 <input type="email" name="user" id="user" placeholder="Correo institucional" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
-
                                 <div className="absolute right-14 top-3">
                                     <AiTwotoneMail
                                         style={{ fontSize: '20px', color: 'gray' }} />
@@ -54,12 +53,11 @@ export const Login = () => {
                                         )}
                                     </div>
                                 </div>
-
-
+                            </div>
+                            <div className="relative right-12">
+                                <label htmlFor="remember" className="font-semibold"><input type="checkbox" name="remember" id="remember" /> Recordar contraseña</label>
                             </div>
                         </div>
-
-                        <label htmlFor="remember" className="relative right-12 space-x-4 font-medium"><input type="checkbox" name="remember" id="remember" /> Recordar contraseña</label>
                     </div>
                     <div className="border-box w-full h-36 p-5 flex flex-col justify-end items-center border bg-white rounded-xl" id="sec">
                         <Link to="/home">
