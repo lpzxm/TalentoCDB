@@ -30,7 +30,7 @@ export const Login = () => {
         <>
             <div className="flex justify-center items-center w-screen h-screen bg-backLogin bg-cover">
                 <div className="flex flex-col space-y-6 filter-none">
-                    <div className="w-[315px] 800:w-96 py-24 bg-white rounded-xl flex flex-col justify-first items-center space-y-10 box-border" id="prim">
+                    <div className="w-[335px] 800:w-96 py-24 bg-white rounded-xl flex flex-col justify-first items-center space-y-10 box-border" id="prim">
                         <div className="space-y-10 w-full flex flex-col justify-around items-center">
                             <h1 className="text-2xl font-sans font-bold">Inicia sesión</h1>
                             <div className="relative flex w-full box-border px-5">

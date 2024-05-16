@@ -5,12 +5,14 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { PiCourtBasketballBold } from "react-icons/pi";
 
 import { Link } from "react-router-dom";
+
 import img1 from '../../assets/ini1.png';
 import img2 from '../../assets/ini2.png';
 import img3 from '../../assets/ini3.png';
 import img4 from '../../assets/ini4.png';
 
 const ImageSlider = ({ images, interval, className }) => {
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -26,7 +28,7 @@ const ImageSlider = ({ images, interval, className }) => {
             {images.map((img, index) => (
                 <img
                     key={index}
-                    className={`w-fit ${index !== currentIndex && "hidden"}`}
+                    className={`w-full h-full object-cover rounded-2xl ${index !== currentIndex && "hidden"}`}
                     src={img}
                     alt=""
                 />
@@ -40,26 +42,13 @@ export const Home = () => {
 
     return (
         <>
-            <main className='flex lg:flex-row flex-col items-center pb-24 lg:pb-0'>
-                <section className="lg:m-5 m-1 md:block hidden">
-                    <article className="flex">
-                        <div className="lg:h-60 sm:h-30 w-1/2">
-                            <ImageSlider images={[img1, img2]} interval={3000} />
-                        </div>
-                        <ImageSlider className="m-3 sm:h- lg:h-52" images={[img3, img4]} interval={3000} />
-                    </article>
-                    <article className='flex lg:mt-5'>
-                        <ImageSlider className="lg:w-52 relative" images={[img3, img1]} interval={3000} />
+            <main className='flex lg:flex-row flex-col items-center mt-4 pb-24 lg:pb-0'>
+                <div className="grid grid-cols-1 gap-5 p-3">
+                    <ImageSlider className="880:col-span-1  w-[350px]" images={[img1]} />
+                    <ImageSlider className="col-span-1 w-[350px]" images={[img2]} />
+                    <ImageSlider className="col-span-2 w-full h-72" images={[img4]} />
+                </div>
 
-                        <ImageSlider className="m-3 lg:h-60" images={[img3, img4]} interval={3000} />
-                    </article>
-                </section>
-                <section className="lg:m-5 m-1 md:hidden block w-14-">
-                    <article>
-                        <br />
-                        <ImageSlider className="w-fit" images={[img2, img4]} interval={3000} />
-                    </article>
-                </section>
                 <section className='flex flex-col justify-center items-center text-center sm:w-full w-1/2 lg:ml-32 ml-0'>
                     <div className='text-2xl font-bold my-5'>
                         <h1 className="font-sans">Bienvenido</h1>

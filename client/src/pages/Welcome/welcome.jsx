@@ -23,7 +23,6 @@ const ImageSlider = ({ images, interval, className }) => {
                 <img
                     key={index}
                     className={`w-[800px] h-full ${index !== currentIndex && "hidden"}`}
-                    style={{ filter: `blur(${index === currentIndex ? "0" : "10px"})` }}
                     src={img}
                     alt=""
                 />
@@ -81,7 +80,9 @@ export const Welcome = () => {
                 <p className="pt-[40px]">Un corazón que transforma &quot;lobos&quot; en &quot;corderos&quot;</p>
             </div>
             <Link to='/login'>
-                <input value="Iniciar" className="rounded-xl bg-black radius  m-24 hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-110 transition ease-in" />
+                <button className="rounded-xl bg-black radius w-64 m-24">
+                    <p className="p-3 text-white font-sans ">Iniciar</p>
+                </button>
             </Link>
         </div>}</>
 }
