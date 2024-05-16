@@ -10,7 +10,7 @@ import img2 from '../../assets/ini2.png';
 import img3 from '../../assets/ini3.png';
 import img4 from '../../assets/ini4.png';
 
-const ImageSlider = ({ images, interval }) => {
+const ImageSlider = ({ images, interval, className }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -22,11 +22,11 @@ const ImageSlider = ({ images, interval }) => {
     }, [images, interval]);
 
     return (
-        <div>
+        <div className={className} >
             {images.map((img, index) => (
                 <img
                     key={index}
-                    className={`${index !== currentIndex && "hidden"}`}
+                    className={`w-fit ${index !== currentIndex && "hidden"}`}
                     src={img}
                     alt=""
                 />
@@ -37,28 +37,27 @@ const ImageSlider = ({ images, interval }) => {
 
 export const Home = () => {
 
-    
+
     return (
         <>
             <main className='flex lg:flex-row flex-col items-center pb-24 lg:pb-0'>
                 <section className="lg:m-5 m-1 md:block hidden">
                     <article className="flex">
                         <div className="lg:h-60 sm:h-30 w-1/2">
-                            <ImageSlider className="w-fit" images={[img1, img2]} interval={3000} />
+                            <ImageSlider images={[img1, img2]} interval={3000} />
                         </div>
-                        <img className='m-3 sm:h- lg:h-52' src={img2} alt="" />
+                        <ImageSlider className="m-3 sm:h- lg:h-52" images={[img3, img4]} interval={3000} />
                     </article>
-
                     <article className='flex lg:mt-5'>
-                        <img className='lg:w-52 relative ' src={img3} alt="" />
-                        <img className='m-3 lg:h-60' src={img4} alt="" />
+                        <ImageSlider className="lg:w-52 relative" images={[img3, img1]} interval={3000} />
+
+                        <ImageSlider className="m-3 lg:h-60" images={[img3, img4]} interval={3000} />
                     </article>
                 </section>
                 <section className="lg:m-5 m-1 md:hidden block w-14-">
                     <article>
-                        <img className='ml-8' src={img2} alt="" />
                         <br />
-                        <ImageSlider className="w-fit" images={[img3, img4]} interval={3000} />
+                        <ImageSlider className="w-fit" images={[img2, img4]} interval={3000} />
                     </article>
                 </section>
                 <section className='flex flex-col justify-center items-center text-center sm:w-full w-1/2 lg:ml-32 ml-0'>

@@ -6,6 +6,7 @@ import opa1 from "../../assets/Basket.png"
 import opa2 from "../../assets/sub-u13_u18.png"
 
 const ImageSlider = ({ images, interval, className }) => {
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const ImageSlider = ({ images, interval, className }) => {
                 <img
                     key={index}
                     className={`w-[800px] h-full ${index !== currentIndex && "hidden"}`}
+                    style={{ filter: `blur(${index === currentIndex ? "0" : "10px"})` }}
                     src={img}
                     alt=""
                 />
@@ -67,9 +69,9 @@ export const Welcome = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col h-full shrink-0">
+            <div className="flex flex-col h-full shrink-0 overflow-hidden">
                 <ImageSlider images={[batu, inicio3]} interval={3000} />
-                <ImageSlider images={[opa1, opa2]} interval={2000} />
+                <ImageSlider className="h-full" images={[opa1, opa2]} interval={2000} />
             </div>
         </div>
         :
@@ -78,12 +80,8 @@ export const Welcome = () => {
                 <p className="">&quot;El sueño que hace soñar&quot;</p>
                 <p className="pt-[40px]">Un corazón que transforma &quot;lobos&quot; en &quot;corderos&quot;</p>
             </div>
-            <div>
-                <Link to='/login'>
-                    <button className="rounded-xl bg-black radius w-64 m-24 ">
-                        <p className="p-3 text-white font-sans ">Iniciar</p>
-                    </button>
-                </Link>
-            </div>
+            <Link to='/login'>
+                <input value="Iniciar" className="rounded-xl bg-black radius  m-24 hover:shadow-xl hover:shadow-cyan-500/50 hover:scale-110 transition ease-in" />
+            </Link>
         </div>}</>
 }
