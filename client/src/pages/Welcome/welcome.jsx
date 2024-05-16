@@ -2,6 +2,33 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import batu from "../../assets/batu.png";
 import inicio3 from "../../assets/inicio3.jpg";
+import opa1 from "../../assets/Basket.png"
+import opa2 from "../../assets/sub-u13_u18.png"
+
+const ImageSlider = ({ images, interval, className }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const sliderInterval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, interval);
+
+        return () => clearInterval(sliderInterval);
+    }, [images, interval]);
+
+    return (
+        <div className={className}>
+            {images.map((img, index) => (
+                <img
+                    key={index}
+                    className={`w-[800px] h-full ${index !== currentIndex && "hidden"}`}
+                    src={img}
+                    alt=""
+                />
+            ))}
+        </div>
+    );
+}
 
 export const Welcome = () => {
 
@@ -23,7 +50,6 @@ export const Welcome = () => {
     }, []);
 
 
-
     return <>{isDesktop ?
         <div className="flex flex-row w-full h-screen justify-between bg-welcomeImage bg-cover bg-right-top gap-x-10">
             <div className="flex w-full justify-center items-center">
@@ -42,8 +68,8 @@ export const Welcome = () => {
                 </div>
             </div>
             <div className="flex flex-col h-full shrink-0">
-                <img className="w-[800px] h-1/2 " src={batu} alt="" />
-                <img className="w-[800px] h-1/2 " src={inicio3} alt="" />
+                <ImageSlider images={[batu, inicio3]} interval={3000} />
+                <ImageSlider images={[opa1, opa2]} interval={2000} />
             </div>
         </div>
         :
