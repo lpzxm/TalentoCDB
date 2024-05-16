@@ -26,7 +26,7 @@ export const MobileNavBar = () => {
     return (
         <>
             <header className="fixed z-10 bottom-0 flex w-full justify-center items-center bg-slate-800">
-                <div className="w-full flex flex-row justify-center md:space-x-10  lg:space-x-3 px-16 py-3">
+                <div className="w-full flex flex-row justify-center space-x-3 md:space-x-11  lg:space-x-4 px-16 py-3">
                     <NavButton to="/home" activeLink={activeLink}>
                         <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Home" />
                     </NavButton>

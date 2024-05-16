@@ -10,7 +10,7 @@ import img2 from '../../assets/ini2.png';
 import img3 from '../../assets/ini3.png';
 import img4 from '../../assets/ini4.png';
 
-const ImageSlider = ({ images, interval, className }) => {
+const ImageSlider = ({ images, interval }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const ImageSlider = ({ images, interval, className }) => {
     }, [images, interval]);
 
     return (
-        <div className={className}>
+        <div>
             {images.map((img, index) => (
                 <img
                     key={index}
@@ -37,7 +37,7 @@ const ImageSlider = ({ images, interval, className }) => {
 
 export const Home = () => {
 
-
+    
     return (
         <>
             <main className='flex lg:flex-row flex-col items-center pb-24 lg:pb-0'>
@@ -48,6 +48,7 @@ export const Home = () => {
                         </div>
                         <img className='m-3 sm:h- lg:h-52' src={img2} alt="" />
                     </article>
+
                     <article className='flex lg:mt-5'>
                         <img className='lg:w-52 relative ' src={img3} alt="" />
                         <img className='m-3 lg:h-60' src={img4} alt="" />
@@ -57,7 +58,7 @@ export const Home = () => {
                     <article>
                         <img className='ml-8' src={img2} alt="" />
                         <br />
-                        <img className='mr-8' src={img3} alt="" />
+                        <ImageSlider className="w-fit" images={[img3, img4]} interval={3000} />
                     </article>
                 </section>
                 <section className='flex flex-col justify-center items-center text-center sm:w-full w-1/2 lg:ml-32 ml-0'>
