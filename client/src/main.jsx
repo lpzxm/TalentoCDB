@@ -24,6 +24,8 @@ import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registra
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 import { Error404 } from './pages/404Error/404err.jsx';
 
+// Atleta
+import { Profile } from './pages/logged_in/Atleta/Profile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -191,6 +193,17 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/perfilAtleta",
+    element: (
+      <>
+      <FadeIn>
+        <Header/>
+        <Profile/>
+      </FadeIn>
+      </>
+    )
+  }
 ]);
 
 
