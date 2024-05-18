@@ -1,4 +1,5 @@
 import { BiCategoryAlt } from "react-icons/bi";
+import { IoMdAdd } from "react-icons/io";
 
 
 import img1 from "../../../assets/sub-u13_u18.png";
@@ -14,11 +15,22 @@ const categories = [
 
 
 const CategoryCard = ({ title, image }) => (
-  <div className="m-3 md:m-6 md:w-96 lg:w-96 transform transition-transform hover:scale-105 hover:rotate-3">
-    <div className="border rounded-lg overflow-hidden shadow-slate-200">
+  <div className="m-4 md:m-6 md:w-96 lg:w-96 transform transition-transform hover:scale-105 hover:rotate-3">
+    <div className="border rounded-lg overflow-hidden shadow-slate-400 shadow-xl">
       <div className="p-2">
         <p className="text-center font-medium mb-2">{title}</p>
         <img className="h-full w-full object-cover rounded p-4 md:w-auto" src={image} alt="" />
+        <div className="w-full flex flex-row flex-wrap justify-around items-center">
+          <button className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+            Ver
+          </button>
+          <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
+            Editar
+          </button>
+          <button className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+            Eliminar
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -33,13 +45,19 @@ export const ViewCategories = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="flex justify-center items-center gap-6 border-solid border-2 border-amber-300 w-fit my-6 p-4">
           <BiCategoryAlt size="25px" />
-          <p className="font-semibold text-2xl">Listado de categorias</p>
+          <p className="font-semibold text-2xl text-center">Listado de categorias</p>
         </div>
-        <div className="outline rounded outline-offset-2 outline-gray-200 md:w-80 flex justify-center gap-16 p-4 mb-8">
-          <h1 className="font-bold text-xl">Categorias de Baloncesto</h1>
+        <div className="md:w-80 flex justify-center gap-16 p-2 mb-8">
+          <h1 className="font-bold text-lg underline underline-offset-2">Categorias de Baloncesto</h1>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="w-full flex flex-row ml-10">
+        <button className="flex flex-row justify-center items-center bg-yellow-300 hover:bg-yellow-500 active:bg-orange-600 transition ease-in-out rounded-md p-3 space-x-3">
+          <span>Agregar categoria nueva</span>
+          <IoMdAdd />
+        </button>
+      </div>
+      <div className="flex flex-wrap justify-center mb-24">
         {categories.map((category, index) => (
           <CategoryCard key={index} title={category.title} image={category.image} />
         ))}
