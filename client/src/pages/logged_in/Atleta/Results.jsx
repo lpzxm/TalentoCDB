@@ -1,6 +1,6 @@
 
 
-export const Results = () => {
+export const PlayerResults = () => {
 
     const results = [
         

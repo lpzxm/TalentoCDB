@@ -3,6 +3,7 @@ import bgfondo from "../../../../../assets/bg-form.jpg";
 
 
 export const RegisterCategory = () => {
+    
     return (
         <>
 

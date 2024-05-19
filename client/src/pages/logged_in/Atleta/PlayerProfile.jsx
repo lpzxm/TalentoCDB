@@ -89,7 +89,7 @@ export const PlayerProfile = () => {
                 </div>
             </section>
             <section className="">
-                <div className="w-full h-full flex flex-col justify-around items-center mb-20">
+                <form className="w-full h-full flex flex-col justify-around items-center mb-20">
                     <div><p className='font-semibold'>Sube tus notas de periodo aqui (una foto por favor)</p></div>
                     <FileUpload label="Sube tu imagen aquí (1)" file={file1} onFileChange={handleFileChange1} onFileRemove={handleFileRemove1} />
                     <div><p className='font-semibold'>Sube tu reporte conductual aqui (una foto por favor)</p></div>
@@ -100,7 +100,7 @@ export const PlayerProfile = () => {
                     >
                         Subir Archivos
                     </button>
-                </div>
+                </form>
             </section>
         </article>
     );
