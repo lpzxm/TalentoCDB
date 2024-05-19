@@ -27,6 +27,8 @@ import { Error404 } from './pages/404Error/404err.jsx';
 // Atleta
 import { Profile } from './pages/logged_in/Atleta/Profile.jsx';
 
+import { PlayerProfile } from './pages/logged_in/Atleta/PlayerProfile.jsx';
+
 const router = createBrowserRouter([
   {
     path: "*",
@@ -197,10 +199,10 @@ const router = createBrowserRouter([
     path: "/perfilAtleta",
     element: (
       <>
-      <FadeIn>
-        <Header/>
-        <Profile/>
-      </FadeIn>
+        <FadeIn>
+          <Header />
+          <PlayerProfile />
+        </FadeIn>
       </>
     )
   }
