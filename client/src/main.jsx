@@ -25,6 +25,7 @@ import { ReviewPlayer } from './pages/logged_in/Coach/Evaluaciones/CalificarRubr
 
 import { RegisterCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/NuevaCategoria.jsx';
 import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
+import { PerfilCoach } from './pages/logged_in/Coach/Perfil/perfilcoach.jsx'
 
 import { ViewCategories } from './pages/logged_in/RegistrarDeporte/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
@@ -205,6 +206,17 @@ const router = createBrowserRouter([
           <RegisterCategory/>
         </FadeIn>
     </>
+    )
+  },
+  {
+    path: "/coachProfile",
+    element:(
+      <>
+          <FadeIn>
+          <Header />
+          <PerfilCoach/>
+        </FadeIn>
+      </>
     )
   },
   // Fin de rutas del coach - privadas
