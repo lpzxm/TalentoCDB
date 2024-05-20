@@ -61,13 +61,13 @@ export const Home = () => {
                             </p>
                             <PiVolleyball size="25px" />
                         </div>
-                        <Link to="/registrarRubrica" className='border-2 w-full flex flex-row flex-wrap justify-around items-center'>
+                        <Link to="/coach/registrarRubrica" className='border-2 w-full flex flex-row flex-wrap justify-around items-center'>
                             <p className='py-4'>
                                 Registrar rúbrica
                             </p>
                             <PiNotePencilFill size="25px" />
                         </Link>
-                        <Link to="/verCategorias" className='border-2 w-full flex flex-row flex-wrap justify-around items-center'>
+                        <Link to="/registercategory" className='border-2 w-full flex flex-row flex-wrap justify-around items-center'>
                             <p className='py-4'>
                                 Registrar categoria
                             </p>

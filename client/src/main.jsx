@@ -183,8 +183,8 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  /* {
-    path: "/jugadores",
+ /*{
+     path: "/jugadores",
     element: (
       <>
         <FadeIn>
@@ -194,7 +194,19 @@ const router = createBrowserRouter([
 
       </>
     ),
-  }, idk, hay que ver para que es esta o la logica xd*/ 
+  }, 
+ idk, hay que ver para que es esta o la logica xd*/
+  {
+    path: "/registercategory",
+    element:(
+    <>
+            <FadeIn>
+          <Header />
+          <RegisterCategory/>
+        </FadeIn>
+    </>
+    )
+  },
   // Fin de rutas del coach - privadas
   //
   // Rutas del Admin - Privadas

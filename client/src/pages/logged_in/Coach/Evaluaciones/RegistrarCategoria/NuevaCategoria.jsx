@@ -7,17 +7,18 @@ export const RegisterCategory = () => {
     return (
         <>
 
-            <div className="pb-28 lg:pb-0">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <img className="max-w-full h-auto p-4 m-2 rounded-xl" src={bgfondo} alt="" />
-                    <main className="grid justify-items-center p-2 relative md:mr-10">
-                        <div className="flex gap-6 text-center border-solid border-2 border-amber-300 w-full lg:w-96 p-2 m-6">
+ {/* Fondo con efecto de desenfoque */}
+ <div className="fixed inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${bgfondo})`, filter: 'blur(8px)' }}></div>
+                <center>
+                <div id="divprincipal" className=" w-9/12 md:w-2/4 my-8 pb-10">
+                    <main className="grid justify-items-center border-collapse border-8 p-2 relative md:mr-10 bg-white">
+                        <div className="flex bg gap-6 text-center border-solid border-4 border-amber-300 w-full lg:w-96 p-2 m-6">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
                             </svg>
                             <p>Registrar Categoria</p>
                         </div>
-                        <section className="border-dashed border-2 border-orange-500 w-full lg:w-96 p-4">
+                        <section className="border-dashed border-2 border-orange-500 w-full lg:w-96 p-4 mb-8">
                             <p className="m-2">Registrar la categoría: </p>
                             <div className=" flex flex-col gap-4">
                                 <button className="outline outline-offset-2 outline-blue-400 rounded  flex gap-4 w-full p-1">
@@ -54,7 +55,7 @@ export const RegisterCategory = () => {
                     </main>
 
                 </div>
-            </div>
+                </center>
         </>
     )
 }

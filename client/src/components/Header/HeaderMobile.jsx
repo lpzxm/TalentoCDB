@@ -31,11 +31,11 @@ export const MobileNavBar = () => {
                         <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Home" />
                     </NavButton>
 
-                    <NavButton to="/verCategorias" activeLink={activeLink}>
+                    <NavButton to="/coach/categorias" activeLink={activeLink}>
                         <NavItem icon={<BiCategory size={icon.size} color={icon.color} />} text="Categorias" />
                     </NavButton>
 
-                    <NavButton to="/registrarRubrica" activeLink={activeLink}>
+                    <NavButton to="/coach/registrarRubrica" activeLink={activeLink}>
                         <NavItem icon={<LuPenSquare size={icon.size} color={icon.color} />} text="Rubrica" />
                     </NavButton>
 
@@ -44,7 +44,9 @@ export const MobileNavBar = () => {
                     </NavButton>
 
                     <div className="relative p-2 w-12 h-12 rounded-full bg-white flex justify-center items-center border-4 border-indigo-600">
+                    <NavButton to="/" activeLink={activeLink}>
                         <NavItem icon={<TbLogout size={icon.size} />} />
+                        </NavButton>
                     </div>
 
                 </div>

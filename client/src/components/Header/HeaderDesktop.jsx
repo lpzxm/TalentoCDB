@@ -31,12 +31,12 @@ export const NavBar = () => {
 
                             </NavButton>
 
-                            <NavButton to="/verCategorias" activeDeskLink={activeDeskLink}>
+                            <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
                                 Ver categorias
 
                             </NavButton>
 
-                            <NavButton to="/registrarRubrica" activeDeskLink={activeDeskLink}>
+                            <NavButton to="/coach/registrarRubrica" activeDeskLink={activeDeskLink}>
                                 Registrar rúbrica
                             </NavButton>
                             <NavButton to="/coach" activeDeskLink={activeDeskLink}>
