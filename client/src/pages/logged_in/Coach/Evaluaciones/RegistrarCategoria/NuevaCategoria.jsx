@@ -3,14 +3,14 @@ import bgfondo from "../../../../../assets/bg-form.jpg";
 
 
 export const RegisterCategory = () => {
-    
+
     return (
         <>
 
- {/* Fondo con efecto de desenfoque */}
- <div className="fixed inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${bgfondo})`, filter: 'blur(8px)' }}></div>
-                <center>
-                <div id="divprincipal" className="w-fit my-28">
+            {/* Fondo con efecto de desenfoque */}
+            <div className="fixed inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${bgfondo})`, filter: 'blur(8px)' }}></div>
+            <center>
+                <div id="divprincipal" className=" w-9/12 md:w-2/4 my-8 pb-10">
                     <main className="grid justify-items-center border-collapse border-8 p-2 relative md:mr-10 bg-white">
                         <div className="flex bg gap-24 border-solid border-4 border-amber-300 w-full lg:w-96 p-2 m-6">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -40,7 +40,7 @@ export const RegisterCategory = () => {
                     </main>
 
                 </div>
-                </center>
+            </center>
         </>
     )
 }
