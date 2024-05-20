@@ -6,9 +6,9 @@ import "./index.css";
 
 // Importaciones componentes - publicos
 import { Header } from './components/Header/Header';
-import { Welcome } from './pages/Welcome/welcome';
-import { Login } from './pages/Login/login';
-import { Error404 } from './pages/404Error/404err.jsx';
+import { Welcome } from './pages/public/Welcome/welcome.jsx';
+import { Login } from './pages/public/Login/login';
+import { Error404 } from './pages/public/404Error/404err.jsx';
 
 // Atleta - Rutas privadas
 import { PlayerProfile } from './pages/logged_in/Atleta/PlayerProfile.jsx';
@@ -16,7 +16,7 @@ import { PlayerResults } from './pages/logged_in/Atleta/Results.jsx';
 
 
 // Coach - Rutas privadas
-import { Home } from './pages/Home/home.jsx';
+import { Home } from './pages/public/Home/home.jsx';
 import { Players } from './pages/ListasCategoria_revisar/ListaCategoria.jsx';
 import { Selecciones } from './pages/ListasCategoria_revisar/Selecciones.jsx';
 import { MiembrosCat } from './pages/ListasCategoria_revisar/MiembrosCat.jsx';
