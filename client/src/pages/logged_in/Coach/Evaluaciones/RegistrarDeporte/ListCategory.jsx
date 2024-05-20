@@ -2,9 +2,10 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 
 
-import img1 from "../../../assets/sub-u13_u18.png";
-import img2 from "../../../assets/sub-u15.png";
-import img3 from "../../../assets/sub-u17.png";
+// import img1 from "../../assets/sub-u13_u18.png";
+import img1 from "../../../../../assets/sub-u13_u18.png"
+import img2 from "../../../../../assets/sub-u15.png"
+import img3 from "../../../../../assets/sub-u17.png"
 
 const categories = [
   { title: "SUB-U13", image: img1 },

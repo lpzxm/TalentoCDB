@@ -11,23 +11,22 @@ import { Login } from './pages/public/Login/login';
 import { Error404 } from './pages/public/404Error/404err.jsx';
 
 // Atleta - Rutas privadas
-import { PlayerProfile } from './pages/logged_in/Atleta/PlayerProfile.jsx';
 import { PlayerResults } from './pages/logged_in/Atleta/Results.jsx';
+import { PlayerProfile } from './pages/logged_in/Atleta/PlayerProfile.jsx';
 
 
 // Coach - Rutas privadas
 import { Home } from './pages/public/Home/home.jsx';
 import { Players } from './pages/ListasCategoria_revisar/ListaCategoria.jsx';
-import { Selecciones } from './pages/ListasCategoria_revisar/Selecciones.jsx';
+import { Selecciones } from './pages/logged_in/Admin/Selecciones.jsx';
 import { MiembrosCat } from './pages/ListasCategoria_revisar/MiembrosCat.jsx';
-import { AtletasSelec } from './pages/ListasCategoria_revisar/AtletasSeleccionados.jsx';
+import { AtletasSelec } from './pages/logged_in/Coach/Evaluaciones/AtletasSeleccionados.jsx';
 import { ReviewPlayer } from './pages/logged_in/Coach/Evaluaciones/CalificarRubrica/ReviewPlayer.jsx';
 
 import { RegisterCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/NuevaCategoria.jsx';
-import { Log_cat } from './pages/RegistrarCategoria/log_cat.jsx';
 import { PerfilCoach } from './pages/logged_in/Coach/Perfil/perfilcoach.jsx'
 
-import { ViewCategories } from './pages/logged_in/RegistrarDeporte/ListCategory.jsx';
+import { ViewCategories } from './pages/logged_in/Coach/Evaluaciones/RegistrarDeporte/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
@@ -146,7 +145,7 @@ const router = createBrowserRouter([
       <>
         <FadeIn>
           <Header />
-          <Log_cat />
+          <RegisterCategory />
         </FadeIn>
       </>
     ),
@@ -184,28 +183,28 @@ const router = createBrowserRouter([
       </>
     ),
   },
- /*{
-     path: "/jugadores",
+  /*{
+      path: "/jugadores",
+     element: (
+       <>
+         <FadeIn>
+           <Header />
+           <Players />
+         </FadeIn>
+ 
+       </>
+     ),
+   }, 
+  idk, hay que ver para que es esta o la logica xd*/
+  {
+    path: "/registercategory",
     element: (
       <>
         <FadeIn>
           <Header />
-          <Players />
+          <RegisterCategory />
         </FadeIn>
-
       </>
-    ),
-  }, 
- idk, hay que ver para que es esta o la logica xd*/
-  {
-    path: "/registercategory",
-    element:(
-    <>
-            <FadeIn>
-          <Header />
-          <RegisterCategory/>
-        </FadeIn>
-    </>
     )
   },
   {

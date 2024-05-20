@@ -1,7 +1,7 @@
-import img1 from "../../assets/Balonmano.jpg";
-import img2 from "../../assets/Volley.png";
-import img3 from "../../assets/Fut.png";
-import img4 from "../../assets/Basket.png";
+import img1 from "../../../assets/Balonmano.jpg";
+import img2 from "../../../assets/Volley.png";
+import img3 from "../../../assets/Fut.png";
+import img4 from "../../../assets/Basket.png";
 
 export const Selecciones = () => {
   return (

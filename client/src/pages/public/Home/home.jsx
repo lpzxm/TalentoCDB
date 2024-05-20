@@ -6,10 +6,10 @@ import { PiCourtBasketballBold } from "react-icons/pi";
 
 import { Link } from "react-router-dom";
 
-import img1 from '../../assets/ini1.png';
-import img2 from '../../assets/ini2.png';
-import img3 from '../../assets/ini3.png';
-import img4 from '../../assets/ini4.png';
+import img1 from '../../../assets/ini1.png';
+import img2 from '../../../assets/ini2.png';
+// import img3 from '../../../assets/ini3.png';
+import img4 from '../../../assets/ini4.png';
 
 const ImageSlider = ({ images, interval, className }) => {
 

@@ -4,14 +4,16 @@ export const AtletasSelec = () => {
     "Sección",
     "Año que cursa",
     "Edad",
-    "Estado académico"
+    "Estado académico",
+    "Estado deportivo"
   ];
 
   const tableData = [
-    ["Nombre del atleta", "Sección del atleta", "Año que cursa el atleta", "Edad del atleta", "Estado académico del atleta"],
-    ["Info", "Info", "Info", "Info", "Info"],
-    ["MasInfo", "MasInfo", "MasInfo", "MasInfo", "MasInfo"],
-    ["AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo"],
+    ["Nombre del atleta", "Sección del atleta", "Año que cursa el atleta", "Edad del atleta", "Estado académico del atleta", "Listo"],
+    ["Info", "Info", "Info", "Info", "Info", "En preparacion"],
+    ["MasInfo", "MasInfo", "MasInfo", "MasInfo", "MasInfo", "Inactivo"],
+    ["AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", "Seleccionado"],
+    ["AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", "En preparacion"]
   ];
 
   return (

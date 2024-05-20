@@ -1,7 +1,7 @@
 //import React from "react"
 import { Link } from "react-router-dom";
-import img404 from "../../assets/404.png";
-import img404_2 from "../../assets/404_2.png";
+import img404 from "../../../assets/404.png";
+import img404_2 from "../../../assets/404_2.png";
 
 export const Error404 = () => {
 
