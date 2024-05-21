@@ -17,12 +17,18 @@ export const RegisterAthlete = () => {
                     <form action="">
                         <center>
                             <img className="max-w-full h-auto rounded-full p-8 w-48" src={img_usuario} alt="" />
-                            <a href="">
-
-                                <button className="bg-amber-400 text-white rounded-full px-4 py-3 m-4 hover:bg-blue-500 ease-in duration-300 hover:scale-110">
-                                    Agregar imagen
-                                </button>
-                            </a>
+                           
+                           
+                         <div class="flex items-center justify-center w-full">
+                         <input id="file-input" type="file" class="hidden" accept="image/*" />
+                         <label for="file-input" class="relative cursor-pointer flex items-center justify-center px-4 py-2 border border-yellow-300 rounded-lg bg-white text-black dark:text-blackdark:bg-white-700 dark:border-blue-600 hover:bg-gray-100 dark:hover:bg-blue-400">
+                         <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/></svg>
+                        <span class="text-xs">
+                        <span class="font-semibold">Subir Foto</span><br />SVG, PNG, JPG o GIF (MAX. 800x400px) </span>
+                        </label></div>
+                        
+                
                         </center>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
                         <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Nombres" />
