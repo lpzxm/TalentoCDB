@@ -11,7 +11,7 @@ export const Registrar_Rubrica = () => {
             {/* Fondo con efecto de desenfoque */}
             <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${backgroundImage})`, filter: 'blur(8px)' }}></div>
 
-            <div className="relative flex justify-center items-center">
+            <div className="relative flex justify-center items-center mb-24 md:mb-0">
                 <div className="mt-6 flex flex-col md:flex-row justify-center items-center">
                     <div className="bg-white p-10 rounded-lg shadow-md max-w-5xl border-8 bflex-grow md:mr-4 transform-gpu ">
                         <h1 className="text-2xl mb-4 text-center">Registrar rúbrica</h1>
