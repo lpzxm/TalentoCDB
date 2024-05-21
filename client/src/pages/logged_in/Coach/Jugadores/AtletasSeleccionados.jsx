@@ -20,6 +20,7 @@ export const AtletasSelec = () => {
     <div className="container mx-auto p-4 md:p-6 lg:p-8">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-gray-700">Volleyball</h2>
+        <p>SUB-U</p>
         <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
       </div>
 

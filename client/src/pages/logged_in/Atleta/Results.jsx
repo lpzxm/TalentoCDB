@@ -2,10 +2,6 @@
 
 export const PlayerResults = () => {
 
-    const results = [
-        
-    ]
-
 
     return (
         <>

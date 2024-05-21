@@ -15,37 +15,25 @@ const categories = [
 const CategoryCard = ({ title, image }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleDeleteClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleConfirmDelete = () => {
-    setIsModalOpen(false);
-    // Lógica para eliminar el elemento
-    console.log('Elemento eliminado');
-  };
-
-  const handleCancelDelete = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <div className="m-4 md:m-6 md:w-96 lg:w-96 transform transition-transform hover:scale-105 hover:rotate-3">
-      <div className="border rounded-lg overflow-hidden shadow-slate-400 shadow-xl">
-        <div className="p-2">
-          <p className="text-center font-medium mb-2">{title}</p>
-          <img className="h-full w-full object-cover rounded p-4 md:w-auto" src={image} alt="" />
-          <div className="w-full flex flex-row flex-wrap justify-around items-center">
+const CategoryCard = ({ title, image }) => (
+  <div className="m-4 md:m-6 md:w-96 lg:w-96 transform transition-transform hover:scale-105 hover:rotate-3">
+    <div className="border rounded-lg overflow-hidden shadow-slate-400 shadow-xl">
+      <div className="p-2">
+        <p className="text-center font-medium mb-2">{title}</p>
+        <img className="h-full w-full object-cover rounded p-4 md:w-auto" src={image} alt="" />
+        <div className="w-full flex flex-row flex-wrap justify-around items-center">
+          <Link to="/coach/categorias/volleyball/jugadores">
             <button className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
               Ver
             </button>
-            <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
-              Editar
-            </button>
-            <button onClick={handleDeleteClick} className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-              Eliminar
-            </button>
-          </div>
+          </Link>
+
+          <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
+            Editar
+          </button>
+          <button className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+            Eliminar
+          </button>
         </div>
       </div>
 
@@ -62,6 +50,7 @@ const CategoryCard = ({ title, image }) => {
               </button>
             </div>
           </div>
+        </div>
         </div>
       )}
     </div>
@@ -80,12 +69,13 @@ export const ViewCategories = () => {
           <h1 className="font-bold text-lg underline underline-offset-2">Categorias de Baloncesto</h1>
         </div>
       </div>
-      <div className="w-full flex flex-row ml-10">
+      <Link className="w-full flex flex-row ml-10" to="/coach/categorias/nuevaCategoria">
         <button className="flex flex-row justify-center items-center bg-yellow-300 hover:bg-yellow-500 active:bg-orange-600 transition ease-in-out rounded-md p-3 space-x-3">
           <span>Agregar categoria nueva</span>
           <IoMdAdd />
         </button>
-      </div>
+      </Link>
+
       <div className="flex flex-wrap justify-center mb-24">
         {categories.map((category, index) => (
           <CategoryCard key={index} title={category.title} image={category.image} />

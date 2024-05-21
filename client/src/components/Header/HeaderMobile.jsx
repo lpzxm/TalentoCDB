@@ -39,13 +39,13 @@ export const MobileNavBar = () => {
                         <NavItem icon={<LuPenSquare size={icon.size} color={icon.color} />} text="Rubrica" />
                     </NavButton>
 
-                    <NavButton to="/verCoach" activeLink={activeLink}>
+                    <NavButton to="/coach/perfil" activeLink={activeLink}>
                         <NavItem icon={<CgProfile size={icon.size} color={icon.color} />} text="Perfil" />
                     </NavButton>
 
                     <div className="relative p-2 w-12 h-12 rounded-full bg-white flex justify-center items-center border-4 border-indigo-600">
-                    <NavButton to="/" activeLink={activeLink}>
-                        <NavItem icon={<TbLogout size={icon.size} />} />
+                        <NavButton to="/" activeLink={activeLink}>
+                            <NavItem icon={<TbLogout size={icon.size} />} />
                         </NavButton>
                     </div>
 

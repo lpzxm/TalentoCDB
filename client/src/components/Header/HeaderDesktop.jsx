@@ -17,6 +17,7 @@ export const NavBar = () => {
     }, [location])
 
 
+
     return (
         <>
             <header className='h-32 md:visible md:relative fixed flex flex-col z-50'>
@@ -28,18 +29,14 @@ export const NavBar = () => {
                         <nav className="flex flex-col md:flex-row p-4 space-x-10 font-bold">
                             <NavButton to="/home" activeDeskLink={activeDeskLink}>
                                 Home
-
                             </NavButton>
-
                             <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
                                 Ver categorias
-
                             </NavButton>
-
                             <NavButton to="/coach/registrarRubrica" activeDeskLink={activeDeskLink}>
                                 Registrar rúbrica
                             </NavButton>
-                            <NavButton to="/coach" activeDeskLink={activeDeskLink}>
+                            <NavButton to="/coach/perfil" activeDeskLink={activeDeskLink}>
                                 Perfil Personal
                             </NavButton>
                         </nav>
