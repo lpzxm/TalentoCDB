@@ -42,7 +42,7 @@ export const Home = () => {
 
     return (
         <>
-            <main className='flex lg:flex-row flex-col items-center mt-4 pb-24 lg:pb-0'>
+            <main className='flex lg:flex-row flex-col items-center mt-6 mb-5 pb-24 lg:pb-0'>
                 <div className="grid grid-cols-1 gap-5 p-3">
                     <ImageSlider className="880:col-span-1  w-[350px]" images={[img1]} />
                     <ImageSlider className="col-span-1 w-[350px]" images={[img2]} />

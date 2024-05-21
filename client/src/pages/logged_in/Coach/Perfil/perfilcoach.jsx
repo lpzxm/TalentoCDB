@@ -8,7 +8,7 @@ import profileIcon from '../../../../../src/assets/messi.jpeg';
 export const PerfilCoach = () => {
     return (
       <article className="gap-6 p-6 mt-11">
-        <section className="w-full mt-8 h-4/6 bg-slate-200 rounded-3xl p-6 flex flex-col items-center">
+        <section className="w-full mt-2 mb-10 h-4/6 bg-slate-200 rounded-3xl p-6 flex flex-col items-center">
           <CoachProfileImage background={profilebg} profile={profileIcon} />
           <div className="w-full p-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-20">
             {coachDetails.slice(0, 3).map((detail, index) => (
