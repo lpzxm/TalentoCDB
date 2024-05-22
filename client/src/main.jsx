@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { FadeIn } from './components/fadeIn/fadeIn.jsx';
+import { FadeIn } from './components/ui/fadeIn/fadeIn.jsx';
+import { BackButton } from './components/ui/goBack/GoBack.jsx';
 import "./index.css";
 
 // Importaciones componentes - publicos
@@ -107,11 +108,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/coach/perfil",
-    element:(
+    element: (
       <>
-          <FadeIn>
+        <FadeIn>
           <Header />
-          <PerfilCoach/>
+          <PerfilCoach />
+          <BackButton />
         </FadeIn>
       </>
     )
@@ -123,6 +125,7 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <Registrar_Rubrica />
+          <BackButton />
         </FadeIn>
       </>
     ),
@@ -133,6 +136,7 @@ const router = createBrowserRouter([
       <>
         <FadeIn>
           <Header />
+          <BackButton />
         </FadeIn>
       </>
     ),
@@ -144,6 +148,7 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <ViewCategories />
+          <BackButton />
         </FadeIn>
 
       </>
@@ -156,6 +161,7 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <RegisterCategory />
+          <BackButton />
         </FadeIn>
       </>
     ),
@@ -167,6 +173,7 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <AtletasSelec />
+          <BackButton />
         </FadeIn>
       </>
     ),
@@ -178,6 +185,7 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <RegisterAthlete />
+          <BackButton />
         </FadeIn>
       </>
     ),
@@ -189,11 +197,12 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <ReviewPlayer />
+          <BackButton />
         </FadeIn>
       </>
     ),
   },
-  
+
   /*{
       path: "/jugadores",
      element: (

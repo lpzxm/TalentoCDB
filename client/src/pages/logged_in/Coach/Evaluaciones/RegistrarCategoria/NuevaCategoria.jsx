@@ -1,19 +1,65 @@
-import React from "react";
+import { useState } from "react";
 import bgfondo from "../../../../../assets/bg-form.jpg";
+import { TbLayoutGridAdd } from "react-icons/tb";
+import { FileUpload } from "../../../../../components/ui/inputFile/fileComponent";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const RegisterCategory = () => {
+    const [file, setFile] = useState(null);
+
+    const handleFileChange = (file) => {
+        console.log(file)
+        setFile(file);
+    };
+
+    const handleFileRemove = () => {
+        setFile(null);
+    };
+
+    const handleSubmit = async () => {
+        if (!file) {
+            toast.error('Por favor, selecciona un archivo antes de subir.', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        /* try {
+            const response = await axios.post('/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error al subir los archivos:', error);
+        } */
+    };
+
     return (
         <>
-            <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0" style={{ backgroundImage: `url(${bgfondo})`, filter: 'blur(8px)' }}></div>
-            <div className="flex justify-center items-center h-screen">
+            <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0 blur-sm" style={{ backgroundImage: `url(${bgfondo})` }}></div>
+            <div className="flex flex-col justify-center items-center h-screen">
                 <main className="border-collapse border-8 p-4 relative bg-white max-w-lg">
                     <div className="flex flex-row items-center justify-center border-solid border-4 border-amber-300 w-full p-3 gap-12 mb-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                        </svg>
+                        <TbLayoutGridAdd size="25px" />
                         <p className="text-center lg:text-left">Registrar Categoria</p>
                     </div>
+                    <div className="w-full flex justify-center items-center mb-10">
+                        <FileUpload file={file} label="Agrega una foto de la categoria a añadir" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
+                    </div>
                     <section className="border-dashed border-2 border-orange-500 w-full p-4">
+
                         <p className="mb-5 text-center lg:text-left">Registrar la categoría:</p>
                         <div className="flex flex-col gap-4">
                             <button className="outline outline-offset-2 outline-blue-400 rounded flex items-center justify-between gap-4 w-full p-2">
@@ -27,7 +73,7 @@ export const RegisterCategory = () => {
                             </button>
                             <p className="p-2 text-center lg:text-left">Agrega el reglamento de la categoría relacionada:</p>
                             <textarea name="#" placeholder="Typing" id="#" className="outline outline-offset-2 outline-purple-500 w-full rounded"></textarea>
-                            <button className="bg-gray-300 h-10 rounded-3xl">
+                            <button className="bg-gray-300 h-10 rounded-3xl" onClick={handleSubmit}>
                                 Registrar
                             </button>
                         </div>

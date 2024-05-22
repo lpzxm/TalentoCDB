@@ -23,7 +23,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        playFair: ["Playfair Display", "serif"]
+        playFair: ["Playfair Display", "serif"],
+        montserrat: ["Montserrat", "sans-serif"]
       },
       backgroundImage: {
         'welcomeImage': "url('/assets/thb.png')",

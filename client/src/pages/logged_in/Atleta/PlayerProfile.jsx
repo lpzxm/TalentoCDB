@@ -1,6 +1,6 @@
 import profilebg from '../../../../src/assets/roundedImage.jpg';
 import profileIcon from '../../../assets/messi.jpeg';
-import { FileUpload } from '../../../components/inputFile/fileComponent';
+import { FileUpload } from '../../../components/ui/inputFile/fileComponent';
 
 import { CiUser } from "react-icons/ci";
 import { FaRegAddressCard } from "react-icons/fa";

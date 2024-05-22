@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { AiOutlineFile, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 export const FileUpload = ({ label, file, onFileChange, onFileRemove }) => {
     const fileInputRef = useRef(null);
@@ -32,8 +33,8 @@ export const FileUpload = ({ label, file, onFileChange, onFileRemove }) => {
         >
             {!file ? (
                 <div className="flex flex-col items-center justify-center h-full">
-                    <AiOutlineFile size="54px" className="text-gray-500" />
-                    <p className="mt-4 text-gray-600">{label}</p>
+                    <MdOutlineAddPhotoAlternate size="54px" className="text-gray-500" />
+                    <p className="mt-4 text-gray-600 text-center">{label}</p>
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center h-full">
