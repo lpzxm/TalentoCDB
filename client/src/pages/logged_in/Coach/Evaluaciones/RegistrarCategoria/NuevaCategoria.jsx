@@ -49,7 +49,7 @@ export const RegisterCategory = () => {
     return (
         <>
             <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0 blur-sm" style={{ backgroundImage: `url(${bgfondo})` }}></div>
-            <div className="flex flex-col justify-center items-center h-screen">
+            <div className="flex flex-col justify-center items-center h-screen mb-14">
                 <main className="border-collapse border-8 p-4 relative bg-white max-w-lg">
                     <div className="flex flex-row items-center justify-center border-solid border-4 border-amber-300 w-full p-3 gap-12 mb-10">
                         <TbLayoutGridAdd size="25px" />

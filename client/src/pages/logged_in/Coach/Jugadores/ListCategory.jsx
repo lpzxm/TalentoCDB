@@ -14,13 +14,15 @@ const categories = [
 ];
 
 const CategoryCard = ({ title, image }) => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteClick = () => setIsModalOpen(true);
+
   const handleConfirmDelete = () => {
-    // Implement your delete logic here
     setIsModalOpen(false);
   };
+  
   const handleCancelDelete = () => setIsModalOpen(false);
 
   return (
