@@ -27,8 +27,8 @@ export default {
         montserrat: ["Montserrat", "sans-serif"]
       },
       backgroundImage: {
-        'welcomeImage': "url('/assets/thb.png')",
-        'backLogin': "url('/assets/bg-form.jpg')",
+        'welcomeImage': "url('/assets/thb.webp')",
+        'backLogin': "url('/assets/bg-form.webp')",
       }
     },
   },

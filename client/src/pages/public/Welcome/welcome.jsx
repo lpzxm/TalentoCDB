@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import batu from "../../../assets/batu.png";
-import inicio3 from "../../../assets/inicio3.jpg";
+import batu from "../../../assets/batu.webp";
+import inicio3 from "../../../assets/inicio3.webp";
 import opa1 from "../../../assets/Basket.png"
 import opa2 from "../../../assets/sub-u13_u18.png"
 

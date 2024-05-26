@@ -1,5 +1,5 @@
 import img_usuario from "../../../../../assets/usuario.png";
-import bgimg from "../../../../../assets/batu.png";
+import bgimg from "../../../../../assets/batu.webp";
 
 export const RegisterAthlete = () => {
 

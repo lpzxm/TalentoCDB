@@ -51,7 +51,7 @@ model Sport {
 
   coach      Coach?
   categories Category_sport[]
-  rubrics    Rubric[]
+  rubrics    Rubric?
 }
 
 model Category_sport {
@@ -75,7 +75,7 @@ model Category_players {
 
 model Rubric {
   id       Int @id @default(autoincrement())
-  id_sport Int
+  id_sport Int @unique
 
   sport  Sport           @relation(fields: [id_sport], references: [id])
   fields Rubric_fields[]
