@@ -4,15 +4,17 @@ Talento CDB es un proyecto escolar-social el cual consiste en un sitio web a niv
 ## Guía de instalación 📦
 Por el momento, el proyecto trabaja de manera local, por lo tanto, se necesitan de algunas tecnologías y herramientas para hacer posible la ejecución del proyecto de manera correcta:
 
-| <img src="./client/public/assets/readme/vscodeicon.png" align='center' height='50' width='50'>  | <img src="./client/public/assets/readme/nodejs.png" align='center' height='50' width='70'>  | <img src="./client/public/assets/readme/postgresql.jpg" align='center' height='50' width='50'>  | <img src="./client/public/assets/readme/render.jpg" align='center' height='50' width='50'> | <img src="./client/public/assets/readme/githubicon.png" align='center' height='50' width='50'>  |
+| <img src="./client/public/assets/readme/vscodeicon.png" align='center' height='50' width='50'>  | <img src="./client/public/assets/readme/nodejs.png" align='center' height='50' width='70'>  | <img src="./client/public/assets/readme/postgresql.jpg" align='center' height='50' width='70'>  | <img src="./client/public/assets/readme/render.jpg" align='center' height='50' width='70'> | <img src="./client/public/assets/readme/githubicon.png" align='center' height='50' width='50'>  |
 |:---: | :---: | :---: | :---: | :---: |
 | [VsCode](https://code.visualstudio.com/) | [NodeJS](https://nodejs.org/en) | [PostgreSQL](https://www.postgresql.org/)   | [Render](https://www.mysql.com/products/workbench/) | [Github Desktop](https://desktop.github.com/)  |
 
 Una vez contando con las tecnologías anteriormente instaladas para la ejecución del proyecto, ya podemos empezar a instalarlo en nuestro computador:
 
-1. En la carpeta donde se desea instalar, abrir `GitBash` o `GitHub Desktop` y clonar el repositorio
-2. Nos dirijimos a la carpeta abrimos **Simbolo del sistema** en esa misma carpeta y ejecutamos el comando `cd client`, y luego ejecutamos `npm install` para instalar las dependencias necesarias para ejecutar el frontend. Para instalar las dependencias necesarias del backend, ejecutamos `cd..`, y por ultimo de nuevo `npm install`
-3. Luego, ejecutamos el comando `npm run dev` siempre dentro del **Simbolo del sistema** para inicializar el servidor de vite y poder visualizar la aplicación web
+1. En la carpeta donde se desea instalar, abrir `GitBash` o `GitHub Desktop` y clonar el repositorio en el lugar de nuestra preferencia.
+2. Nos dirijimos a la carpeta abrimos **Simbolo del sistema** en esa misma carpeta y ejecutamos el comando `cd client`, y luego ejecutamos `npm install` para instalar las dependencias necesarias para ejecutar el frontend.
+3. Luego, ejecutamos el comando `npm run dev` siempre dentro del **Simbolo del sistema** para inicializar el servidor de vite y poder visualizar la aplicación web.
+4. Para instalar las dependencias necesarias del backend, ejecutamos `cd..`, por siguiente `cd server`, y por ultimo de nuevo `npm install`.
+5. Ejecutamos `npm install prisma`, luego `npx prisma migrate dev` para colocar de manera local la base de datos y por ultimo `npm run dev`.
 
 Y con estos sencillos pasos, puedes ejecutar el proyecto de manera simple, local y funcional
 
