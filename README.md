@@ -5,7 +5,7 @@ Talento CDB es un proyecto escolar-social el cual consiste en un sitio web a niv
 Por el momento, el proyecto trabaja de manera local, por lo tanto, se necesitan de algunas tecnologías y herramientas para hacer posible la ejecución del proyecto de manera correcta:
 
 | <img src="./client/public/assets/readme/vscodeicon.png" align='center' height='50' width='50'>  | <img src="./client/public/assets/readme/nodejs.png" align='center' height='50' width='70'>  | <img src="./client/public/assets/readme/postgresql.jpg" align='center' height='50' width='50'>  | <img src="./client/public/assets/readme/render.jpg" align='center' height='50' width='50'> | <img src="./client/public/assets/readme/githubicon.png" align='center' height='50' width='50'>  |
-|:---: | :---: | :---: | :---: |
+|:---: | :---: | :---: | :---: | :---: |
 | [VsCode](https://code.visualstudio.com/) | [NodeJS](https://nodejs.org/en) | [PostgreSQL](https://www.postgresql.org/)   | [Render](https://www.mysql.com/products/workbench/) | [Github Desktop](https://desktop.github.com/)  |
 
 Una vez contando con las tecnologías anteriormente instaladas para la ejecución del proyecto, ya podemos empezar a instalarlo en nuestro computador:
