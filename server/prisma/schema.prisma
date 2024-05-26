@@ -12,3 +12,92 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Jugador {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String   @unique
+  nombres   String
+  apellidos String
+  birthDay  DateTime
+  codigo    Int      @unique
+  grado     String
+  seccion   String
+  createdAt DateTime @default(now())
+
+  status_main_sport    String?
+  status_img_academic  String?
+  status_img_behaviour String?
+
+  categories_joined Category_players[]
+  rubric_scores     Rubric_Score_player[]
+}
+
+model Coach {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String   @unique
+  nombres   String
+  apellidos String
+  birthDay  DateTime
+  id_sport  Int      @unique
+
+  sport Sport @relation(fields: [id_sport], references: [id])
+}
+
+model Sport {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  coach      Coach?
+  categories Category_sport[]
+  rubrics    Rubric[]
+}
+
+model Category_sport {
+  id       Int                @id @default(autoincrement())
+  id_sport Int
+  name     String
+  rules    String
+  img      String
+  sport    Sport              @relation(fields: [id_sport], references: [id])
+  players  Category_players[]
+}
+
+model Category_players {
+  id          Int @id @default(autoincrement())
+  id_player   Int
+  id_category Int
+
+  player   Jugador        @relation(fields: [id_player], references: [id])
+  category Category_sport @relation(fields: [id_category], references: [id])
+}
+
+model Rubric {
+  id       Int @id @default(autoincrement())
+  id_sport Int
+
+  sport  Sport           @relation(fields: [id_sport], references: [id])
+  fields Rubric_fields[]
+}
+
+model Rubric_fields {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  min_score   Int
+  max_score   Int
+  id_rubric   Int
+  rubric      Rubric @relation(fields: [id_rubric], references: [id])
+
+  scores_players Rubric_Score_player[]
+}
+
+model Rubric_Score_player {
+  id              Int           @id @default(autoincrement())
+  score           Int
+  id_player       Int
+  id_rubric_field Int
+  player          Jugador       @relation(fields: [id_player], references: [id])
+  rubric          Rubric_fields @relation(fields: [id_rubric_field], references: [id])
+}
