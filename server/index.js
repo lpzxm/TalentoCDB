@@ -7,14 +7,14 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 
-app.get("/", (req,res)=>{
-    return res.json({hello: "world"})
+app.get("/", (req, res) => {
+    return res.json({ hello: "world" })
 })
 
 app.use("/entrenadores", entrenadorRoutes)
-app.use("/deportes",deportesRoutes)
+app.use("/deportes", deportesRoutes)
 
 
-app.listen("4000", ()=>{
+app.listen("4000", () => {
     console.log("Server corriendo http://localhost:4000");
 })

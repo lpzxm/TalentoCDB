@@ -47,7 +47,7 @@ export const createSport = async (datos) => {
         return "Hubo un error con el servidor"
     }
 }
-export const updateSport = async (id_deporte,datos) => {
+export const updateSport = async (id_deporte, datos) => {
     try {
         const sportValidado = sportSchema.parse(datos)
 
@@ -65,9 +65,9 @@ export const updateSport = async (id_deporte,datos) => {
         return "Hubo un error con el servidor"
     }
 }
-export const deleteSport = async(id_deporte)=>{
+export const deleteSport = async (id_deporte) => {
     try {
-        
+
         const sportFound = await prisma.sport.delete({
             where: {
                 id: id_deporte

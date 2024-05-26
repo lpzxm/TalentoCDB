@@ -1,4 +1,4 @@
-import { getAllCoach, createCoach, getCoachById,updateCoach,deleteCoach } from "../model/coachModel.js";
+import { getAllCoach, createCoach, getCoachById, updateCoach, deleteCoach } from "../model/coachModel.js";
 
 export const getAllCoachesController = async (req, res) => {
     const coaches = await getAllCoach();
@@ -17,13 +17,13 @@ export const getCoachByIdController = async (req, res) => {
     return res.json(coach)
 }
 
-export const updateCoachController = async(req, res) => {
+export const updateCoachController = async (req, res) => {
     const id_coach = +req.params.id;
     const datos = req.body;
     const coach = await updateCoach(id_coach, datos);
     return res.json(coach)
 }
-export const deleteCoachController = async(req, res) => {
+export const deleteCoachController = async (req, res) => {
     const id_coach = +req.params.id
     const coach = await deleteCoach(id_coach)
     return res.json(coach)

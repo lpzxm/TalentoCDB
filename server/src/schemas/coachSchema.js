@@ -17,6 +17,6 @@ const coachSchema = z.object({
     apellidos: z.string(),
     birthDay: z.string().or(z.date()),
     id_sport: z.string().transform(Number).or(z.number())
-}).partial()
+})
 
 export { coachSchema }

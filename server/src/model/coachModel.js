@@ -1,18 +1,18 @@
-import {prisma} from "../config/prisma.js"
+import { prisma } from "../config/prisma.js"
 import { coachSchema } from "../schemas/coachSchema.js";
 export const getAllCoach = async () => {
     const coaches = await prisma.coach.findMany();
     return coaches
 }
 
-export const createCoach = async (datos)=>{
+export const createCoach = async (datos) => {
     try {
         const coachValidado = coachSchema.parse(datos)
 
         coachValidado.birthDay = new Date(coachValidado.birthDay);
 
-        if(coachValidado.birthDay.toString() == "Invalid Date"){
-            return {error: "Fecha invalida"}
+        if (coachValidado.birthDay.toString() == "Invalid Date") {
+            return { error: "Fecha invalida" }
         }
 
 
@@ -26,9 +26,9 @@ export const createCoach = async (datos)=>{
         return "Hubo un error con el servidor"
     }
 }
-export const getCoachById = async (id_coach)=>{
+export const getCoachById = async (id_coach) => {
     try {
-        const coach =   await prisma.coach.findFirst({
+        const coach = await prisma.coach.findFirst({
             where: {
                 id: id_coach
             }
@@ -40,16 +40,16 @@ export const getCoachById = async (id_coach)=>{
     }
 }
 
-export const updateCoach = async (id_coach, datos)=>{
+export const updateCoach = async (id_coach, datos) => {
     try {
-        const coachValidado = coachSchema.parse(datos)
+        const coachValidado = coachSchema.partial().parse(datos)
 
-        if(coachValidado.birthDay){
-            
+        if (coachValidado.birthDay) {
+
             coachValidado.birthDay = new Date(coachValidado.birthDay);
 
-            if(coachValidado.birthDay.toString() == "Invalid Date"){
-                return {error: "Fecha invalida"}
+            if (coachValidado.birthDay.toString() == "Invalid Date") {
+                return { error: "Fecha invalida" }
             }
 
         }
@@ -67,9 +67,9 @@ export const updateCoach = async (id_coach, datos)=>{
     }
 }
 
-export const deleteCoach = async (id_coach)=>{
+export const deleteCoach = async (id_coach) => {
     try {
-        const coach =   await prisma.coach.delete({
+        const coach = await prisma.coach.delete({
             where: {
                 id: id_coach
             }

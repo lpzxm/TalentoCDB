@@ -12,5 +12,5 @@ export const categorySchema = z.object({
     name: z.string(),
     rules: z.string(),
     img: z.string().optional(),
-    id_sport: z.string().transform(Number).or(z.number())
+    id_sport: z.string().transform(Number).or(z.number()).optional()
 })
