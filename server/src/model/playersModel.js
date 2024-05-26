@@ -1,6 +1,6 @@
 import { prisma } from "../config/prisma.js"
 import { playerSchema } from "../schemas/playersSchema.js";
-
+import bcrypt from "bcrypt"
 export const getAllPlayers = async () => {
     const players = await prisma.jugador.findMany();
     return players
@@ -16,6 +16,7 @@ export const createjugador = async (datos) => {
             return { error: "Fecha invalida" }
         }
 
+        playerValido.password = await bcrypt.hash(playerValido.password, 5);
 
         const jugador = await prisma.jugador.create({
             data: playerValido
@@ -84,7 +85,7 @@ export const deletejugador = async (id_player) => {
 
 export const uploadReporteAcademico = async (id_jugador, url) => {
     try {
-        await prisma.jugador.update({
+        const jugador = await prisma.jugador.update({
             where: {
                 id: id_jugador
             },
@@ -92,7 +93,6 @@ export const uploadReporteAcademico = async (id_jugador, url) => {
                 status_img_academic: url
             }
         })
-
         return "Se ha subido con exito"
     } catch (error) {
         console.log(error)

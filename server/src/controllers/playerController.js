@@ -1,5 +1,5 @@
-import { getAllPlayers, createjugador, getPlayerById, updatePlayer, deletejugador, uploadReporteAcademico } from "../model/playersModel.js";
-
+import { getAllPlayers, createjugador, getPlayerById, updatePlayer, deletejugador, uploadReporteAcademico, uploadReporteConductual } from "../model/playersModel.js";
+import { cloudinary } from "../config/cloudinary.js";
 export const getPlayers = async (req, res) => {
     try {
         const players = await getAllPlayers();
@@ -68,7 +68,7 @@ export const deletePlayerRecord = async (req, res) => {
 
 export const uploadReporteAcademicoFile = async (req, res) => {
     try {
-        const id_player = +req.params.id
+        const id_player = req.usuario.id
 
         const b64 = Buffer.from(req.file.buffer).toString("base64");
         let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
@@ -79,6 +79,26 @@ export const uploadReporteAcademicoFile = async (req, res) => {
 
 
         const category = await uploadReporteAcademico(id_player, img.url);
+        return res.json(category)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: "hubo un error en el servidor" });
+
+    }
+}
+export const uploadReporteConductualFile = async (req, res) => {
+    try {
+        const id_player = req.usuario.id
+
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+
+        const img = await cloudinary.uploader.upload(dataURI, {
+            resource_type: "auto",
+        })
+
+
+        const category = await uploadReporteConductual(id_player, img.url);
         return res.json(category)
     } catch (error) {
         return res.status(500).json({ error: "hubo un error en el servidor" });

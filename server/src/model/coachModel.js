@@ -1,5 +1,6 @@
 import { prisma } from "../config/prisma.js"
 import { coachSchema } from "../schemas/coachSchema.js";
+import bcrypt from "bcrypt"
 export const getAllCoach = async () => {
     const coaches = await prisma.coach.findMany();
     return coaches
@@ -15,6 +16,7 @@ export const createCoach = async (datos) => {
             return { error: "Fecha invalida" }
         }
 
+        coachValidado.password = await bcrypt.hash(coachValidado.password, 5);
 
         await prisma.coach.create({
             data: coachValidado
@@ -52,6 +54,10 @@ export const updateCoach = async (id_coach, datos) => {
                 return { error: "Fecha invalida" }
             }
 
+        }
+
+        if (coachValidado.password) {
+            coachValidado.password = await bcrypt.hash(coachValidado.password, 5);
         }
 
         const coach = await prisma.coach.update({
