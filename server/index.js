@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors"
 import entrenadorRoutes from "./src/routes/coach.routes.js"
 import deportesRoutes from "./src/routes/sport.routes.js"
+import playerRoutes from "./src/routes/players.routes.js"
 const app = express();
 
 app.use(cors())
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/entrenadores", entrenadorRoutes)
+app.use("/jugadores",playerRoutes )
 app.use("/deportes", deportesRoutes)
 
 

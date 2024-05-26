@@ -1,5 +1,5 @@
 import { getAllSport, createSport, getSportById, updateSport, deleteSport } from "../model/sportModel.js";
-import { createCategoryBySport,updateCategory } from "../model/categoryModel.js";
+import { createCategoryBySport,updateCategory,deleteCategory,addPlayerToCategory,removePlayerToCategory} from "../model/categoryModel.js";
 import { cloudinary } from "../config/cloudinary.js";
 export const getSports = async (req, res) => {
     try {
@@ -71,18 +71,18 @@ export const createSportCategory = async (req, res) => {
         
         const b64 = Buffer.from(req.file.buffer).toString("base64");
         let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-
+        
         const img = await cloudinary.uploader.upload(dataURI, {
             resource_type: "auto",
         })
-
+        
         datos.img = img.url
-
+        
         const category = await createCategoryBySport(id_deporte, datos);
         return res.json(category)
     } catch (error) {
         return res.status(500).json({ error: "hubo un error en el servidor" });
-
+        
     }
 }
 export const updateSportCategory = async (req, res) => {
@@ -93,18 +93,57 @@ export const updateSportCategory = async (req, res) => {
         if(req.file){
             const b64 = Buffer.from(req.file.buffer).toString("base64");
             let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-    
+            
             const img = await cloudinary.uploader.upload(dataURI, {
                 resource_type: "auto",
             })
-    
+            
             datos.img = img.url
         }
-
+        
         const category = await updateCategory(id_categoria, datos);
         return res.json(category)
     } catch (error) {
         return res.status(500).json({ error: "hubo un error en el servidor" });
-
+        
     }
 }
+export const deleteSportCategory = async (req, res) => {
+    try {
+        const id_categoria = +req.params.id_categoria;
+        const categoryDeleted = await deleteCategory(id_categoria);
+        if (categoryDeleted) {
+            return res.json(categoryDeleted);
+        } else {
+            return res.status(404).json({ error: "Category not found" });
+        }
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+export const addPlayer = async (req, res) => {
+    try {
+        const { id_categoria, id_player } = req.params;
+        const result = await addPlayerToCategory(+id_categoria, +id_player);
+        if (result.error) {
+            return res.status(400).json({ error: result.error });
+        }
+        return res.status(201).json(result);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+export const removePlayer = async (req, res) => {
+    try {
+        const { id_categoria, id_player } = req.params;
+        const result = await removePlayerToCategory(+id_categoria, +id_player);
+        if (result.error) {
+            return res.status(400).json({ error: result.error });
+        }
+        return res.json({ message: result });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};

@@ -17,7 +17,15 @@ export const getSportById = async (id_deporte) => {
                 id: id_deporte
             },
             include: {
-                categories: true
+                categories: {
+                    include: {
+                        players: {
+                            include: {
+                                player: true
+                            }
+                        }
+                    }
+                }
             }
         })
 
