@@ -1,6 +1,15 @@
-
-
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { obtenerCategoriaDeporte } from "../../../../api/deporte";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "../../../../hooks/useSession";
+import { useParams } from "react-router-dom";
 export const AtletasSelec = () => {
+  const [categoryData, setCategoryData] = useState("loading");
+  const [playersData, setPlayersData] = useState("loading")
+  const navigate = useNavigate();
+  const { usuario } = useSession();
+  const params = useParams();
   const tableHeaders = [
     "Nombre",
     "Sección",
@@ -8,18 +17,27 @@ export const AtletasSelec = () => {
     "Edad",
     "Asistencia",
     "Estado académico",
-    "Estado deportivo"
+    "Estado deportivo",
+    ""
   ];
 
-  const tableData = [
-    ["Nombre del atleta", "Sección del atleta", "Año que cursa el atleta", "Edad del atleta", false, "Estado académico del atleta", "Listo"],
-    ["Info", "Info", "Info", "Info", false, "Info", "En preparacion"],
-    ["MasInfo", "MasInfo", "MasInfo", "MasInfo", false, "MasInfo", "Inactivo"],
-    ["AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", false, "AunMasInfo", "Seleccionado"],
-    ["AunMasInfo", "AunMasInfo", "AunMasInfo", "AunMasInfo", false, "AunMasInfo", "En preparacion"]
-  ];
 
-  const sport = ["Volleyball", "Basketball"];
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await obtenerCategoriaDeporte(usuario.id_sport, params.id);
+        setCategoryData(data)
+        console.log(data)
+        setPlayersData(data.players.map(player => player.player))
+      }
+      catch (e) {
+        console.log(e)
+        navigate("/coach/categorias")
+      }
+    })()
+  }, [])
+
+  if (categoryData == "loading") return <p>Cargando Jugadores...</p>
 
   const renderTableHeader = () => (
     <thead>
@@ -38,9 +56,9 @@ export const AtletasSelec = () => {
 
   const renderTableBody = () => (
     <tbody>
-      {tableData.map((row, rowIndex) => (
+      {playersData.map((player, rowIndex) => (
         <tr key={rowIndex} className="hover:bg-gray-100">
-          {row.map((cell, cellIndex) => (
+          {/* {row.map((cell, cellIndex) => (
             <td
               key={cellIndex}
               className="py-4 px-6 border-b border-gray-300"
@@ -51,7 +69,23 @@ export const AtletasSelec = () => {
                 cell
               )}
             </td>
-          ))}
+          ))} */}
+
+          <td className="py-4 px-6 border-b border-gray-300"
+          >{player.nombres}</td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          >{player.seccion}</td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          >{player.grado}</td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          >{player.birthDay}</td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          ><input type="checkbox" onChange={() => { }} /></td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          ><img width={50} src={player.status_img_academic} alt="" /></td>
+          <td className="py-4 px-6 border-b border-gray-300"
+          ><img width={50} src={player.status_main_sport} alt="" /></td>
+          <td className="flex flex-col justify-center items-center"><button>Editar</button> <button>Eliminar</button></td>
         </tr>
       ))}
     </tbody>
@@ -59,10 +93,16 @@ export const AtletasSelec = () => {
 
   return (
     <div className="container mx-auto p-4 md:p-6 lg:p-8">
+
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold text-gray-700">{sport[0]}</h2>
-        <p>SUB-U</p>
+        <h2 className="text-lg font-bold text-gray-700">{categoryData.sport.name}</h2>
+        <p className="uppercase">{categoryData.name}</p>
         <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
+      </div>
+      <div>
+        <Link to={"/coach/categoria/"+params.id+"/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>
+        </Link>
+
       </div>
 
       <div className="bg-white shadow-md rounded my-6 overflow-x-auto">

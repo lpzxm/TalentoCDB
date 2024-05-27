@@ -52,6 +52,42 @@ export const deleteCategory = async (id_categoria) => {
         return "Hubo un error con el servidor"
     }
 }
+export const getCategory = async (id_categoria) => {
+    try {
+
+        const categoryFounded = await prisma.category_sport.findFirst({
+            where: {
+                id: id_categoria
+            },
+            include: {
+                sport: true,
+                players: {
+                    include: {
+                        player: {
+                            select: {
+                                id: true,
+                                nombres: true,
+                                apellidos: true,
+                                seccion: true,
+                                status_img_academic: true,
+                                status_img_behaviour: true,
+                                status_main_sport: true,
+                                codigo: true,
+                                birthDay: true,
+                                grado: true
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        return categoryFounded
+    } catch (error) {
+        console.log(error)
+        return "Hubo un error con el servidor"
+    }
+}
 
 export const addPlayerToCategory = async (id_categoria, id_player) => {
     try {

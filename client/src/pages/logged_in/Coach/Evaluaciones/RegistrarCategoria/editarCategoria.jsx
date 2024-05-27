@@ -5,15 +5,15 @@ import { FileUpload } from "../../../../../components/ui/inputFile/fileComponent
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "../../../../../hooks/useSession";
-import { crearCategoriaDeporte } from "../../../../../api/deporte";
+import { editarCategoriaDeporte } from "../../../../../api/deporte";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {obtener}
+import { obtenerCategoriaDeporte } from "../../../../../api/deporte";
 export const EditCategory = () => {
     const [file, setFile] = useState(null);
-    const [categoryData, setCategoryData] = useState();
-    const [categoryGenere, setCategoryGenere] = useState();
+    const [categoryData, setCategoryData] = useState("loading");
+    const [categoryGenere, setCategoryGenere] = useState("Femenino");
     const [categoryAge, setCategoryAge] = useState();
     const [categoryRule, setCategoryRule] = useState();
     const navigate = useNavigate();
@@ -33,26 +33,28 @@ export const EditCategory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!file) {
-            toast.error('Por favor, selecciona un archivo antes de subir.', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            return;
+        const formData = new FormData();
+        // if (!file) {
+        //     toast.error('Por favor, selecciona un archivo antes de subir.', {
+        //         position: "bottom-right",
+        //         autoClose: 5000,
+        //         hideProgressBar: false,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //     });
+        //     return;
+        // }
+        if (file) {
+            formData.append('img', file);
         }
         const categoryTitle = "SUB-U-" + categoryGenere + "-" + categoryAge;
-        const formData = new FormData();
-        formData.append('img', file);
         formData.append("name", categoryTitle)
         formData.append("rules", categoryRule)
-
+     
         try {
-            await crearCategoriaDeporte(usuario.id_sport, formData)
+            await editarCategoriaDeporte(usuario.id_sport, categoryData.id, formData)
             navigate("/coach/categorias")
         } catch (error) {
             console.error('Error al subir los archivos:', error);
@@ -61,21 +63,38 @@ export const EditCategory = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await obtenerCategoriaDeporte();
+            try {
+                const data = await obtenerCategoriaDeporte(usuario.id_sport, params.id);
+                setCategoryData(data)
+                const name = data.name.split("-");
+                console.log(name)
+                setCategoryGenere(name[2] || "Femenino")
+                setCategoryAge(name[3] || "")
+
+            }
+            catch {
+                navigate("/coach/categorias")
+            }
         })()
     }, [])
+
+    if (categoryData == "loading") return <p>Cargando Categoria...</p>
 
     return (
         <>
             <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0 blur-sm" style={{ backgroundImage: `url(${bgfondo})` }}></div>
-            <div className="flex flex-col justify-center items-center h-screen mb-14">
+            <div className="flex flex-col justify-center items-center h-screen mb-20">
                 <form onSubmit={handleSubmit} className="border-collapse border-8 p-4 relative bg-white max-w-lg">
                     <div className="flex flex-row items-center justify-center border-solid border-4 border-amber-300 w-full p-3 gap-12 mb-10">
                         <TbLayoutGridAdd size="25px" />
                         <p className="text-center lg:text-left">Editar Categoria</p>
                     </div>
                     <div className="w-full flex justify-center items-center mb-10">
-                        <FileUpload file={file} label="Agrega una foto de la categoria a añadir" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
+                        <FileUpload file={file} label="Cambiar foto de la categoria a editar" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
+                    </div>
+                    <div className="flex my-4 flex-col items-center justify-center">
+                        <img src={categoryData.img} width={120} alt="" />
+                        <p>Imagen original</p>
                     </div>
                     <section className="border-dashed border-2 border-orange-500 w-full p-4">
 
@@ -88,16 +107,16 @@ export const EditCategory = () => {
                                 <div className="flex-grow">
                                     <p className="text-left">SUB-U</p>
                                 </div>
-                                <select onChange={e => setCategoryGenere(e.target.value)} name="sex" id="">
+                                <select defaultValue={categoryGenere} onChange={e => setCategoryGenere(e.target.value)} name="sex" id="">
                                     <option selected value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
                                 </select>
-                                <input onChange={e => setCategoryAge(e.target.value)} className="border-2 rounded border-zinc-100 w-20 text-center" placeholder="18" type="text"></input>
+                                <input defaultValue={categoryAge} onChange={e => setCategoryAge(e.target.value)} className="border-2 rounded border-zinc-100 w-20 text-center" placeholder="18" type="text"></input>
                             </div>
                             <p className="p-2 text-center lg:text-left">Agrega el reglamento de la categoría relacionada:</p>
-                            <textarea onChange={e => setCategoryRule(e.target.value)} placeholder="Typing" className="outline outline-offset-2 outline-purple-500 w-full rounded"></textarea>
-                            <button type="submit" className="bg-gray-300 h-10 rounded-3xl">
-                                Registrar
+                            <textarea defaultValue={categoryData.rules} onChange={e => setCategoryRule(e.target.value)} placeholder="Typing" className="outline outline-offset-2 outline-purple-500 w-full rounded"></textarea>
+                            <button type="submit" className="bg-yellow-300 h-10 rounded-3xl">
+                                Editar
                             </button>
                         </div>
                     </section>

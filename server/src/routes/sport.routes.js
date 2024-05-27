@@ -3,7 +3,7 @@ import multer from "multer";
 const storage = multer.memoryStorage()
 const upload = multer({ storage });
 
-import { getSports, getSport, createNewSport, updateSportDetails, deleteSportRecord, createSportCategory, updateSportCategory, deleteSportCategory, addPlayer, removePlayer } from "../controllers/sportController.js";
+import { getSports,getCategorySport, getSport, createNewSport, updateSportDetails, deleteSportRecord, createSportCategory, updateSportCategory, deleteSportCategory, addPlayer, removePlayer } from "../controllers/sportController.js";
 import {
     getRubricHandler,
     createRubricHandler,
@@ -34,6 +34,7 @@ router.route("/:id/categorias")
 router.route("/:id/categorias/:id_categoria")
     .put(upload.single("img"), updateSportCategory)
     .delete(deleteSportCategory)
+    .get(getCategorySport)
 
 router.route("/:id/categorias/:id_categoria/jugadores/:id_player")
     .post(addPlayer)
@@ -50,7 +51,7 @@ router.route("/:id/rubrica/campos")
     .get(getAllRubricFieldsHandler)
     .post(createRubricFieldHandler);
 
-router.post("/:id/rubrica/campos/:id_field/evaluar/:id_player",createRubricScorePlayerHandler)
+router.post("/:id/rubrica/campos/:id_field/evaluar/:id_player", createRubricScorePlayerHandler)
 
 
 router.get("/:id/rubrica/resultados/:id_player", getPlayerRubricScoresHandler);

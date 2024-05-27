@@ -2,7 +2,6 @@ import img_usuario from "../../../../../assets/usuario.png";
 import bgimg from "../../../../../assets/batu.webp";
 
 export const RegisterAthlete = () => {
-
     return (
         <>
             <div className="fixed inset-0 bg-cover bg-center -z-10" style={{ backgroundImage: `url(${bgimg})`, filter: 'blur(8px)' }}></div>
@@ -26,12 +25,25 @@ export const RegisterAthlete = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
                             <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Nombres" />
                             <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Apellidos" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Dirección" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Grado Académico" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Sección" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Código" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Nombre del encargado" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Télefono del encargado" />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Correo estudiantil" />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Contraseña" />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" name="#" id="#" placeholder="" />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Codigo estudiantil" />
+                            <select name="" id="">
+                                <option value="">1er grado</option>
+                                <option value="">2do grado</option>
+                                <option value="">3er grado</option>
+                                <option value="">4to grado</option>
+                                <option value="">5to grado</option>
+                                <option value="">6to grado</option>
+                                <option value="">7to grado</option>
+                                <option value="">8to grado</option>
+                                <option value="">9no grado</option>
+                                <option value="">1er año</option>
+                                <option value="">2do año</option>
+                                <option value="">3er año</option>
+                            </select>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Seccion" />
                         </div>
                         <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300">
                             Crear perfil de atleta

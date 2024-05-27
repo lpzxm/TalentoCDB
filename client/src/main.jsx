@@ -188,7 +188,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/coach/categorias/volleyball/jugadores",
+    path: "/coach/categorias/jugadores/:id",
     element: (
       <>
         <FadeIn>
@@ -200,7 +200,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/coach/categoria/volleyball/jugadores/nuevoJugador",
+    path: "/coach/categoria/:id/jugadores/nuevoJugador",
     element: (
       <>
         <FadeIn>
