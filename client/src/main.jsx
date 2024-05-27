@@ -24,14 +24,17 @@ import { AtletasSelec } from './pages/logged_in/Coach/Jugadores/AtletasSeleccion
 import { ReviewPlayer } from './pages/logged_in/Coach/Evaluaciones/CalificarRubrica/ReviewPlayer.jsx';
 
 import { RegisterCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/NuevaCategoria.jsx';
+import { EditCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/editarCategoria.jsx';
 import { PerfilCoach } from './pages/logged_in/Coach/Perfil/perfilcoach.jsx'
 
 import { ViewCategories } from './pages/logged_in/Coach/Jugadores/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
+import { SessionProvider } from './context/Session.jsx';
 
-
+import Redirect from "./pages/redirect.jsx"
+import ProtectedRoute from "./components/routes/ProtectedRoute.jsx"
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -44,6 +47,10 @@ const router = createBrowserRouter([
         </FadeIn>
       </>
     ),
+  },
+  {
+    path: "/redirect",
+    element: <Redirect />
   },
   {
     path: "/",
@@ -59,11 +66,11 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <>
+      <ProtectedRoute needLogged={false}>
         <FadeIn>
           <Login />
         </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
   // Fin de rutas publicas
@@ -154,6 +161,20 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/coach/categorias/editar/:id",
+    element: (
+      <>
+        <FadeIn>
+          <Header />
+          <EditCategory />
+          <BackButton />
+        </FadeIn>
+
+      </>
+    ),
+  },
+
   {
     path: "/coach/categorias/nuevaCategoria",
     element: (
@@ -258,6 +279,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SessionProvider>
+      <RouterProvider router={router} />
+    </SessionProvider>
   </React.StrictMode>
 )

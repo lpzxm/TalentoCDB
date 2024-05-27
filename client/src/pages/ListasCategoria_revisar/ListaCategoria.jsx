@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThLarge } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,6 +20,7 @@ export const Players = () => {
   const handleCreateCategory = () => {
     console.log('Categoría creada:', selectedOption);
   };
+
 
   return (
     <div className="bg-cover min-h-screen flex justify-center items-center p-4" 

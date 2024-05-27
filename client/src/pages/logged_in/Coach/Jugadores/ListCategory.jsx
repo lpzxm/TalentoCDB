@@ -2,28 +2,27 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { IoMdAdd } from 'react-icons/io';
-import img1 from '../../../../assets/sub-u13_u18.png';
-import img2 from '../../../../assets/sub-u15.png';
-import img3 from '../../../../assets/sub-u17.png';
 
-const categories = [
-  { title: 'SUB-U13', image: img1 },
-  { title: 'SUB-U15', image: img2 },
-  { title: 'SUB-U17', image: img3 },
-  { title: 'SUB-U18', image: img1 },
-];
+import { useEffect } from 'react';
+import { useSession } from '../../../../hooks/useSession';
+import { obtenerDeporte, eliminarCategoriaDeporte } from '../../../../api/deporte';
 
-const CategoryCard = ({ title, image }) => {
+
+const CategoryCard = ({ title, image, id, id_sport, deleteCategoria }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleDeleteClick = () => setIsModalOpen(true);
 
-  const handleConfirmDelete = () => {
+
+  const handleConfirmDelete = async () => {
+    console.log(id_sport)
+    await eliminarCategoriaDeporte(id_sport, id)
+    deleteCategoria(id)
     setIsModalOpen(false);
   };
-  
+
   const handleCancelDelete = () => setIsModalOpen(false);
+
 
   return (
     <div className="m-4 md:m-6 md:w-96 lg:w-96 transform transition-transform hover:scale-105 hover:rotate-3">
@@ -37,9 +36,12 @@ const CategoryCard = ({ title, image }) => {
                 Ver
               </button>
             </Link>
-            <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
-              Editar
-            </button>
+            <Link to={"/coach/categorias/editar/"+id}>
+              <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
+                Editar
+              </button>
+            </Link>
+
             <button className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" onClick={handleDeleteClick}>
               Eliminar
             </button>
@@ -51,7 +53,9 @@ const CategoryCard = ({ title, image }) => {
             <div className="bg-white rounded-lg p-6">
               <p className="mb-4 text-center">¿Seguro que quieres eliminar?</p>
               <div className="flex justify-around">
-                <button onClick={handleConfirmDelete} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                <button onClick={async () => {
+                  await handleConfirmDelete()
+                }} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5">
                   Aceptar
                 </button>
                 <button onClick={handleCancelDelete} className="text-gray-700 hover:text-gray-900 border border-gray-700 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">
@@ -67,6 +71,20 @@ const CategoryCard = ({ title, image }) => {
 };
 
 export const ViewCategories = () => {
+  const [categorias, setCategorias] = useState([]);
+  const { usuario } = useSession();
+
+  const deleteCategoria = (id_categoria) => {
+    setCategorias(categorias.filter(categoria => categoria.id !== id_categoria))
+  }
+
+  useEffect(() => {
+    (async () => {
+      const data = await obtenerDeporte(usuario.id_sport);
+      setCategorias(data.categories)
+    })()
+  }, [])
+
   return (
     <>
       <div className="flex flex-col items-center justify-center">
@@ -86,8 +104,8 @@ export const ViewCategories = () => {
       </Link>
 
       <div className="flex flex-wrap justify-center mb-24">
-        {categories.map((category, index) => (
-          <CategoryCard key={index} title={category.title} image={category.image} />
+        {categorias.map((category, index) => (
+          <CategoryCard key={index} deleteCategoria={deleteCategoria} id={category.id} id_sport={usuario.id_sport} title={category.name} image={category.img} />
         ))}
       </div>
     </>

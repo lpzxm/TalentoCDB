@@ -27,7 +27,7 @@ export const auth = async (req, res, next) => {
         }
 
         if (!usuario) return res.status(401).json({ error: "No estas autenticado" })
-
+        usuario.rol = userType
         req.usuario = usuario;
         next();
     } catch (error) {

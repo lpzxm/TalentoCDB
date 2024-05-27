@@ -5,7 +5,7 @@ import { BiCategory } from "react-icons/bi";
 import { LuPenSquare } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
 import { TbLogout } from "react-icons/tb";
-
+import { useSession } from "../../hooks/useSession";
 import { NavButton, NavItem } from "./buttons/NavBtns";
 
 export const MobileNavBar = () => {
@@ -16,7 +16,7 @@ export const MobileNavBar = () => {
     }
 
     const [activeLink, setActiveLink] = useState("");
-
+    const { logout } = useSession();
     const location = useLocation();
 
     useEffect(() => {
@@ -44,9 +44,9 @@ export const MobileNavBar = () => {
                     </NavButton>
 
                     <div className="relative p-2 w-12 h-12 rounded-full bg-white flex justify-center items-center border-4 border-indigo-600">
-                        <NavButton to="/" activeLink={activeLink}>
+                        <div onClick={logout}>
                             <NavItem icon={<TbLogout size={icon.size} />} />
-                        </NavButton>
+                        </div>
                     </div>
 
                 </div>

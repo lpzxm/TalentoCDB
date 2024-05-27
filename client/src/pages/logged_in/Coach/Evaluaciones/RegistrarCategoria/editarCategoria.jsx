@@ -7,13 +7,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "../../../../../hooks/useSession";
 import { crearCategoriaDeporte } from "../../../../../api/deporte";
 import { useNavigate } from "react-router-dom";
-export const RegisterCategory = () => {
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {obtener}
+export const EditCategory = () => {
     const [file, setFile] = useState(null);
+    const [categoryData, setCategoryData] = useState();
     const [categoryGenere, setCategoryGenere] = useState();
     const [categoryAge, setCategoryAge] = useState();
     const [categoryRule, setCategoryRule] = useState();
     const navigate = useNavigate();
     const { usuario } = useSession();
+
+    const params = useParams();
+
+
     const handleFileChange = (file) => {
         console.log(file)
         setFile(file);
@@ -51,6 +59,12 @@ export const RegisterCategory = () => {
         }
     };
 
+    useEffect(() => {
+        (async () => {
+            const data = await obtenerCategoriaDeporte();
+        })()
+    }, [])
+
     return (
         <>
             <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0 blur-sm" style={{ backgroundImage: `url(${bgfondo})` }}></div>
@@ -58,7 +72,7 @@ export const RegisterCategory = () => {
                 <form onSubmit={handleSubmit} className="border-collapse border-8 p-4 relative bg-white max-w-lg">
                     <div className="flex flex-row items-center justify-center border-solid border-4 border-amber-300 w-full p-3 gap-12 mb-10">
                         <TbLayoutGridAdd size="25px" />
-                        <p className="text-center lg:text-left">Registrar Categoria</p>
+                        <p className="text-center lg:text-left">Editar Categoria</p>
                     </div>
                     <div className="w-full flex justify-center items-center mb-10">
                         <FileUpload file={file} label="Agrega una foto de la categoria a añadir" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />

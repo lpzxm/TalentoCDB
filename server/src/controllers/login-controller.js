@@ -9,6 +9,8 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        if(!email || !password) return res.status(400).json({error: "Campos vacios !"})
+
         // Intentar encontrar el usuario como jugador
         let user = await prisma.jugador.findUnique({
             where: { email }
@@ -46,3 +48,8 @@ export const login = async (req, res) => {
         return res.status(500).json({ error: "Server error" });
     }
 };
+
+export const perfil = async(req,res)=>{
+    if(!req.usuario) return res.status(401).json({error: "No auth"})
+    return res.json({user: req.usuario})
+}

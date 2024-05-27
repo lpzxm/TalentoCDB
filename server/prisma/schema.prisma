@@ -40,7 +40,7 @@ model Coach {
   nombres   String
   apellidos String
   birthDay  DateTime
-  id_sport  Int      @unique
+  id_sport  Int     
 
   sport Sport @relation(fields: [id_sport], references: [id])
 }
@@ -49,7 +49,7 @@ model Sport {
   id   Int    @id @default(autoincrement())
   name String
 
-  coach      Coach?
+  coach      Coach[]
   categories Category_sport[]
   rubrics    Rubric?
 }
