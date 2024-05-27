@@ -31,17 +31,17 @@ model Jugador {
 
   categories_joined Category_players[]
   rubric_scores     Rubric_Score_player[]
-  category_assist Category_Assist[]
+  category_assist   Category_Assist[]
 }
 
 model Category_Assist {
-  id Int @id @default(autoincrement())
+  id           Int @id @default(autoincrement())
   id_categoria Int
-  id_jugador Int
+  id_jugador   Int
 
   categoria Category_sport @relation(fields: [id_categoria], references: [id])
-  jugador Jugador @relation(fields: [id_jugador], references: [id])
-  createdAt DateTime @default(now())
+  jugador   Jugador        @relation(fields: [id_jugador], references: [id])
+  createdAt DateTime       @default(now())
 }
 
 model Coach {
@@ -66,13 +66,13 @@ model Sport {
 }
 
 model Category_sport {
-  id       Int                @id @default(autoincrement())
-  id_sport Int
-  name     String
-  rules    String
-  img      String
-  sport    Sport              @relation(fields: [id_sport], references: [id])
-  players  Category_players[]
+  id              Int                @id @default(autoincrement())
+  id_sport        Int
+  name            String
+  rules           String
+  img             String
+  sport           Sport              @relation(fields: [id_sport], references: [id])
+  players         Category_players[]
   players_assists Category_Assist[]
 }
 

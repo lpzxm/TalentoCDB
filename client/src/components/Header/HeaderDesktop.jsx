@@ -3,10 +3,14 @@ import { useLocation } from "react-router-dom";
 import { BtnProps } from "./buttons/BtnProps";
 import donbo from "../../assets/donbosco.png";
 
+import { useSession } from "../../hooks/useSession";
+
 import { NavButton } from "./buttons/NavBtns";
 
 
 export const NavBar = () => {
+
+    const { logout } = useSession();
 
     const [activeDeskLink, setActiveDeskLink] = useState("");
 
@@ -41,11 +45,14 @@ export const NavBar = () => {
                             </NavButton>
                         </nav>
                         <ul>
-                            <BtnProps
-                                className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1"
-                                to="/"
-                                text="Cerrar Sesion"
-                            />
+                            <div onClick={logout}>
+                                <BtnProps
+                                    className="py-2 px-6 rounded-md bg-white hover:bg-red-400 transition ease-in-out hover:-translate-y-1"
+                                    to="/"
+                                    text="Cerrar Sesion"
+                                />
+                            </div>
+
                         </ul>
                     </div>
                 </div>
