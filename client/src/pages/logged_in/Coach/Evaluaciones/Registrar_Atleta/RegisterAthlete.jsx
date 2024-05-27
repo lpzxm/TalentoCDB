@@ -1,7 +1,27 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import img_usuario from "../../../../../assets/usuario.png";
 import bgimg from "../../../../../assets/batu.webp";
-
+import { useNavigate } from 'react-router-dom';
+import { crearJugador } from '../../../../../api/players';
+import { useParams } from 'react-router-dom';
+import { useSession } from '../../../../../hooks/useSession';
+import { agregarJugadorCat } from '../../../../../api/deporte';
 export const RegisterAthlete = () => {
+    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const {usuario} = useSession();
+    const params = useParams();
+    const onSubmit = async (data) => {
+        try{
+            const player = await crearJugador(data);
+            await agregarJugadorCat(usuario.id_sport, params.id, player.id);
+            navigate("/coach/categorias/jugadores/"+params.id)
+        }catch(error){
+            console.log(error)
+        }
+    };
+
     return (
         <>
             <div className="fixed inset-0 bg-cover bg-center -z-10" style={{ backgroundImage: `url(${bgimg})`, filter: 'blur(8px)' }}></div>
@@ -13,7 +33,7 @@ export const RegisterAthlete = () => {
                     <p>Registrar Atleta en categoria SUB-U</p>
                 </div>
                 <section className="rounded-3xl bg-white mb-24 lg:mb-12 w-5/6 lg:w-3/6 shadow-2xl">
-                    <form action="">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="w-full flex flex-col items-center justify-center">
                             <img className="max-w-full h-auto rounded-full p-8 w-48" src={img_usuario} alt="" />
                             <a href="">
@@ -23,35 +43,34 @@ export const RegisterAthlete = () => {
                             </a>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Nombres" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="  Apellidos" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Correo estudiantil" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Contraseña" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" name="#" id="#" placeholder="" />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Codigo estudiantil" />
-                            <select name="" id="">
-                                <option value="">1er grado</option>
-                                <option value="">2do grado</option>
-                                <option value="">3er grado</option>
-                                <option value="">4to grado</option>
-                                <option value="">5to grado</option>
-                                <option value="">6to grado</option>
-                                <option value="">7to grado</option>
-                                <option value="">8to grado</option>
-                                <option value="">9no grado</option>
-                                <option value="">1er año</option>
-                                <option value="">2do año</option>
-                                <option value="">3er año</option>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Nombres" {...register('nombres')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Apellidos" {...register('apellidos')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="email" placeholder="Correo estudiantil" {...register('email')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="password" placeholder="Contraseña" {...register('password')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" {...register('birthDay')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Codigo estudiantil" {...register('codigo')} />
+                            <select className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" {...register('grado')}>
+                                <option value="1er grado">1er grado</option>
+                                <option value="2do grado">2do grado</option>
+                                <option value="3er grado">3er grado</option>
+                                <option value="4to grado">4to grado</option>
+                                <option value="5to grado">5to grado</option>
+                                <option value="6to grado">6to grado</option>
+                                <option value="7to grado">7to grado</option>
+                                <option value="8to grado">8to grado</option>
+                                <option value="9no grado">9no grado</option>
+                                <option value="1er año">1er año</option>
+                                <option value="2do año">2do año</option>
+                                <option value="3er año">3er año</option>
                             </select>
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" name="#" id="#" placeholder="Seccion" />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} />
                         </div>
-                        <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300">
+                        <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300" type="submit">
                             Crear perfil de atleta
                         </button>
                     </form>
                 </section>
             </div>
-
         </>
-    )
-}
+    );
+};

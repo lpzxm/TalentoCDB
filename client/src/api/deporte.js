@@ -23,10 +23,10 @@ export const crearCategoriaDeporte = async (id_deporte, datos) => {
         return error
     }
 }
-export const editarCategoriaDeporte = async (id_deporte,id_categoria, datos) => {
+export const editarCategoriaDeporte = async (id_deporte, id_categoria, datos) => {
     try {
 
-        const { data } = await clientAxios.putForm("/deportes/" + id_deporte + "/categorias/"+id_categoria, datos, {
+        const { data } = await clientAxios.putForm("/deportes/" + id_deporte + "/categorias/" + id_categoria, datos, {
             headers: {
                 'Content-Type': 'multipart/form-data',
 
@@ -51,3 +51,9 @@ export const obtenerCategoriaDeporte = async (id_deporte, id_categoria) => {
     const { data } = await clientAxios.get("/deportes/" + id_deporte + "/categorias/" + id_categoria)
     return data
 }
+
+export const agregarJugadorCat = async (id_deporte, id_categoria, id_jugador) => {
+    const data = await clientAxios.post("/deportes/" + id_deporte + "/categorias/" + id_categoria + "/jugadores/" + id_jugador)
+    return data;
+}
+

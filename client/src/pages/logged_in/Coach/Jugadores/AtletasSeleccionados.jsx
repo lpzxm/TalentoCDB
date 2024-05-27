@@ -85,7 +85,7 @@ export const AtletasSelec = () => {
           ><img width={50} src={player.status_img_academic} alt="" /></td>
           <td className="py-4 px-6 border-b border-gray-300"
           ><img width={50} src={player.status_main_sport} alt="" /></td>
-          <td className="flex flex-col justify-center items-center"><button>Editar</button> <button>Eliminar</button></td>
+          <td className="flex flex-col justify-center items-center space-y-2"><button className="p-3 bg-yellow-300">Editar</button> <button className="p-2 bg-red-400">Eliminar</button></td>
         </tr>
       ))}
     </tbody>
@@ -100,7 +100,7 @@ export const AtletasSelec = () => {
         <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
       </div>
       <div>
-        <Link to={"/coach/categoria/"+params.id+"/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>
+        <Link to={"/coach/categoria/" + params.id + "/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>
         </Link>
 
       </div>
