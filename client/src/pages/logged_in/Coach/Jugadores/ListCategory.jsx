@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { IoMdAdd } from 'react-icons/io';
 
-import { useEffect } from 'react';
 import { useSession } from '../../../../hooks/useSession';
 import { obtenerDeporte, eliminarCategoriaDeporte } from '../../../../api/deporte';
 
@@ -29,14 +28,14 @@ const CategoryCard = ({ title, image, id, id_sport, deleteCategoria }) => {
       <div className="border rounded-lg overflow-hidden shadow-slate-400 shadow-xl">
         <div className="p-2">
           <p className="text-center font-medium mb-2">{title}</p>
-          <img className="h-full w-full object-cover rounded p-4 md:w-auto" src={image} alt={title} />
+          <img className="h-full w-full object-cover object-center rounded p-4 md:w-auto" src={image} alt={title} />
           <div className="w-full flex flex-row flex-wrap justify-around items-center">
-            <Link to={"/coach/categorias/jugadores/"+id}>
+            <Link to={"/coach/categorias/jugadores/" + id}>
               <button className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
                 Ver
               </button>
             </Link>
-            <Link to={"/coach/categorias/editar/"+id}>
+            <Link to={"/coach/categorias/editar/" + id}>
               <button className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">
                 Editar
               </button>
