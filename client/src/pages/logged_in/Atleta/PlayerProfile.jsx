@@ -1,6 +1,7 @@
 import profilebg from '../../../../src/assets/roundedImage.jpg';
 import profileIcon from '../../../assets/messi.jpeg';
 import { FileUpload } from '../../../components/ui/inputFile/fileComponent';
+import { useSession } from '../../../hooks/useSession';
 
 import { CiUser } from "react-icons/ci";
 import { FaRegAddressCard } from "react-icons/fa";
@@ -26,6 +27,8 @@ const PlayerProfileImage = ({ background, profile }) => (
 );
 
 export const PlayerProfile = () => {
+
+    const { usuario } = useSession();
 
     const [file1, setFile1] = useState(null);
     const [file2, setFile2] = useState(null);
@@ -77,13 +80,13 @@ export const PlayerProfile = () => {
                 <PlayerProfileImage background={profilebg} profile={profileIcon} />
                 <div className='w-full p-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 mt-20 mb-20'>
                     <div className='flex flex-col items-center space-y-6'>
-                        <PlayerDetail icon={CiUser} text="Sara Yamileth Torres Henriquez" />
-                        <PlayerDetail icon={TbShirtSport} text="Volleyball" />
-                        <PlayerDetail icon={FaRegAddressCard} text="20220319" />
+                        <PlayerDetail icon={CiUser} text={usuario.nombres + " " + usuario.apellidos} />
+                        <PlayerDetail icon={TbShirtSport} text={usuario.sport.name} />
+                        <PlayerDetail icon={FaRegAddressCard} text={usuario.codigo} />
                     </div>
                     <div className='flex flex-col items-center space-y-6'>
-                        <PlayerDetail icon={HiOutlineAcademicCap} text="3 año C" />
-                        <PlayerDetail icon={LuCalendarDays} text="27/02/2006" />
+                        <PlayerDetail icon={HiOutlineAcademicCap} text={usuario.grado + " " + usuario.seccion} />
+                        <PlayerDetail icon={LuCalendarDays} text={usuario.birthDay} />
                         <PlayerDetail icon={CiUser} text="Seleccionado" />
                     </div>
                 </div>

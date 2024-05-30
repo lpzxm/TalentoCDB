@@ -11,6 +11,8 @@ import img2 from '../../../assets/ini2.webp';
 // import img3 from '../../../assets/ini3.png';
 import img4 from '../../../assets/ini4.webp';
 
+import { useSession } from "../../../hooks/useSession";
+
 const ImageSlider = ({ images, interval, className }) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,8 +40,8 @@ const ImageSlider = ({ images, interval, className }) => {
 }
 
 export const Home = () => {
-
-
+    const { usuario } = useSession();
+    console.log(usuario)
     return (
         <>
             <main className='flex lg:flex-row flex-col items-center mt-6 mb-5 pb-24 lg:pb-0'>
@@ -52,14 +54,14 @@ export const Home = () => {
                 <section className='flex flex-col justify-center items-center text-center sm:w-full w-1/2 lg:ml-32 ml-0'>
                     <div className='text-2xl font-bold my-5'>
                         <h1 className="font-sans">Bienvenido</h1>
-                        <h1 className=''>Leonel Najarro</h1>
+                        <h1 className=''>{usuario.nombres} {usuario.apellidos}</h1>
                     </div>
                     <div className='w-full flex flex-col justify-center items-center space-y-6'>
                         <div className='border-2 w-full flex flex-row flex-wrap justify-around items-center'>
                             <p className='py-4'>
-                                Entrenador de: <span className='underline'>Volleyball</span>
+                                Entrenador de: <span className='underline'>{usuario.sport.name}</span>
                             </p>
-                            <PiVolleyball size="25px" />
+                            {/* <PiVolleyball size="25px" /> */}
                         </div>
                         <Link to="/coach/registrarRubrica" className='border-2 w-full flex flex-row flex-wrap justify-around items-center 880:space-x-14'>
                             <p className='py-4'>

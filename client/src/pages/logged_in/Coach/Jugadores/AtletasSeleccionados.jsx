@@ -4,18 +4,41 @@ import { obtenerCategoriaDeporte } from "../../../../api/deporte";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../../../hooks/useSession";
 import { useParams } from "react-router-dom";
+import { eliminarJugador } from "../../../../api/players";
+
 export const AtletasSelec = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleDeleteClick = () => setIsModalOpen(true);
+
   const [categoryData, setCategoryData] = useState("loading");
+
   const [playersData, setPlayersData] = useState("loading")
+
   const navigate = useNavigate();
+  const calculateAge = (birthDate) => {
+    const birthDateObj = new Date(birthDate);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDiff = today.getMonth() - birthDateObj.getMonth();
+
+    // Adjust age if the current month and day haven't passed the birth month and day
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+      age--;
+    }
+
+    return age;
+  };
   const { usuario } = useSession();
+
   const params = useParams();
+
   const tableHeaders = [
     "Nombre",
     "Sección",
     "Año que cursa",
     "Edad",
-    "Asistencia",
     "Estado académico",
     "Estado deportivo",
     ""
@@ -54,6 +77,14 @@ export const AtletasSelec = () => {
     </thead>
   );
 
+  const deletePlayer = async (id) => {
+    setPlayersData(playersData.filter(item => item.id !== id))
+    await eliminarJugador(id);
+    setIsModalOpen(false)
+  }
+
+  const handleCancelDelete = () => setIsModalOpen(false);
+
   const renderTableBody = () => (
     <tbody>
       {playersData.map((player, rowIndex) => (
@@ -78,33 +109,45 @@ export const AtletasSelec = () => {
           <td className="py-4 px-6 border-b border-gray-300"
           >{player.grado}</td>
           <td className="py-4 px-6 border-b border-gray-300"
-          >{player.birthDay}</td>
-          <td className="py-4 px-6 border-b border-gray-300"
-          ><input type="checkbox" onChange={() => { }} /></td>
+          >{calculateAge(player.birthDay)}</td>
+          {/* <td className="py-4 px-6 border-b border-gray-300"
+          ><input type="checkbox" onChange={() => { }} /></td> */}
           <td className="py-4 px-6 border-b border-gray-300"
           ><img width={50} src={player.status_img_academic} alt="" /></td>
           <td className="py-4 px-6 border-b border-gray-300"
           ><img width={50} src={player.status_main_sport} alt="" /></td>
-          <td className="flex flex-col justify-center items-center space-y-2"><button className="p-3 bg-yellow-300">Editar</button> <button className="p-2 bg-red-400">Eliminar</button></td>
+
+
+          <td className="flex flex-col justify-center items-center space-y-2">
+            <Link to={"/coach/editarJugador/" + player.id}>
+              <button className="p-3 bg-yellow-300">Editar</button>
+            </Link>
+
+            <button onClick={async () => await deletePlayer(player.id)} className="p-2 bg-red-400">Eliminar</button>
+          </td>
+
+
         </tr>
-      ))}
-    </tbody>
+      ))
+      }
+    </tbody >
   );
 
   return (
     <div className="container mx-auto p-4 md:p-6 lg:p-8">
-
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-gray-700">{categoryData.sport.name}</h2>
         <p className="uppercase">{categoryData.name}</p>
         <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
       </div>
       <div>
+        Reglamento del deporte:
+      </div>
+      <div>
         <Link to={"/coach/categoria/" + params.id + "/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>
         </Link>
 
       </div>
-
       <div className="bg-white shadow-md rounded my-6 overflow-x-auto">
         <table className="w-full text-left border-collapse">
           {renderTableHeader()}

@@ -15,6 +15,9 @@ export const auth = async (req, res, next) => {
             usuario = await prisma.coach.findFirst({
                 where: {
                     id: userId
+                },
+                include: {
+                    sport: true
                 }
             })
         }

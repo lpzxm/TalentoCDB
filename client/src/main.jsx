@@ -30,6 +30,7 @@ import { PerfilCoach } from './pages/logged_in/Coach/Perfil/perfilcoach.jsx'
 import { ViewCategories } from './pages/logged_in/Coach/Jugadores/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
+import { EditAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/EditAthlete.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 import { SessionProvider } from './context/Session.jsx';
 
@@ -206,6 +207,18 @@ const router = createBrowserRouter([
         <FadeIn>
           <Header />
           <RegisterAthlete />
+          <BackButton />
+        </FadeIn>
+      </>
+    ),
+  },
+  {
+    path: "/coach/editarJugador/:id",
+    element: (
+      <>
+        <FadeIn>
+          <Header />
+          <EditAthlete />
           <BackButton />
         </FadeIn>
       </>

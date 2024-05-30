@@ -33,7 +33,6 @@ export const rubricSchema = z.object({
 export const rubricFieldSchema = z.object({
     name: z.string(),
     description: z.string(),
-    min_score: z.number(),
     max_score: z.number(),
     id_rubric: z.number()
 })

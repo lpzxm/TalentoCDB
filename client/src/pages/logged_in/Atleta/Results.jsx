@@ -1,11 +1,10 @@
 import { TbShirtSport } from "react-icons/tb";
+import { useSession } from "../../../hooks/useSession";
 
 
 export const PlayerResults = () => {
 
-    const namePlayer = "Juan Lopez"
-
-    const sport = "Futbol"
+    const { usuario } = useSession();
 
     const tableHeaders = [
         "Nombre",
@@ -32,13 +31,12 @@ export const PlayerResults = () => {
             <div className="w-full mt-10 flex flex-row justify-around items-center space-x-4">
                 <div className="w-full flex flex-row justify-start ml-8 items-center space-x-4">
                     <TbShirtSport size={"40px"} />
-                    <p className="text-lg">Bienvenido, <span className="font-semibold">{namePlayer}</span></p>
+                    <p className="text-lg">Bienvenido, <span className="font-semibold">{usuario.nombres}</span></p>
                 </div>
                 <div className="w-full flex flex-row justify-end items-center ">
                     <span className="text-lg">
-                        Atleta perteneciente al deporte : {sport}
+                        Atleta perteneciente al deporte : {usuario.sport.nombre}
                     </span>
-
                 </div>
             </div>
         </>
