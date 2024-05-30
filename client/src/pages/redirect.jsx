@@ -12,7 +12,7 @@ const Redirect = () => {
       return
     }
     if (usuario.rol == "Jugador") {
-      navigate("/atleta/perfilJugador");
+      navigate("/atleta/resultados");
       return
     }
     navigate("/")

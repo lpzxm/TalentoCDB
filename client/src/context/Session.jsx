@@ -1,5 +1,6 @@
 import { clientAxios } from "../config/clientAxios";
 import { createContext, useEffect, useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 const SessionContext = createContext();
 
 const obtenerPerfil = async (token) => {
@@ -48,7 +49,24 @@ const SessionProvider = ({ children }) => {
 
 
 
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return (
+        <>
+            <div className="w-screen h-screen flex justify-center items-center">
+                <TailSpin
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                />
+            </div>
+
+        </>
+
+    );
 
     return (
         <SessionContext.Provider

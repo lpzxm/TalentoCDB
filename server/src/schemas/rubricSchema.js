@@ -34,7 +34,7 @@ export const rubricFieldSchema = z.object({
     name: z.string(),
     description: z.string(),
     max_score: z.number(),
-    id_rubric: z.number()
+    id_sport: z.string().transform(Number).or(z.number()).optional()
 })
 export const rubricScorePlayerSchema = z.object({
     score: z.number(),

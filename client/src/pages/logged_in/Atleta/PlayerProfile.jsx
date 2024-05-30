@@ -74,6 +74,21 @@ export const PlayerProfile = () => {
         } */
     };
 
+    const calculateAge = (birthDate) => {
+        const birthDateObj = new Date(birthDate);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthDateObj.getFullYear();
+        const monthDiff = today.getMonth() - birthDateObj.getMonth();
+
+        // Adjust age if the current month and day haven't passed the birth month and day
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+            age--;
+        }
+
+        return age;
+    };
+
     return (
         <article className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 p-6">
             <section className="w-full mt-8 h-5/6 bg-slate-200 rounded-3xl p-6 flex flex-col items-center">
@@ -85,9 +100,9 @@ export const PlayerProfile = () => {
                         <PlayerDetail icon={FaRegAddressCard} text={usuario.codigo} />
                     </div>
                     <div className='flex flex-col items-center space-y-6'>
-                        <PlayerDetail icon={HiOutlineAcademicCap} text={usuario.grado + " " + usuario.seccion} />
-                        <PlayerDetail icon={LuCalendarDays} text={usuario.birthDay} />
-                        <PlayerDetail icon={CiUser} text="Seleccionado" />
+                        <PlayerDetail icon={HiOutlineAcademicCap} text={usuario.grado} />
+                        <PlayerDetail icon={LuCalendarDays} text={calculateAge(usuario.birthDay)} />
+                        <PlayerDetail icon={CiUser} text={usuario.status_main_sport || 'Inactivo'} />
                     </div>
                 </div>
             </section>

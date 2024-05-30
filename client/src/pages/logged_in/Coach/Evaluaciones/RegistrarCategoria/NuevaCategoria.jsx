@@ -4,9 +4,13 @@ import { TbLayoutGridAdd } from "react-icons/tb";
 import { FileUpload } from "../../../../../components/ui/inputFile/fileComponent";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { useSession } from "../../../../../hooks/useSession";
 import { crearCategoriaDeporte } from "../../../../../api/deporte";
 import { useNavigate } from "react-router-dom";
+
+
+
 export const RegisterCategory = () => {
     const [file, setFile] = useState(null);
     const [categoryGenere, setCategoryGenere] = useState();

@@ -10,8 +10,8 @@ export const obtenerJugador = async (id) => {
     return data
 }
 
-export const editarJugador = async(id,datos) =>{
-    const { data } = await clientAxios.put("/jugadores/"+id, datos)
+export const editarJugador = async (id, datos) => {
+    const { data } = await clientAxios.put("/jugadores/" + id, datos)
     return data
 }
 

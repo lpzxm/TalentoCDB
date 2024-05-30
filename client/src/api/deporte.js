@@ -58,12 +58,16 @@ export const agregarJugadorCat = async (id_deporte, id_categoria, id_jugador) =>
 }
 
 export const obtenerCamposRubrica = async (id_deporte) => {
-    const {data} = await clientAxios.get("/deportes/"+id_deporte+"/rubrica/campos")
+    const { data } = await clientAxios.get("/deportes/" + id_deporte + "/rubrica/campos")
     return data;
 }
 
-export const crearCampoRubrica = async(id_deporte, datos)=>{
-    const {data} = await clientAxios.post("/deportes/"+id_deporte+"/rubrica/campos",datos)
+export const crearCampoRubrica = async (id_deporte, datos) => {
+    const { data } = await clientAxios.post("/deportes/" + id_deporte + "/rubrica/campos", datos)
+    return data;
+}
+export const deleteCampoRubrica = async (id_deporte, id_categoria) => {
+    const { data } = await clientAxios.delete("/deportes/" + id_deporte + "/rubrica/campos/" + id_categoria)
     return data;
 }
 // router.route("/:id/rubrica")

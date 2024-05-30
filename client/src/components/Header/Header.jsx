@@ -2,11 +2,9 @@
 import { useEffect, useState } from "react"
 import { NavBar } from "./HeaderDesktop";
 import { MobileNavBar } from "./HeaderMobile";
-
 export const Header = () => {
 
     const [isDesktop, setIsDesktop] = useState(false);
-
     useEffect(() => {
         const manageSize = () => {
             setIsDesktop(window.innerWidth >= 900);

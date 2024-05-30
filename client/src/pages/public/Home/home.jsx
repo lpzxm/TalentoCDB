@@ -40,6 +40,7 @@ const ImageSlider = ({ images, interval, className }) => {
 }
 
 export const Home = () => {
+    
     const { usuario } = useSession();
     console.log(usuario)
     return (

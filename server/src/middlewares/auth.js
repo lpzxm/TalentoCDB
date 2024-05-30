@@ -27,6 +27,21 @@ export const auth = async (req, res, next) => {
                     id: userId
                 }
             })
+            if (usuario.id) {
+                const deporteUsuario = await prisma.category_players.findFirst({
+                    where: {
+                        id_player: usuario.id
+                    },
+                    include: {
+                        category: {
+                            include: {
+                                sport: true
+                            }
+                        }
+                    }
+                })
+                usuario.sport = deporteUsuario.category.sport
+            }
         }
 
         if (!usuario) return res.status(401).json({ error: "No estas autenticado" })

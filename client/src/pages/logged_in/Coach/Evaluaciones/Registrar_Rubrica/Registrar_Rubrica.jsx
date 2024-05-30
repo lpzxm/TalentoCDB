@@ -4,30 +4,36 @@ import { obtenerCamposRubrica } from '../../../../../api/deporte';
 import { useSession } from '../../../../../hooks/useSession';
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form"
-import { crearCampoRubrica } from '../../../../../api/deporte';
+import { crearCampoRubrica, deleteCampoRubrica } from '../../../../../api/deporte';
+
 export const Registrar_Rubrica = () => {
     const { usuario } = useSession()
     const [campos, setCampos] = useState("loading");
-    const {register, handleSubmit,reset} = useForm()
+    const { register, handleSubmit, reset } = useForm()
     useEffect(() => {
         (async () => {
             const data = await obtenerCamposRubrica(usuario.id_sport);
             setCampos(data)
+            console.log(data)
         })()
-    },[])
+    }, [])
 
     const agregarCampo = async (data) => {
-        try{
+        try {
             const result = await crearCampoRubrica(usuario.id_sport, data)
             setCampos([...campos, result])
-            reset() 
-        }catch(e){
+            reset()
+        } catch (e) {
             console.log(e)
         }
     }
 
-    if (campos == "loading") return <p>Cargando...</p>
+    const eliminarCampo = async (id_field) => {
+        setCampos(campos.filter(item => item.id !== id_field))
+        const result = await deleteCampoRubrica(usuario.id_sport, id_field)
+    }
 
+    if (campos == "loading") return <p>Cargando...</p>
     return (
         <>
 
@@ -41,32 +47,33 @@ export const Registrar_Rubrica = () => {
                         <h1 className="text-2xl mb-4 text-center">Registrar rúbrica</h1>
 
                         <form onSubmit={handleSubmit(agregarCampo)} className="flex flex-col -mx-2 w-full">
-                            <div className="w-full px-2 mb-4 flex flex-row space-x-3">
+                            <div className="w-full px-2 mb-4 flex flex-col 880:flex-row space-x-3 border-b-3">
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("name")} type="text" placeholder='Criterio' />
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("max_score", {valueAsNumber: true})} type="number" placeholder='Valor maximo' />
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("max_score", { valueAsNumber: true })} type="number" placeholder='Valor maximo' />
                                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" {...register("description")} type="text" placeholder="Descripcion" />
                             </div>
                             <div className="flex mb-4 items-center justify-center space-x-4">
-                            <button type='submit' className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                Agregar campo
-                            </button>
-                            {/* <button className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                <button type='submit' className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                    Agregar campo
+                                </button>
+                                {/* <button className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                                 Registrar evaluación
                             </button> */}
-                        </div>
+                            </div>
                         </form>
 
                         <div>
-                            <div class="grid font-bold p-2 border grid-cols-4">
+                            <div class="grid font-bold p-2 border grid-cols-2 880:grid-cols-4 overflow-x-auto">
                                 <p>Nombre</p>
                                 <p>Maximo Puntaje</p>
                                 <p>Descripcion</p>
                             </div>
                             {
-                                campos.map(campo => <Campo campo={campo} />)
+                                campos.length ? campos.map(campo => <Campo eliminarCampo={eliminarCampo} campo={campo} />)
+                                    : 'No hay campos'
                             }
                         </div>
-                      
+
 
                     </div>
                 </div>
@@ -76,14 +83,14 @@ export const Registrar_Rubrica = () => {
     )
 }
 
-const Campo = ({ campo }) => {
+const Campo = ({ campo, eliminarCampo }) => {
     return (
         <div class="grid p-2 border grid-cols-4">
             <p>{campo.name}</p>
             <p>{campo.max_score}</p>
             <p>{campo.description}</p>
             <div class="">
-                <button className='bg-red-500 text-white rounded px-2'>Eliminar</button>
+                <button type='button' onClick={async e => await eliminarCampo(campo.id)} className='bg-red-500 text-white rounded px-2'>Eliminar</button>
             </div>
         </div>
     )

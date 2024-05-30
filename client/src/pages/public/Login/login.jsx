@@ -51,7 +51,7 @@ export const Login = () => {
                         <div className="space-y-10 w-full flex flex-col justify-around items-center">
                             <h1 className="text-2xl font-sans font-bold">Inicia sesión</h1>
                             <div className="relative flex w-full box-border px-5">
-                                <input {...register("email", { required: { value: true } })} type="email" placeholder="Correo institucional" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required/>
+                                <input {...register("email", { required: { value: true } })} type="email" placeholder="Correo institucional" className="w-full placeholder:text-slate-400 bg-[#F9F9F9] border border-[#CCC9C9] rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" required />
                                 <div className="absolute right-14 top-3">
                                     <AiTwotoneMail
                                         style={{ fontSize: '20px', color: 'gray' }} />

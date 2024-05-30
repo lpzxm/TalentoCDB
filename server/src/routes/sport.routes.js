@@ -3,7 +3,7 @@ import multer from "multer";
 const storage = multer.memoryStorage()
 const upload = multer({ storage });
 
-import { getSports,getCategorySport, getSport, createNewSport, updateSportDetails, deleteSportRecord, createSportCategory, updateSportCategory, deleteSportCategory, addPlayer, removePlayer } from "../controllers/sportController.js";
+import { getSports,getCategorySport, getSport, createNewSport, updateSportDetails, deleteSportRecord, createSportCategory, updateSportCategory, deleteSportCategory, addPlayer, removePlayer,   } from "../controllers/sportController.js";
 import {
     getRubricHandler,
     createRubricHandler,
@@ -13,7 +13,8 @@ import {
     createRubricFieldHandler,
     getAllRubricScoreByPlayerHandler,
     createRubricScorePlayerHandler,
-    getPlayerRubricScoresHandler
+    getPlayerRubricScoresHandler,
+    deleteRubricFieldHandler
 } from "../controllers/rubricController.js";
 
 const router = Router();
@@ -41,16 +42,18 @@ router.route("/:id/categorias/:id_categoria/jugadores/:id_player")
     .delete(removePlayer)
 
 
-router.route("/:id/rubrica")
-    .get(getRubricHandler)
-    .post(createRubricHandler)
-    .put(updateRubricHandler)
-    .delete(deleteRubricHandler);
+// router.route("/:id/rubrica")
+//     .get(getRubricHandler)
+//     .post(createRubricHandler)
+//     .put(updateRubricHandler)
+//     .delete(deleteRubricHandler);
 
 router.route("/:id/rubrica/campos")
     .get(getAllRubricFieldsHandler)
-    .post(createRubricFieldHandler);
+    .post(createRubricFieldHandler)
 
+
+router.delete("/:id/rubrica/campos/:id_field",deleteRubricFieldHandler)
 router.post("/:id/rubrica/campos/:id_field/evaluar/:id_player", createRubricScorePlayerHandler)
 
 

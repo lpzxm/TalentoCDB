@@ -52,7 +52,7 @@ export const EditCategory = () => {
         const categoryTitle = "SUB-U-" + categoryGenere + "-" + categoryAge;
         formData.append("name", categoryTitle)
         formData.append("rules", categoryRule)
-     
+
         try {
             await editarCategoriaDeporte(usuario.id_sport, categoryData.id, formData)
             navigate("/coach/categorias")

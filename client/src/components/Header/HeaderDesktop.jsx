@@ -10,7 +10,7 @@ import { NavButton } from "./buttons/NavBtns";
 
 export const NavBar = () => {
 
-    const { logout } = useSession();
+    const { logout, usuario } = useSession();
 
     const [activeDeskLink, setActiveDeskLink] = useState("");
 
@@ -31,18 +31,32 @@ export const NavBar = () => {
                     <div className="w-full h-fit px-6 py-3 backdrop-blur-sm bg-white/80 flex flex-col md:flex-row justify-between items-center">
                         <img className='w-12 h-fit' src={donbo} alt="DB" />
                         <nav className="flex flex-col md:flex-row p-4 space-x-10 font-bold">
-                            <NavButton to="/home" activeDeskLink={activeDeskLink}>
-                                Home
-                            </NavButton>
-                            <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
-                                Ver categorias
-                            </NavButton>
-                            <NavButton to="/coach/registrarRubrica" activeDeskLink={activeDeskLink}>
-                                Registrar rúbrica
-                            </NavButton>
-                            <NavButton to="/coach/perfil" activeDeskLink={activeDeskLink}>
-                                Perfil Personal
-                            </NavButton>
+                            {usuario.rol == "Coach" && (
+                                <>
+                                    <NavButton to="/home" activeDeskLink={activeDeskLink}>
+                                        Home
+                                    </NavButton>
+                                    <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
+                                        Ver categorias
+                                    </NavButton>
+                                    <NavButton to="/coach/registrarRubrica" activeDeskLink={activeDeskLink}>
+                                        Registrar rúbrica
+                                    </NavButton>
+                                    <NavButton to="/coach/perfil" activeDeskLink={activeDeskLink}>
+                                        Perfil Personal
+                                    </NavButton>
+                                </>
+                            )}
+                            {usuario.rol == "Jugador" && (
+                                <>
+                                    <NavButton to="/atleta/resultados" activeDeskLink={activeDeskLink}>
+                                        Resultados
+                                    </NavButton>
+                                    <NavButton to="/atleta/perfilJugador" activeDeskLink={activeDeskLink}>
+                                        Perfil Personal
+                                    </NavButton>
+                                </>
+                            )}
                         </nav>
                         <ul>
                             <div onClick={logout}>

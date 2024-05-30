@@ -29,5 +29,5 @@ export const FadeIn = ({ children }) => {
             {children}
         </div>
     );
-    
+
 }

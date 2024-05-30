@@ -4,7 +4,7 @@ import { rubricSchema, rubricFieldSchema, rubricScorePlayerSchema } from "../sch
 // Función para obtener una rúbrica por ID de deporte
 export const getRubricBySportId = async (id_sport) => {
     try {
-        const rubric = await prisma.rubric.findUnique({
+        const rubric = await prisma.rubric_fields.findMany({
             where: { id_sport: id_sport },
             include: {
                 fields: true
@@ -62,13 +62,10 @@ export const deleteRubric = async (id_sport) => {
 // Función para obtener todos los campos de rúbrica por ID de rúbrica
 export const getAllRubricFields = async (id_sport) => {
     try {
-        const rubric = await prisma.rubric.findUnique({
-            where: { id_sport: id_sport },
-            include: {
-                fields: true
-            }
+        const rubric = await prisma.rubric_fields.findMany({
+            where: {id_sport},
         });
-        return rubric ? rubric.fields : [];
+        return rubric
     } catch (error) {
         console.error(error);
         return "Hubo un error con el servidor";
@@ -135,6 +132,18 @@ export const getPlayerRubricScores = async (id_player) => {
             }
         });
         return scores;
+    } catch (error) {
+        console.error(error);
+        return "Hubo un error con el servidor";
+    }
+};
+
+export const deleteRubricField = async (_,id) => {
+    try {
+        await prisma.rubric_fields.delete({
+            where: { id }
+        });
+        return "Eliminado con éxito";
     } catch (error) {
         console.error(error);
         return "Hubo un error con el servidor";

@@ -7,7 +7,8 @@ import {
     createRubricField,
     getAllRubricScoreByPlayer,
     createRubricScorePlayer,
-    getPlayerRubricScores
+    getPlayerRubricScores,
+    deleteRubricField
 } from "../model/rubricModel.js";
 
 // Obtener una rúbrica por ID de deporte
@@ -71,10 +72,14 @@ export const getAllRubricFieldsHandler = async (req, res) => {
 // Crear un nuevo campo de rúbrica
 export const createRubricFieldHandler = async (req, res) => {
     try {
+        const  {id } = req.params
         const datos = req.body;
+        datos.id_sport = id
         const newField = await createRubricField(datos);
+        newField.id_sport = id
         res.json(newField);
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: "Hubo un error con el servidor" });
     }
 };
@@ -110,6 +115,18 @@ export const getPlayerRubricScoresHandler = async (req, res) => {
         const id_player = +req.params.id_player;
         const scores = await getPlayerRubricScores(id_player);
         res.json(scores);
+    } catch (error) {
+        res.status(500).json({ error: "Hubo un error con el servidor" });
+    }
+};
+
+// Eliminar una rúbrica
+export const deleteRubricFieldHandler = async (req, res) => {
+    try {
+        const id_sport = +req.params.id;
+        const id_field = +req.params.id_field
+        const result = await deleteRubricField(id_sport,id_field);
+        res.json(result);
     } catch (error) {
         res.status(500).json({ error: "Hubo un error con el servidor" });
     }

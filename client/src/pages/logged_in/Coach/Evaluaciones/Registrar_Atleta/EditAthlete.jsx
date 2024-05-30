@@ -79,7 +79,7 @@ export const EditAthlete = () => {
                     </svg>
                     <p>Editar Atleta</p>
                 </div>
-                <section className="rounded-3xl bg-white mb-24 lg:mb-12 w-5/6 lg:w-3/6 shadow-2xl">
+                <section className="rounded-3xl bg-white  lg:mb-12 w-5/6 lg:w-3/6 shadow-2xl mb-32">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* <div className="w-full flex flex-col items-center justify-center">
                             <FileUpload file={file} label="Agrega una foto del jugador a editar en la categoria" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
@@ -106,9 +106,12 @@ export const EditAthlete = () => {
                             </select>
                             <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} />
                         </div>
-                        <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300" type="submit">
-                            Crear perfil de atleta
-                        </button>
+                        <div className='w-full flex justify-center items-center'>
+                            <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300" type="submit">
+                                Crear perfil de atleta
+                            </button>
+                        </div>
+
                     </form>
                 </section>
             </div>
