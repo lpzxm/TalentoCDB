@@ -12,9 +12,10 @@ app.use(express.json())
 app.get("/", (req, res) => {
     return res.json({ hello: "world" })
 })
+
 app.use("/auth", authRoutes)
 app.use("/entrenadores", entrenadorRoutes)
-app.use("/jugadores",playerRoutes )
+app.use("/jugadores", playerRoutes)
 app.use("/deportes", deportesRoutes)
 
 

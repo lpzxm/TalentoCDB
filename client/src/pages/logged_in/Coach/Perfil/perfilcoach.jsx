@@ -25,7 +25,7 @@ export const PerfilCoach = () => {
 
         </div>
         <p className="mb-6">Descripción del Coach:</p>
-        <CoachDetail iconName="CiUser" text="" />
+        <CoachDetail iconName={<CiUser size={"30px"} color=''/>} />
       </section>
     </article>
   );
