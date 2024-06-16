@@ -10,6 +10,7 @@ import { Header } from './components/Header/Header';
 import { Welcome } from './pages/public/Welcome/welcome.jsx';
 import { Login } from './pages/public/Login/login';
 import { Error404 } from './pages/public/404Error/404err.jsx';
+import Translate from './components/ui/translate/translate.jsx';
 
 // Atleta - Rutas privadas
 import { PlayerResults } from './pages/logged_in/Atleta/Results.jsx';
@@ -293,6 +294,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <SessionProvider>
+      <Translate />
       <RouterProvider router={router} />
     </SessionProvider>
   </React.StrictMode>
