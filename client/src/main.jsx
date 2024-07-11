@@ -70,6 +70,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={false}>
         <FadeIn>
+        <Translate />
           <Login />
         </FadeIn>
       </ProtectedRoute>
@@ -294,7 +295,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <SessionProvider>
-      <Translate />
       <RouterProvider router={router} />
     </SessionProvider>
   </React.StrictMode>
