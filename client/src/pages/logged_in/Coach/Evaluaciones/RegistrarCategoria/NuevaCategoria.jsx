@@ -9,47 +9,59 @@ import { useSession } from "../../../../../hooks/useSession";
 import { crearCategoriaDeporte } from "../../../../../api/deporte";
 import { useNavigate } from "react-router-dom";
 
-
-
 export const RegisterCategory = () => {
-    const [file, setFile] = useState(null);
     const [categoryGenere, setCategoryGenere] = useState();
     const [categoryAge, setCategoryAge] = useState();
     const [categoryRule, setCategoryRule] = useState();
+
+    const [file, setFile] = useState(null);
+
     const navigate = useNavigate();
     const { usuario } = useSession();
+
     const handleFileChange = (file) => {
-        console.log(file)
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            toast.error('Por favor, selecciona una imagen válida (JPEG, PNG, GIF).', {
+                position: "bottom-right",
+                autoClose: 5000,
+            });
+            setFile(null);
+            return;
+        }
         setFile(file);
+        console.log(file)
     };
 
-    const handleFileRemove = () => {
-        setFile(null);
+    const handleFileRemove = () => setFile(null);
+
+    const handleAgeChange = (e) => {
+        const value = e.target.value;
+        // Solo permite números y hasta dos dígitos
+        if (/^\d{0,2}$/.test(value)) {
+            setCategoryAge(value);
+        }
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (!file) {
-            toast.error('Por favor, selecciona un archivo antes de subir.', {
+            toast.error('Por favor, selecciona una imagen antes de subir.', {
                 position: "bottom-right",
                 autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
             });
             return;
         }
-        const categoryTitle = "SUB-U-" + categoryGenere + "-" + categoryAge;
+
+        const categoryTitle = `SUB-U-${categoryGenere}-${categoryAge}`;
         const formData = new FormData();
         formData.append('img', file);
-        formData.append("name", categoryTitle)
-        formData.append("rules", categoryRule)
+        formData.append("name", categoryTitle);
+        formData.append("rules", categoryRule);
 
         try {
-            await crearCategoriaDeporte(usuario.id_sport, formData)
-            navigate("/coach/categorias")
+            await crearCategoriaDeporte(usuario.id_sport, formData);
+            navigate("/coach/categorias");
         } catch (error) {
             console.error('Error al subir los archivos:', error);
         }
@@ -57,6 +69,9 @@ export const RegisterCategory = () => {
 
     return (
         <>
+            <div className="z-50">
+                <ToastContainer />
+            </div>
             <div className="fixed inset-0 h-full w-full bg-cover bg-center z-0 blur-sm" style={{ backgroundImage: `url(${bgfondo})` }}></div>
             <div className="flex flex-col justify-center items-center h-screen mb-14">
                 <form onSubmit={handleSubmit} className="border-collapse border-8 p-4 relative bg-white max-w-lg">
@@ -68,7 +83,6 @@ export const RegisterCategory = () => {
                         <FileUpload file={file} label="Agrega una foto de la categoria a añadir" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
                     </div>
                     <section className="border-dashed border-2 border-orange-500 w-full p-4">
-
                         <p className="mb-5 text-center lg:text-left">Registrar la categoría:</p>
                         <div className="flex flex-col gap-4">
                             <div className="outline outline-offset-2 outline-blue-400 rounded flex items-center justify-between gap-4 w-full p-2">
@@ -79,13 +93,32 @@ export const RegisterCategory = () => {
                                     <p className="text-left">SUB-U</p>
                                 </div>
                                 <select onChange={e => setCategoryGenere(e.target.value)} name="sex" id="">
-                                    <option selected value="Femenino">Femenino</option>
+                                    <option value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
                                 </select>
-                                <input onChange={e => setCategoryAge(e.target.value)} className="border-2 rounded border-zinc-100 w-20 text-center" placeholder="18" type="text"></input>
+                                <input
+                                    onChange={handleAgeChange}
+                                    value={categoryAge}
+                                    className="border-2 rounded border-zinc-100 w-20 text-center"
+                                    placeholder="Edad"
+                                    type="text"
+                                    maxLength="2"
+                                />
                             </div>
                             <p className="p-2 text-center lg:text-left">Agrega el reglamento de la categoría relacionada:</p>
-                            <textarea onChange={e => setCategoryRule(e.target.value)} placeholder="Typing" className="outline outline-offset-2 outline-purple-500 w-full rounded"></textarea>
+                            <textarea
+                                onChange={e => setCategoryRule(e.target.value)}
+                                value={categoryRule}
+                                placeholder="Presiona Enter para añadir un criterio"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault(); // Evita que se añada una nueva línea
+                                        setCategoryRule(prev => prev + `\n• `); // Añade el marcador de lista
+                                    }
+                                }}
+                                className="outline outline-offset-2 outline-purple-500 w-full rounded"
+                            ></textarea>
+
                             <button type="submit" className="bg-gray-300 h-10 rounded-3xl">
                                 Registrar
                             </button>
@@ -93,6 +126,7 @@ export const RegisterCategory = () => {
                     </section>
                 </form>
             </div>
+            <ToastContainer />
         </>
-    )
-}
+    );
+};

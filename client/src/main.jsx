@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { FadeIn } from './components/ui/fadeIn/fadeIn.jsx';
+// import { FadeIn } from './components/ui/fadeIn/fadeIn.jsx';
 import { BackButton } from './components/ui/goBack/GoBack.jsx';
 import "./index.css";
 
@@ -44,9 +44,9 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <>
-        <FadeIn>
+
           <Error404 />
-        </FadeIn>
+
       </>
     ),
   },
@@ -58,10 +58,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <FadeIn>
           <Welcome />
-        </FadeIn>
-
       </>
     ),
   },
@@ -69,10 +66,8 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <ProtectedRoute needLogged={false}>
-        <FadeIn>
         <Translate />
           <Login />
-        </FadeIn>
       </ProtectedRoute>
     ),
   },
@@ -83,10 +78,8 @@ const router = createBrowserRouter([
     path: "/atleta/perfilJugador",
     element: (
       <>
-        <FadeIn>
           <Header />
           <PlayerProfile />
-        </FadeIn>
       </>
     ),
   },
@@ -94,10 +87,8 @@ const router = createBrowserRouter([
     path: "/atleta/resultados",
     element: (
       <>
-        <FadeIn>
           <Header />
           <PlayerResults />
-        </FadeIn>
       </>
     ),
   },
@@ -107,134 +98,121 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
           <Header />
           <Home />
-        </FadeIn>
-
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/coach/perfil",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <PerfilCoach />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     )
   },
   {
     path: "/coach/registrarRubrica",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <Registrar_Rubrica />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
-  {
+/*  {
     path: "/coach/registrarRubrica/nuevoCampo",
     element: (
       <>
-        <FadeIn>
+
           <Header />
           <BackButton />
-        </FadeIn>
       </>
     ),
-  },
+  },*/
   {
     path: "/coach/categorias",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <ViewCategories />
           <BackButton />
-        </FadeIn>
 
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/coach/categorias/editar/:id",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <EditCategory />
           <BackButton />
-        </FadeIn>
 
-      </>
+      </ProtectedRoute>
     ),
   },
 
   {
     path: "/coach/categorias/nuevaCategoria",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <RegisterCategory />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/coach/categorias/jugadores/:id",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged>
+
           <Header />
           <AtletasSelec />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/coach/categoria/:id/jugadores/nuevoJugador",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <RegisterAthlete />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/coach/editarJugador/:id",
     element: (
-      <>
-        <FadeIn>
+      <ProtectedRoute needLogged={true}>
+
           <Header />
           <EditAthlete />
           <BackButton />
-        </FadeIn>
-      </>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/evaluarJugador",
     element: (
       <>
-        <FadeIn>
+
           <Header />
           <ReviewPlayer />
           <BackButton />
-        </FadeIn>
       </>
     ),
   },
@@ -243,10 +221,10 @@ const router = createBrowserRouter([
       path: "/jugadores",
      element: (
        <>
-         <FadeIn>
+ 
            <Header />
            <Players />
-         </FadeIn>
+
  
        </>
      ),
@@ -259,10 +237,9 @@ const router = createBrowserRouter([
     path: "/Selecciones",
     element: (
       <>
-        <FadeIn>
+
           <Header />
           <Selecciones />
-        </FadeIn>
       </>
     ),
   },
@@ -270,10 +247,9 @@ const router = createBrowserRouter([
     path: "/MiembrosCat",
     element: (
       <>
-        <FadeIn>
+
           <Header />
           <MiembrosCat />
-        </FadeIn>
       </>
     ),
   },
@@ -281,10 +257,9 @@ const router = createBrowserRouter([
     path: "/resultados",
     element: (
       <>
-        <FadeIn>
+
           <Header />
           <Tabla_Resultados />
-        </FadeIn>
       </>
     ),
   },

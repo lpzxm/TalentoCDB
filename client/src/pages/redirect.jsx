@@ -15,10 +15,14 @@ const Redirect = () => {
       navigate("/atleta/resultados");
       return
     }
+    if (usuario.rol == "Admin") {
+      navigate("/atleta/resultados");
+      return
+    }
     navigate("/")
   }, [usuario]);
 
-  return <div>Redirect</div>;
+  return <div></div>;
 };
 
 export default Redirect;

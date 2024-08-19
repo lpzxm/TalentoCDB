@@ -135,13 +135,11 @@ export const AtletasSelec = () => {
 
   return (
     <div className="container mx-auto p-4 md:p-6 lg:p-8">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold text-gray-700">{categoryData.sport.name}</h2>
-        <p className="uppercase">{categoryData.name}</p>
-        <h3 className="text-md font-semibold text-gray-600">Atletas seleccionados</h3>
+      <div className="flex justify-center items-center mb-6 mt-6">
+        <h2 className="text-xl font-bold text-orange-500">{categoryData.sport.name} | {categoryData.name}</h2>
       </div>
       <div>
-        Reglamento del deporte:
+        Reglamento del deporte: {categoryData.rules}
       </div>
       <div>
         <Link to={"/coach/categoria/" + params.id + "/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>

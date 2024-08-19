@@ -69,6 +69,7 @@ const CategoryCard = ({ title, image, id, id_sport, deleteCategoria }) => {
   );
 };
 
+
 export const ViewCategories = () => {
   const [categorias, setCategorias] = useState([]);
   const { usuario } = useSession();
@@ -92,7 +93,7 @@ export const ViewCategories = () => {
           <p className="font-semibold text-2xl text-center">Listado de categorias</p>
         </div>
         <div className="md:w-80 flex justify-center gap-16 p-2 mb-8">
-          <h1 className="font-bold text-lg underline underline-offset-2">Categorias de Baloncesto</h1>
+          <h1 className="font-bold text-lg underline underline-offset-2">Categorias de {usuario.sport.name}</h1>
         </div>
       </div>
       <Link className="w-full flex flex-row ml-10" to="/coach/categorias/nuevaCategoria">
@@ -103,9 +104,21 @@ export const ViewCategories = () => {
       </Link>
 
       <div className="flex flex-wrap justify-center mb-24">
-        {categorias.map((category, index) => (
-          <CategoryCard key={index} deleteCategoria={deleteCategoria} id={category.id} id_sport={usuario.id_sport} title={category.name} image={category.img} />
-        ))}
+
+        {categorias.length === 0 ? (
+          <p className="text-center text-red-500 text-2xl mt-16">No existe ninguna categoría, agrega una nueva.</p>
+        ) : (
+          categorias.map((category, index) => (
+            <CategoryCard
+              key={index}
+              deleteCategoria={deleteCategoria}
+              id={category.id}
+              id_sport={usuario.id_sport}
+              title={category.name}
+              image={category.img}
+            />
+          ))
+        )}
       </div>
     </>
   );
