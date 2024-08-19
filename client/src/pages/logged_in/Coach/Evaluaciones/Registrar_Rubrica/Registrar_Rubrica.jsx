@@ -9,7 +9,16 @@ import { crearCampoRubrica, deleteCampoRubrica } from '../../../../../api/deport
 export const Registrar_Rubrica = () => {
     const { usuario } = useSession()
     const [campos, setCampos] = useState("loading");
+
     const { register, handleSubmit, reset } = useForm()
+
+    const validString = (e) => {
+        const value = e.target.value;
+        if (/[^a-zA-Z\s]/.test(value)) {
+            e.target.value = value.slice(0, -1);
+        }
+    };
+
     useEffect(() => {
         (async () => {
             const data = await obtenerCamposRubrica(usuario.id_sport);
@@ -34,6 +43,7 @@ export const Registrar_Rubrica = () => {
     }
 
     if (campos == "loading") return <p>Cargando...</p>
+
     return (
         <>
 
@@ -48,9 +58,9 @@ export const Registrar_Rubrica = () => {
 
                         <form onSubmit={handleSubmit(agregarCampo)} className="flex flex-col -mx-2 w-full">
                             <div className="w-full px-2 mb-4 flex flex-col 880:flex-row space-x-3 border-b-3">
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("name")} type="text" placeholder='Criterio' />
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("name")} type="text" placeholder='Criterio' onInput={validString} />
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' {...register("max_score", { valueAsNumber: true })} type="number" placeholder='Valor maximo' />
-                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" {...register("description")} type="text" placeholder="Descripcion" />
+                                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" {...register("description")} type="text" placeholder="Descripcion" onInput={validString} />
                             </div>
                             <div className="flex mb-4 items-center justify-center space-x-4">
                                 <button type='submit' className="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

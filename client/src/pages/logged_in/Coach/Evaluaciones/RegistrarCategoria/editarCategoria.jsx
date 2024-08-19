@@ -18,7 +18,7 @@ export const EditCategory = () => {
     const [categoryAge, setCategoryAge] = useState();
     const [categoryRule, setCategoryRule] = useState();
 
-    
+
     const navigate = useNavigate();
     const { usuario } = useSession();
 
@@ -26,6 +26,15 @@ export const EditCategory = () => {
 
 
     const handleFileChange = (file) => {
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            toast.error('Por favor, selecciona una imagen válida (JPEG, PNG, GIF).', {
+                position: "bottom-right",
+                autoClose: 5000,
+            });
+            setFile(null);
+            return;
+        }
         console.log(file)
         setFile(file);
     };
@@ -34,21 +43,18 @@ export const EditCategory = () => {
         setFile(null);
     };
 
+    const handleAgeChange = (e) => {
+        const value = e.target.value;
+        // Solo permite números y hasta dos dígitos
+        if (/^\d{0,2}$/.test(value)) {
+            setCategoryAge(value);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData();
-        // if (!file) {
-        //     toast.error('Por favor, selecciona un archivo antes de subir.', {
-        //         position: "bottom-right",
-        //         autoClose: 5000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //     });
-        //     return;
-        // }
+
         if (file) {
             formData.append('img', file);
         }
@@ -114,10 +120,21 @@ export const EditCategory = () => {
                                     <option selected value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
                                 </select>
-                                <input defaultValue={categoryAge} onChange={e => setCategoryAge(e.target.value)} className="border-2 rounded border-zinc-100 w-20 text-center" placeholder="18" type="text"></input>
+                                <input defaultValue={categoryAge} value={categoryAge} onChange={handleAgeChange} className="border-2 rounded border-zinc-100 w-20 text-center" placeholder="Edad" type="text" maxLength="2"></input>
                             </div>
                             <p className="p-2 text-center lg:text-left">Agrega el reglamento de la categoría relacionada:</p>
-                            <textarea defaultValue={categoryData.rules} onChange={e => setCategoryRule(e.target.value)} placeholder="Typing" className="outline outline-offset-2 outline-purple-500 w-full rounded"></textarea>
+                            <textarea
+                                defaultValue={categoryData.rules}
+                                onChange={e => setCategoryRule(e.target.value)}
+                                placeholder="Presiona Enter para añadir un criterio"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault(); // Evita que se añada una nueva línea
+                                        setCategoryRule(prev => prev + `\n• `); // Añade el marcador de lista
+                                    }
+                                }}
+                                className="outline outline-offset-2 outline-purple-500 w-full rounded"
+                            ></textarea>
                             <button type="submit" className="bg-yellow-300 h-10 rounded-3xl">
                                 Editar
                             </button>

@@ -28,6 +28,7 @@ export const createjugador = async (datos) => {
         return "Hubo un error con el servidor"
     }
 }
+
 export const getPlayerById = async (id_player) => {
     try {
         const player = await prisma.jugador.findFirst({
