@@ -72,13 +72,13 @@ export const Home = () => {
                         </Link>
                         <Link to="/coach/categorias/nuevaCategoria" className='border-2 w-full flex flex-row flex-wrap justify-around items-center 880:space-x-10'>
                             <p className='py-4'>
-                                Registrar categoria
+                                Registrar categoría
                             </p>
                             <BiCategoryAlt size="25px" />
                         </Link>
                         <Link to="/coach/categorias" className='border-2 w-full flex flex-row flex-wrap justify-around items-center 880:space-x-28'>
                             <p className='py-4 px-1'>
-                                Atletas
+                                Ver categorías
                             </p>
                             <PiCourtBasketballBold size="25px" />
                         </Link>

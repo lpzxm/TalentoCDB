@@ -36,7 +36,7 @@ export const MobileNavBar = () => {
                             </NavButton>
 
                             <NavButton to="/coach/categorias" activeLink={activeLink}>
-                                <NavItem icon={<BiCategory size={icon.size} color={icon.color} />} text="Categorias" />
+                                <NavItem icon={<BiCategory size={icon.size} color={icon.color} />} text="Categorías" />
                             </NavButton>
 
                             <NavButton to="/coach/registrarRubrica" activeLink={activeLink}>
