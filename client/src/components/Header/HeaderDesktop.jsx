@@ -37,7 +37,7 @@ export const NavBar = () => {
                                         Home
                                     </NavButton>
                                     <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
-                                        Ver categorias
+                                        Ver categorías
                                     </NavButton>
                                     <NavButton to="/coach/registrarRubrica" activeDeskLink={activeDeskLink}>
                                         Registrar rúbrica
