@@ -6,6 +6,10 @@ import { BackButton } from './components/ui/goBack/GoBack.jsx';
 import "./index.css";
 
 // Importaciones componentes - publicos
+import { SessionProvider } from './context/Session.jsx';
+import Redirect from "./pages/redirect.jsx"
+import ProtectedRoute from "./components/routes/ProtectedRoute.jsx"
+
 import { Header } from './components/Header/Header';
 import { Welcome } from './pages/public/Welcome/welcome.jsx';
 import { Login } from './pages/public/Login/login';
@@ -33,10 +37,9 @@ import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { EditAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/EditAthlete.jsx';
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
-import { SessionProvider } from './context/Session.jsx';
 
-import Redirect from "./pages/redirect.jsx"
-import ProtectedRoute from "./components/routes/ProtectedRoute.jsx"
+//  Admin
+import {AdminOptions} from './pages/logged_in/Admin/AdminOptions.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -260,6 +263,15 @@ const router = createBrowserRouter([
 
           <Header />
           <Tabla_Resultados />
+      </>
+    ),
+  },
+  {
+    path: "/menuOpciones",
+    element: (
+      <>
+          <Header />
+          <AdminOptions />
       </>
     ),
   },
