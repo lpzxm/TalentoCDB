@@ -20,12 +20,12 @@ export const PerfilCoach = () => {
 
           <CoachDetail iconName={<CiUser size="30px" color='' />} text={usuario.nombres + " " + usuario.apellidos} />
           <CoachDetail iconName={<TbShirtSport size="30px" color='' />} text={usuario.sport.name} />
-          <CoachDetail iconName={<LuCalendarDays size="30px" />} text={usuario.birthDay} />
+          <CoachDetail iconName={<LuCalendarDays size="30px" />} text={new Date(usuario.birthDay).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })} />
           <CoachDetail iconName={<CiUser size="30px" color='' />} text={usuario.email} />
 
         </div>
         <p className="mb-6">Descripción del Coach:</p>
-        <CoachDetail iconName={<CiUser size={"30px"} color=''/>} />
+        <CoachDetail iconName={<CiUser size={"30px"} color='' />} />
       </section>
     </article>
   );

@@ -1,3 +1,5 @@
+import { FaPlus } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { obtenerCategoriaDeporte } from "../../../../api/deporte";
@@ -139,10 +141,11 @@ export const AtletasSelec = () => {
         <h2 className="text-xl font-bold text-orange-500">{categoryData.sport.name} | {categoryData.name}</h2>
       </div>
       <div>
-        Reglamento del deporte: {categoryData.rules}
+        <span className="font-bold">Reglamento del deporte:</span>
+        <span className=""> {categoryData.rules}</span>
       </div>
-      <div>
-        <Link to={"/coach/categoria/" + params.id + "/jugadores/nuevoJugador"}><button className="p-3 bg-red-300">Agregar Jugador</button>
+      <div className="mt-10">
+        <Link to={"/coach/categoria/" + params.id + "/jugadores/nuevoJugador"}><button className="rounded-sm p-4 bg-red-300 flex items-center hover:bg-red-500 ease-in-out transition-all ">Agregar Jugador <FaPlus className="ml-2" /></button>
         </Link>
 
       </div>

@@ -1,24 +1,27 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FileUpload } from '../../../../../components/ui/inputFile/fileComponent';
-import img_usuario from "../../../../../assets/usuario.png";
 import bgimg from "../../../../../assets/batu.webp";
+
 import { useNavigate } from 'react-router-dom';
+
 import { crearJugador } from '../../../../../api/players';
 import { useParams } from 'react-router-dom';
 import { useSession } from '../../../../../hooks/useSession';
+
+import { obtenerCategoriaDeporte } from '../../../../../api/deporte';
 import { agregarJugadorCat } from '../../../../../api/deporte';
 
 
 export const RegisterAthlete = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setError, clearErrors, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const { usuario } = useSession();
     const params = useParams();
 
     const [file, setFile] = useState(null);
+    const [emailError, setEmailError] = useState("");
     const handleFileChange = (file) => {
-        console.log(file)
         setFile(file);
     };
 
@@ -26,7 +29,53 @@ export const RegisterAthlete = () => {
         setFile(null);
     };
 
+    const validateName = (e) => {
+        const value = e.target.value;
+        if (/[^a-zA-Z\s]/.test(value)) {
+            e.target.value = value.slice(0, -1); // Remueve el último caracter si no es letra
+        }
+    };
 
+    const validateEmail = (e) => {
+        const value = e.target.value;
+        if (!value.endsWith('@cdb.edu.sv')) {
+            setError('email', { type: 'manual', message: 'El correo debe terminar en @cdb.edu.sv' });
+        } else {
+            clearErrors('email');
+        }
+    };
+
+    const validateBirthDay = (e) => {
+        const value = e.target.value;
+        const year = new Date(value).getFullYear();
+        if (year < 1900 || year > 2020) {
+            setError('birthDay', { type: 'manual', message: 'El año debe estar entre 1900 y 2020' });
+        } else {
+            clearErrors('birthDay');
+        }
+    };
+
+    const validateCodigo = (e) => {
+        const value = e.target.value;
+        if (/[^0-9]/.test(value) || value.length > 8) {
+            setError('codigo', { type: 'manual', message: 'El código debe contener solo números y hasta 8 dígitos.' });
+            e.target.value = value.slice(0, -1); // Remueve el último caracter si no es letra
+
+        } else {
+            clearErrors('codigo');
+        }
+    };
+
+
+    const validateSeccion = (e) => {
+        const value = e.target.value.toUpperCase();
+        if (value.length > 1 || /[^A-Z]/.test(value)) {
+            setError('seccion', { type: 'manual', message: 'Solo una letra es permitida.' });
+        } else {
+            clearErrors('seccion');
+            e.target.value = value;
+        }
+    };
 
     const onSubmit = async (data) => {
         try {
@@ -54,12 +103,12 @@ export const RegisterAthlete = () => {
                             <FileUpload file={file} label="Agrega una foto del jugador a añadir en la categoria" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Nombres" {...register('nombres')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Apellidos" {...register('apellidos')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="email" placeholder="Correo estudiantil" {...register('email')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Nombres" {...register('nombres')} onInput={validateName} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Apellidos" {...register('apellidos')} onInput={validateName} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="email" placeholder="Correo estudiantil" {...register('email')} onBlur={validateEmail} />
                             <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="password" placeholder="Contraseña" {...register('password')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" {...register('birthDay')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Codigo estudiantil" {...register('codigo')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" {...register('birthDay')} onBlur={validateBirthDay} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Codigo estudiantil" {...register('codigo')} onInput={validateCodigo} />
                             <select className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" {...register('grado')}>
                                 <option value="1er grado">1er grado</option>
                                 <option value="2do grado">2do grado</option>
@@ -74,7 +123,7 @@ export const RegisterAthlete = () => {
                                 <option value="2do año">2do año</option>
                                 <option value="3er año">3er año</option>
                             </select>
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} onInput={validateSeccion} />
                         </div>
                         <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300" type="submit">
                             Crear perfil de atleta
