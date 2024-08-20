@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useSession } from '../../../../../hooks/useSession';
 import { obtenerJugador, editarJugador } from "../../../../../api/players"
 import { useState, useEffect } from 'react';
+
 export const EditAthlete = () => {
 
     const { register, handleSubmit, setValue, reset } = useForm({
@@ -32,10 +33,20 @@ export const EditAthlete = () => {
         }
         return changes;
     };
+
     const [file, setFile] = useState(null);
     const handleFileChange = (file) => {
-        console.log(file)
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            toast.error('Por favor, selecciona una imagen válida (JPEG, PNG, GIF).', {
+                position: "bottom-right",
+                autoClose: 5000,
+            });
+            setFile(null);
+            return;
+        }
         setFile(file);
+        console.log(file)
     };
 
     const handleFileRemove = () => {
@@ -45,6 +56,55 @@ export const EditAthlete = () => {
     const { usuario } = useSession();
 
     const params = useParams();
+
+    const validateName = (e) => {
+        const value = e.target.value;
+        if (/[^a-zA-Z\s]/.test(value)) {
+            e.target.value = value.slice(0, -1);
+        }
+    };
+
+    const validateEmail = (e) => {
+        const value = String(e.target.value);
+        if (!value.endsWith('@cdb.edu.sv')) {
+            e.target
+            setError('email', { type: 'manual', message: 'El correo debe terminar en @cdb.edu.sv' });
+        } else {
+            clearErrors('email');
+        }
+    };
+
+    const validateBirthDay = (e) => {
+        const value = e.target.value;
+        const year = new Date(value).getFullYear();
+        if (year < 1900 || year > 2020) {
+            setError('birthDay', { type: 'manual', message: 'El año debe estar entre 1900 y 2020' });
+        } else {
+            clearErrors('birthDay');
+        }
+    };
+
+    const validateCodigo = (e) => {
+        const value = e.target.value;
+        if (/[^0-9]/.test(value) || value.length > 8) {
+            setError('codigo', { type: 'manual', message: 'El código debe contener solo números y hasta 8 dígitos.' });
+            e.target.value = value.slice(0, -1); // Remueve el último caracter si no es letra
+
+        } else {
+            clearErrors('codigo');
+        }
+    };
+
+
+    const validateSeccion = (e) => {
+        const value = e.target.value.toUpperCase();
+        if (value.length > 1 || /[^A-Z]/.test(value)) {
+            setError('seccion', { type: 'manual', message: 'Solo una letra es permitida.' });
+        } else {
+            clearErrors('seccion');
+            e.target.value = value;
+        }
+    };
 
     const onSubmit = async (data) => {
         try {
@@ -81,15 +141,15 @@ export const EditAthlete = () => {
                 </div>
                 <section className="rounded-3xl bg-white  lg:mb-12 w-5/6 lg:w-3/6 shadow-2xl mb-32">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* <div className="w-full flex flex-col items-center justify-center">
+                        <div className="w-full flex flex-col items-center justify-center">
                             <FileUpload file={file} label="Agrega una foto del jugador a editar en la categoria" onFileChange={handleFileChange} onFileRemove={handleFileRemove} />
-                        </div> */}
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Nombres" {...register('nombres')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Apellidos" {...register('apellidos')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="email" placeholder="Correo estudiantil" {...register('email')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" {...register('birthDay')} />
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Codigo estudiantil" {...register('codigo')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Nombres" {...register('nombres')} onInput={validateName}/>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Apellidos" {...register('apellidos')} onInput={validateName}/>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="email" placeholder="Correo estudiantil" {...register('email')} onBlur={validateEmail}/>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="date" {...register('birthDay')} onBlur={validateBirthDay}/>
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Codigo estudiantil" {...register('codigo')} onInput={validateCodigo}/>
                             <select className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" {...register('grado')}>
                                 <option value="1er grado">1er grado</option>
                                 <option value="2do grado">2do grado</option>
@@ -104,11 +164,11 @@ export const EditAthlete = () => {
                                 <option value="2do año">2do año</option>
                                 <option value="3er año">3er año</option>
                             </select>
-                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} />
+                            <input className="rounded-lg h-10 border-solid border-2 border-gray-400 flex justify-center m-4" type="text" placeholder="Seccion" {...register('seccion')} onInput={validateSeccion} />
                         </div>
                         <div className='w-full flex justify-center items-center'>
                             <button className="bg-blue-500 text-white rounded-full px-7 py-4 m-10 hover:scale-110 hover:bg-amber-400 ease-in duration-300" type="submit">
-                                Crear perfil de atleta
+                                Actualizar perfil de atleta
                             </button>
                         </div>
 

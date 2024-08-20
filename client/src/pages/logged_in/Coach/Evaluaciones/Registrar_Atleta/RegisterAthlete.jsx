@@ -9,7 +9,7 @@ import { crearJugador } from '../../../../../api/players';
 import { useParams } from 'react-router-dom';
 import { useSession } from '../../../../../hooks/useSession';
 
-import { obtenerCategoriaDeporte } from '../../../../../api/deporte';
+
 import { agregarJugadorCat } from '../../../../../api/deporte';
 
 
@@ -88,6 +88,7 @@ export const RegisterAthlete = () => {
     };
 
     const onSubmit = async (data) => {
+
         try {
             const player = await crearJugador(data);
             await agregarJugadorCat(usuario.id_sport, params.id, player.id);

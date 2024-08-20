@@ -61,8 +61,8 @@ model Sport {
   id   Int    @id @default(autoincrement())
   name String
 
-  coach      Coach[]
-  categories Category_sport[]
+  coach        Coach[]
+  categories   Category_sport[]
   rubricFields Rubric_fields[]
 }
 
@@ -87,11 +87,11 @@ model Category_players {
 }
 
 model Rubric_fields {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
-  max_score   Int
-  id_sport    Int
+  id             Int                   @id @default(autoincrement())
+  name           String
+  description    String
+  max_score      Int
+  id_sport       Int
   sport          Sport                 @relation(fields: [id_sport], references: [id], onDelete: Cascade, onUpdate: Cascade)
   scores_players Rubric_Score_player[]
 }

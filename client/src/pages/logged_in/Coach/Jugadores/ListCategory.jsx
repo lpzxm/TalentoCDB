@@ -14,9 +14,9 @@ const CategoryCard = ({ title, image, id, id_sport, deleteCategoria }) => {
 
 
   const handleConfirmDelete = async () => {
-    console.log(id_sport)
-    await eliminarCategoriaDeporte(id_sport, id)
-    deleteCategoria(id)
+    console.log(id_sport);
+    await eliminarCategoriaDeporte(id_sport, id);
+    deleteCategoria(id);
     setIsModalOpen(false);
   };
 
