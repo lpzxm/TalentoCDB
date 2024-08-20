@@ -104,3 +104,11 @@ model Rubric_Score_player {
   player          Jugador       @relation(fields: [id_player], references: [id], onDelete: Cascade, onUpdate: Cascade)
   rubric          Rubric_fields @relation(fields: [id_rubric_field], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
+
+model Admin {
+  id        Int    @id @default(autoincrement())
+  name      String
+  lastnames String
+  email     String @unique
+  password  String @unique
+}
