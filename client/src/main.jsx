@@ -40,6 +40,8 @@ import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 
 //  Admin
 import {AdminOptions} from './pages/logged_in/Admin/AdminOptions.jsx';
+import { AddDeportes } from './AddDeportes.jsx';
+import  { RegisterCoach } from './RegisterCoach.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -272,6 +274,28 @@ const router = createBrowserRouter([
       <>
           <Header />
           <AdminOptions />
+      </>
+    ),
+  },
+  
+
+
+  {
+    path: "/AddDeportes",
+    element: (
+      <>
+          <Header />
+          <AddDeportes />
+      </>
+    ),
+  },
+
+  {
+    path: "/RegisterCoach",
+    element: (
+      <>
+          <Header />
+          <RegisterCoach />
       </>
     ),
   },
