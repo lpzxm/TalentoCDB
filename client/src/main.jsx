@@ -39,9 +39,9 @@ import { EditAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atle
 import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
 
 //  Admin
-import {AdminOptions} from './pages/logged_in/Admin/AdminOptions.jsx';
+import { AdminOptions } from './pages/logged_in/Admin/AdminOptions.jsx';
 import { AddDeportes } from './AddDeportes.jsx';
-import  { RegisterCoach } from './RegisterCoach.jsx';
+import { RegisterCoach } from './RegisterCoach.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: (
       <>
 
-          <Error404 />
+        <Error404 />
 
       </>
     ),
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-          <Welcome />
+        <Welcome />
       </>
     ),
   },
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={false}>
         <Translate />
-          <Login />
+        <Login />
       </ProtectedRoute>
     ),
   },
@@ -83,8 +83,9 @@ const router = createBrowserRouter([
     path: "/atleta/perfilJugador",
     element: (
       <>
-          <Header />
-          <PlayerProfile />
+        <Header />
+        <Translate />
+        <PlayerProfile />
       </>
     ),
   },
@@ -92,8 +93,9 @@ const router = createBrowserRouter([
     path: "/atleta/resultados",
     element: (
       <>
-          <Header />
-          <PlayerResults />
+        <Header />
+        <Translate />
+        <PlayerResults />
       </>
     ),
   },
@@ -104,8 +106,9 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <ProtectedRoute needLogged={true}>
-          <Header />
-          <Home />
+        <Header />
+        <Home />
+        <Translate />
       </ProtectedRoute>
     ),
   },
@@ -114,9 +117,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <PerfilCoach />
-          <BackButton />
+        <Header />
+        <PerfilCoach />
+        <Translate />
+        <BackButton />
       </ProtectedRoute>
     )
   },
@@ -125,30 +129,33 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <Registrar_Rubrica />
-          <BackButton />
+        <Header />
+        <Translate />
+        <Registrar_Rubrica />
+        <BackButton />
+
       </ProtectedRoute>
     ),
   },
-/*  {
-    path: "/coach/registrarRubrica/nuevoCampo",
-    element: (
-      <>
-
-          <Header />
-          <BackButton />
-      </>
-    ),
-  },*/
+  /*  {
+      path: "/coach/registrarRubrica/nuevoCampo",
+      element: (
+        <>
+  
+            <Header />
+            <BackButton />
+        </>
+      ),
+    },*/
   {
     path: "/coach/categorias",
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <ViewCategories />
-          <BackButton />
+        <Header />
+        <Translate />
+        <ViewCategories />
+        <BackButton />
 
       </ProtectedRoute>
     ),
@@ -158,9 +165,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <EditCategory />
-          <BackButton />
+        <Header />
+        <Translate />
+        <EditCategory />
+        <BackButton />
 
       </ProtectedRoute>
     ),
@@ -171,9 +179,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <RegisterCategory />
-          <BackButton />
+        <Header />
+        <Translate />
+        <RegisterCategory />
+        <BackButton />
       </ProtectedRoute>
     ),
   },
@@ -182,9 +191,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged>
 
-          <Header />
-          <AtletasSelec />
-          <BackButton />
+        <Header />
+        <Translate />
+        <AtletasSelec />
+        <BackButton />
       </ProtectedRoute>
     ),
   },
@@ -193,9 +203,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <RegisterAthlete />
-          <BackButton />
+        <Header />
+        <Translate />
+        <RegisterAthlete />
+        <BackButton />
       </ProtectedRoute>
     ),
   },
@@ -204,9 +215,10 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute needLogged={true}>
 
-          <Header />
-          <EditAthlete />
-          <BackButton />
+        <Header />
+        <Translate />
+        <EditAthlete />
+        <BackButton />
       </ProtectedRoute>
     ),
   },
@@ -215,9 +227,9 @@ const router = createBrowserRouter([
     element: (
       <>
 
-          <Header />
-          <ReviewPlayer />
-          <BackButton />
+        <Header />
+        <ReviewPlayer />
+        <BackButton />
       </>
     ),
   },
@@ -243,8 +255,8 @@ const router = createBrowserRouter([
     element: (
       <>
 
-          <Header />
-          <Selecciones />
+        <Header />
+        <Selecciones />
       </>
     ),
   },
@@ -253,8 +265,8 @@ const router = createBrowserRouter([
     element: (
       <>
 
-          <Header />
-          <MiembrosCat />
+        <Header />
+        <MiembrosCat />
       </>
     ),
   },
@@ -263,8 +275,8 @@ const router = createBrowserRouter([
     element: (
       <>
 
-          <Header />
-          <Tabla_Resultados />
+        <Header />
+        <Tabla_Resultados />
       </>
     ),
   },
@@ -272,20 +284,20 @@ const router = createBrowserRouter([
     path: "/menuOpciones",
     element: (
       <>
-          <Header />
-          <AdminOptions />
+        <Header />
+        <AdminOptions />
       </>
     ),
   },
-  
+
 
 
   {
     path: "/AddDeportes",
     element: (
       <>
-          <Header />
-          <AddDeportes />
+        <Header />
+        <AddDeportes />
       </>
     ),
   },
@@ -294,8 +306,8 @@ const router = createBrowserRouter([
     path: "/RegisterCoach",
     element: (
       <>
-          <Header />
-          <RegisterCoach />
+        <Header />
+        <RegisterCoach />
       </>
     ),
   },
