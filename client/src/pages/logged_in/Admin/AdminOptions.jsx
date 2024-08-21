@@ -8,7 +8,7 @@ export const AdminOptions = () => {
         {/* Fila Superior */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Caja 1 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
+          <div className="rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12l5 5L20 7"></path>
@@ -35,7 +35,7 @@ export const AdminOptions = () => {
           </div>
 
           {/* Caja 2 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
+          <div className="rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16m-8 4h8m-8-6h8m-8-6h8"></path>
@@ -62,7 +62,7 @@ export const AdminOptions = () => {
           </div>
 
           {/* Caja 3 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
+          <div className="rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7h16M4 10h16M4 13h16M4 16h16"></path>
@@ -92,7 +92,7 @@ export const AdminOptions = () => {
         {/* Fila Inferior */}
         <div className="flex flex-col md:flex-row md:justify-center gap-6">
           {/* Caja 4 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
+          <div className="rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16m-8 6h8M4 12h16M4 18h16"></path>
@@ -119,7 +119,7 @@ export const AdminOptions = () => {
           </div>
 
           {/* Caja 5 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
+          <div className="rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
             <div className="flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 12h12M6 15h12m-6-9v18"></path>
@@ -145,32 +145,6 @@ export const AdminOptions = () => {
             </div>
           </div>
 
-          {/* Caja 6 */}
-          <div className="block rounded-lg bg-white text-center text-gray-800 shadow-lg dark:bg-gray-800 dark:text-white p-4 flex flex-col justify-between h-full">
-            <div className="flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12h18m-9-9v18"></path>
-              </svg>
-            </div>
-            <div className="p-4">
-              <h5 className="mb-2 text-lg font-medium leading-tight">
-                Eventos y Competiciones
-              </h5>
-              <p className="mb-4 text-sm">
-                Gestión de eventos y competiciones deportivas. Puedes crear nuevos eventos, ver el calendario de competencias y realizar un seguimiento de la participación.
-              </p>
-              <div className="flex justify-center mt-auto">
-                <Link
-                  to="/events-and-competitions" // Ruta a la que se navega
-                  className="inline-block rounded bg-blue-600 px-4 pb-1.5 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg dark:shadow-black/30 dark:hover:shadow-xl dark:focus:shadow-xl dark:active:shadow-xl">
-                  Crear Evento Nuevo
-                </Link>
-              </div>
-            </div>
-            <div className="border-t-2 border-neutral-100 px-4 py-2 text-gray-600 dark:border-white/10 dark:text-neutral-300">
-              7 days ago
-            </div>
-          </div>
         </div>
       </div>
     </div>

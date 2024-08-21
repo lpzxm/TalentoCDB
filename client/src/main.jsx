@@ -36,7 +36,7 @@ import { ViewCategories } from './pages/logged_in/Coach/Jugadores/ListCategory.j
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { EditAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/EditAthlete.jsx';
-import { Tabla_Resultados } from './pages/Tabla_Resultados/Tabla_Resultados';
+import { ObservationAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Observacion/ObservationAthlete.jsx';
 
 //  Admin
 import { AdminOptions } from './pages/logged_in/Admin/AdminOptions.jsx';
@@ -271,16 +271,6 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/resultados",
-    element: (
-      <>
-
-        <Header />
-        <Tabla_Resultados />
-      </>
-    ),
-  },
-  {
     path: "/menuOpciones",
     element: (
       <>
@@ -311,6 +301,15 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/RegisterObservation",
+    element: (
+      <>
+      <Header />
+      <ObservationAthlete />
+      </>
+    )
+  }
 ]);
 
 
