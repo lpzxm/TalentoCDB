@@ -36,14 +36,14 @@ export const RegisterCoach = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validación de campos
+   
     const newErrors = {};
     if (nombre.trim() === '') newErrors.nombre = 'El nombre es obligatorio.';
     if (deporte.trim() === '') newErrors.deporte = 'El deporte es obligatorio.';
     if (correo.trim() === '') newErrors.correo = 'El correo electrónico es obligatorio.';
     if (descripcion.trim() === '') newErrors.descripcion = 'La descripción es obligatoria.';
     
-    // Validación del correo electrónico
+   
     const correoRegex = /^[^\s@]+@cdb\.edu\.sv$/;
     if (correo && !correoRegex.test(correo)) {
       newErrors.correo = 'El correo electrónico debe ser @cdb.edu.sv';
@@ -54,7 +54,7 @@ export const RegisterCoach = () => {
       return;
     }
 
-    // Aquí puedes manejar el envío del formulario
+    
     console.log('Nombre:', nombre);
     console.log('Deporte:', deporte);
     console.log('Fecha de Nacimiento:', fechaNacimiento);
@@ -71,17 +71,16 @@ export const RegisterCoach = () => {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
-      {/* Fondo con efecto de desenfoque */}
+      
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${backgroundImage})`, filter: 'blur(8px)' }}
       ></div>
 
-      {/* Contenedor del formulario */}
-      <div className="relative max-w-lg w-full bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 dark:text-white">
+      <div className="relative max-w-lg w-full bg-white p-6 rounded-lg shadow-md dark:bg-white dark:text-black">
         <h2 className="text-xl font-semibold text-center mb-6">Registrar Nuevo Entrenador</h2>
         <form onSubmit={handleSubmit}>
-          {/* Campo de Foto */}
+          
           <div className="mb-6 text-center">
             <div className="w-48 h-48 border-2 border-dashed border-yellow-500 rounded-lg mx-auto mb-4 overflow-hidden">
               {foto ? (
@@ -98,9 +97,9 @@ export const RegisterCoach = () => {
             />
           </div>
 
-          {/* Campo 1: Nombre */}
+         
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="nombre">
+            <label className="block text-sm font-medium text-black-700 dark:text-gray-300 mb-2" htmlFor="nombre">
               Nombre
             </label>
             <input

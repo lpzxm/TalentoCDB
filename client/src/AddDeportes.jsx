@@ -47,7 +47,7 @@ export const AddDeportes = () => {
       ></div>
 
       {/* Contenedor del formulario */}
-      <div className="relative max-w-lg w-full bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 dark:text-white">
+      <div className="relative max-w-lg w-full bg-black p-6 rounded-lg shadow-md dark:bg-white dark:text-black">
         {/* Contenedor de la imagen */}
         <div className="mb-6 text-center">
           <div className="w-48 h-48 border-2 border-dashed border-yellow-500 rounded-lg mx-auto mb-4 overflow-hidden">

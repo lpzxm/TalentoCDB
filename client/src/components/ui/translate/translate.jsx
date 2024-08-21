@@ -22,7 +22,7 @@ const Translate = () => {
                 'z-50',
                 'bottom-14',
                 'bg-white',
-                'left-10',
+                'right-0',
                 'w-fit',
                 'fixed',
                 'transition-all',
@@ -60,7 +60,7 @@ const Translate = () => {
     };
 
     return (
-        <div className="fixed bottom-0 left-0 z-50 p-4">
+        <div className="fixed bottom-0 right-10 z-50 p-4">
             <button
                 className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition duration-300"
                 onClick={toggleLanguageSelector}
