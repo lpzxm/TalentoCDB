@@ -8,13 +8,14 @@ const AdminRoute = ({ children, needLogged = true }) => {
 
   useEffect(() => {
     console.log(usuario)
-    // if (!usuario.id && needLogged) return navigate("/login");
+    if (!usuario.id && needLogged) return navigate("/login");
 
-    // if (usuario.id && !needLogged) return navigate("/redirect")
+    if (usuario.id && !needLogged) return navigate("/redirect")
 
+    if (usuario.rol !== "Admin") return navigate("/redirect")
   }, [])
 
-  return <Outlet/>
+  return <Outlet />
 }
 
 export default AdminRoute

@@ -1,21 +1,19 @@
 import { Router } from "express";
-import multer from "multer";
-const storage = multer.memoryStorage()
-const upload = multer({ storage });
 
 import { getSports, getCategorySport, getSport, createNewSport, updateSportDetails, deleteSportRecord, createSportCategory, updateSportCategory, deleteSportCategory, addPlayer, removePlayer, } from "../controllers/sportController.js";
 import {
-    getRubricHandler,
-    createRubricHandler,
-    updateRubricHandler,
-    deleteRubricHandler,
+    // getRubricHandler,
+    // createRubricHandler,
+    // updateRubricHandler,
+    // deleteRubricHandler,
     getAllRubricFieldsHandler,
     createRubricFieldHandler,
-    getAllRubricScoreByPlayerHandler,
+    // getAllRubricScoreByPlayerHandler,
     createRubricScorePlayerHandler,
     getPlayerRubricScoresHandler,
     deleteRubricFieldHandler
 } from "../controllers/rubricController.js";
+import { upload } from "../config/upload.js";
 
 const router = Router();
 

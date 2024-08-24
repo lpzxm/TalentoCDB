@@ -14,7 +14,7 @@ export const auth = async (req, res, next) => {
         if (userType == "Coach") {
             usuario = await prisma.coach.findFirst({
                 where: {
-                    id: userId
+                    id: +userId
                 },
                 include: {
                     sport: true
@@ -24,14 +24,14 @@ export const auth = async (req, res, next) => {
         if (userType == "Admin") {
             usuario = await prisma.admin.findFirst({
                 where: {
-                    id: userId
+                    id: +userId
                 }
             })
         }
         if (userType == "Jugador") {
             usuario = await prisma.jugador.findFirst({
                 where: {
-                    id: userId
+                    id: +userId
                 }
             })
             if (usuario.id) {
@@ -50,12 +50,13 @@ export const auth = async (req, res, next) => {
                 usuario.sport = deporteUsuario.category.sport
             }
         }
-
+        console.log(usuario)
         if (!usuario) return res.status(401).json({ error: "No estas autenticado" })
         usuario.rol = userType
         req.usuario = usuario;
         next();
     } catch (error) {
+        console.log(error)
         return res.status(401).json({ error: "Invalid token" });
     }
 };

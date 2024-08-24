@@ -6,8 +6,8 @@ export const getAllCoachesController = async (req, res) => {
 }
 
 export const createCoachesController = async (req, res) => {
-    const datos = req.body;
-    const coach = await createCoach(datos, req.fiile);
+    const datos = JSON.parse(req.body.data);
+    const coach = await createCoach(datos,req.file);
     return res.json(coach)
 }
 
