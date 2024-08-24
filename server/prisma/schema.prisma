@@ -29,9 +29,10 @@ model Jugador {
   status_img_academic  String?
   status_img_behaviour String?
 
-  categories_joined Category_players[]
-  rubric_scores     Rubric_Score_player[]
-  category_assist   Category_Assist[]
+  categories_joined     Category_players[]
+  rubric_scores         Rubric_Score_player[]
+  category_assist       Category_Assist[]
+  Observaciones_Jugador Observaciones_Jugador[]
 }
 
 model Category_Assist {
@@ -51,12 +52,11 @@ model Coach {
   cloudinary_id String   @default("")
   url           String   @default("")
   nombres       String
-  apellidos     String
   birthDay      DateTime
   descripcion   String   @default("")
   id_sport      Int
 
-  sport Sport @relation(fields: [id_sport], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sport                 Sport                   @relation(fields: [id_sport], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Sport {
@@ -114,4 +114,11 @@ model Admin {
   lastnames String
   email     String @unique
   password  String @unique
+}
+
+model Observaciones_Jugador {
+  id            Int    @id @default(autoincrement())
+  id_atleta     Int
+  observacion   String
+  atleta     Jugador @relation(fields: [id_atleta], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

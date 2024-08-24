@@ -20,11 +20,12 @@ const obtenerPerfil = async (token) => {
 const SessionProvider = ({ children }) => {
     const [usuario, setUsuario] = useState({});
     const [loading, setLoading] = useState(true);
-
+    const [userToken, setUserToken] = useState()
     const perfil = async () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("token");
+            setUserToken(token)
             const { data } = await obtenerPerfil(token ?? "");
             setUsuario(data.user);
             setLoading(false);
@@ -35,6 +36,7 @@ const SessionProvider = ({ children }) => {
 
     const login = async (usuario) => {
         localStorage.setItem("token", usuario.token);
+        setUserToken(usuario.token)
         await perfil();
     };
     const logout = () => {
@@ -74,6 +76,7 @@ const SessionProvider = ({ children }) => {
                 usuario,
                 login,
                 logout,
+                userToken
             }}
         >
             {children}

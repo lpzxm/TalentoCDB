@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { clientAxios } from './config/clientAxios';
+import { useNavigate } from 'react-router-dom';
 
 const backgroundImage = 'https://scontent.fsal13-1.fna.fbcdn.net/v/t39.30808-6/453096382_902236175279672_1482644661368440795_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2ZVMrC_g_1oQ7kNvgEzPP-8&_nc_ht=scontent.fsal13-1.fna&oh=00_AYCiNinmoPajpGVI-qUw8JYKBD3GWNCjsDp4QGFOuVBRdw&oe=66C9F06F';
 
@@ -10,10 +11,12 @@ export const RegisterCoach = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    id_sport: ""
+  });
   const [deportes, setDeportes] = useState([]);
   const [cargando, setCargando] = useState(false);
-
+  const navigate = useNavigate()
   useEffect(() => {
     (async () => {
       try {
@@ -28,10 +31,15 @@ export const RegisterCoach = () => {
   const onSubmit = async (formData) => {
     setCargando(true);
     try {
-      const response = await clientAxios.post("/deportes", formData);
-      console.log("Entrenador registrado exitosamente:", response.data);
-      // Aquí puedes manejar lo que ocurre después del registro exitoso,
-      // como redirigir al usuario o mostrar un mensaje de éxito.
+      const payload = new FormData()
+      const data = { ...formData, foto: formData.foto[0].name }
+      payload.append("data", JSON.stringify(data))
+      payload.append("foto", formData.foto[0])
+      const response = await clientAxios.postForm("/entrenadores", payload);
+      if(response.data.error){
+        return
+      }
+      navigate("/redirect")
     } catch (error) {
       console.error("Error al registrar el entrenador:", error);
       // Aquí puedes manejar los errores, como mostrar un mensaje de error al usuario.
@@ -72,7 +80,7 @@ export const RegisterCoach = () => {
             <input
               type="text"
               id="nombre"
-              {...register('nombre', { required: 'Este campo es obligatorio' })}
+              {...register('nombres', { required: 'Este campo es obligatorio' })}
               className={`w-full px-3 py-2 border ${errors.nombre ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
             {errors.nombre && <p className="text-red-500 text-sm mt-2">{errors.nombre.message}</p>}
@@ -87,7 +95,8 @@ export const RegisterCoach = () => {
               {...register('id_sport', { required: 'Este campo es obligatorio' })}
               className={`w-full px-3 py-2 border ${errors.deporte ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             >
-              {deportes.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
+              <option disabled selected value="">Selecciona un deporte</option>
+              {deportes.map((item, index) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
             {errors.deporte && <p className="text-red-500 text-sm mt-2">{errors.deporte.message}</p>}
           </div>
@@ -114,7 +123,7 @@ export const RegisterCoach = () => {
             <input
               type="email"
               id="correo"
-              {...register('correo', {
+              {...register('email', {
                 required: 'Este campo es obligatorio',
                 pattern: { value: /^\S+@\S+$/i, message: 'Correo no válido' },
               })}

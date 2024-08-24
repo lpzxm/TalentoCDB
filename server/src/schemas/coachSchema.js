@@ -14,7 +14,6 @@ const coachSchema = z.object({
     email: z.string().email(),
     password: z.string(),
     nombres: z.string(),
-    apellidos: z.string(),
     birthDay: z.string().or(z.date()),
     descripcion: z.string(),
     id_sport: z.string().transform(Number).or(z.number())

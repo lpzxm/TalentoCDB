@@ -1,4 +1,6 @@
+import { cloudinary } from "../config/cloudinary.js";
 import { prisma } from "../config/prisma.js"
+import { fileToBase64 } from "../helpers/fileToBase64.js";
 import { coachSchema } from "../schemas/coachSchema.js";
 import bcrypt from "bcrypt"
 export const getAllCoach = async () => {
@@ -6,20 +8,40 @@ export const getAllCoach = async () => {
     return coaches
 }
 
-export const createCoach = async (datos) => {
+export const createCoach = async (datos,file) => {
     try {
+
+        //Obtener Datos
         const coachValidado = coachSchema.parse(datos)
-
         coachValidado.birthDay = new Date(coachValidado.birthDay);
-
+        
+        //Obtener datos de la imagen guardad de cloudinary
+        const imagen = await cloudinary.uploader.upload(fileToBase64(file))
+    
+        //Guardarlo en la base de datos    
         if (coachValidado.birthDay.toString() == "Invalid Date") {
             return { error: "Fecha invalida" }
+        }
+
+
+        const sameEmail = await prisma.coach.findFirst({
+            where: {
+                email: datos.email
+            }
+        })
+
+        if(sameEmail){
+            return {error: "Email ya registrado"}
         }
 
         coachValidado.password = await bcrypt.hash(coachValidado.password, 5);
 
         await prisma.coach.create({
-            data: coachValidado
+            data: {
+                ...coachValidado,
+                cloudinary_id: imagen.public_id,
+                url: imagen.secure_url
+            }
         })
 
         return coachValidado
