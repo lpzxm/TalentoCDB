@@ -130,7 +130,7 @@ export const AdminOptions = () => {
                 Categorías y Atletas
               </h5>
               <p className="mb-4 text-sm">
-                Aquí puedes ver y gestionar las categorías de deportes y los atletas registrados. Permite asignar atletas a diferentes categorías y supervisar su progreso.
+                Aquí puedes ver y gestionar las categorías de deportes y los atletas registrados.
               </p>
               <div className="flex justify-center mt-auto">
                 <Link
