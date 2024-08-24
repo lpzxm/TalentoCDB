@@ -11,5 +11,5 @@ import z from "zod"
 
 
 export const sportSchema = z.object({
-    name: z.string()
+    nombre: z.string()  
 })

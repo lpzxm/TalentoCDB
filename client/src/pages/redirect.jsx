@@ -16,7 +16,7 @@ const Redirect = () => {
       return
     }
     if (usuario.rol == "Admin") {
-      navigate("/atleta/resultados");
+      navigate("/admin/menuOpciones");
       return
     }
     navigate("/")

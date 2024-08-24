@@ -6,11 +6,11 @@ import { useForm } from "react-hook-form";
 import { loginRequest } from "../../../api/auth";
 import { useSession } from "../../../hooks/useSession";
 
-export const Login = () => {
+export const    Login = () => {
     const [seePsw, setSeePsw] = useState(false);
     const [authError, setAuthError] = useState("");  // Estado para manejar el error de autenticación
 
-    const { register, handleSubmit, setError, formState: { errors }, clearErrors } = useForm({
+    const { register, handleSubmit, setError, formState: { errors }, clearErrors, watch } = useForm({
         defaultValues: {
             email: "",
             password: "",
@@ -54,6 +54,8 @@ export const Login = () => {
         }
     };
 
+    console.log(watch())
+
     return (
         <>
             <div className="flex justify-center items-center w-screen h-screen bg-backLogin bg-cover">
@@ -72,7 +74,6 @@ export const Login = () => {
                                             message: "Formato de correo no válido."
                                         }
                                     })}
-                                    onChange={() => clearErrors("email")}
                                     type="email"
                                     placeholder="Correo institucional"
                                     className={`w-full placeholder:text-slate-400 bg-[#F9F9F9] border ${errors.email ? 'border-red-500' : 'border-[#CCC9C9]'} rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1`}
@@ -91,7 +92,6 @@ export const Login = () => {
                                     {...register("password", {
                                         required: "El campo de contraseña es obligatorio."
                                     })}
-                                    onChange={() => clearErrors("password")}
                                     type={seePsw ? "text" : "password"}
                                     placeholder="Contraseña"
                                     className={`w-full placeholder:text-slate-400 bg-[#F9F9F9] border ${errors.password ? 'border-red-500' : 'border-[#CCC9C9]'} rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1`}
@@ -118,9 +118,7 @@ export const Login = () => {
                             )}
 
                             <div className="relative right-12">
-                                <label htmlFor="remember" className="font-semibold">
-                                    <input type="checkbox" name="remember" id="remember" /> Recordar contraseña
-                                </label>
+                                
                             </div>
                         </div>
                     </div>

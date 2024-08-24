@@ -45,25 +45,28 @@ model Category_Assist {
 }
 
 model Coach {
-  id          Int      @id @default(autoincrement())
-  email       String   @unique
-  password    String   @unique
-  nombres     String
-  apellidos   String
-  birthDay    DateTime
-  descripcion String   @default("")
-  id_sport    Int
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
+  password      String   @unique
+  cloudinary_id String   @default("")
+  url           String   @default("")
+  nombres       String
+  apellidos     String
+  birthDay      DateTime
+  descripcion   String   @default("")
+  id_sport      Int
 
   sport Sport @relation(fields: [id_sport], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Sport {
-  id   Int    @id @default(autoincrement())
-  name String
-
-  coach        Coach[]
-  categories   Category_sport[]
-  rubricFields Rubric_fields[]
+  id            Int              @id @default(autoincrement())
+  name          String
+  cloudinary_id String           @default("")
+  url           String           @default("")
+  coach         Coach[]
+  categories    Category_sport[]
+  rubricFields  Rubric_fields[]
 }
 
 model Category_sport {

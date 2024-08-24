@@ -1,6 +1,6 @@
 import { prisma } from "../config/prisma.js"
 import { sportSchema } from "../schemas/sportSchema.js";
-
+import { cloudinary } from "../config/cloudinary.js";
 export const getAllSport = async () => {
     const sport = await prisma.sport.findMany({
         include: {
@@ -40,13 +40,20 @@ export const getSportById = async (id_deporte) => {
     }
 }
 
-export const createSport = async (datos) => {
+export const createSport = async (datos,file) => {
     try {
         const sportValidado = sportSchema.parse(datos)
 
+        const b64 = Buffer.from(file.buffer).toString("base64");
+        let dataURI = "data:" + file.mimetype + ";base64," + b64;
 
+        const uploadedFile = await cloudinary.uploader.upload(dataURI)
         await prisma.sport.create({
-            data: sportValidado
+            data: {
+                name: sportValidado.nombre,
+                url: uploadedFile.secure_url,
+                cloudinary_id: uploadedFile.public_id
+            }
         })
 
         return sportValidado

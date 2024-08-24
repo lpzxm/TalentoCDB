@@ -7,7 +7,7 @@ export const getAllCoachesController = async (req, res) => {
 
 export const createCoachesController = async (req, res) => {
     const datos = req.body;
-    const coach = await createCoach(datos);
+    const coach = await createCoach(datos, req.fiile);
     return res.json(coach)
 }
 

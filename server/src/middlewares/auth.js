@@ -21,6 +21,13 @@ export const auth = async (req, res, next) => {
                 }
             })
         }
+        if (userType == "Admin") {
+            usuario = await prisma.admin.findFirst({
+                where: {
+                    id: userId
+                }
+            })
+        }
         if (userType == "Jugador") {
             usuario = await prisma.jugador.findFirst({
                 where: {

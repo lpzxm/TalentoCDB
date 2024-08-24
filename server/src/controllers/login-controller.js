@@ -25,6 +25,14 @@ export const login = async (req, res) => {
             userType = 'Coach';
         }
 
+        if(!user){
+            user = await prisma.admin.findFirst({
+                where: {
+                    email
+                }
+            })
+            userType = 'Admin'
+        }
         // Si el usuario no existe, devolver error
         if (!user) {
             return res.status(401).json({ error: "Invalid email or password" });

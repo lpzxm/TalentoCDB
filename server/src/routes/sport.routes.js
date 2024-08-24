@@ -22,7 +22,7 @@ const router = Router();
 
 router.route("/")
     .get(getSports)
-    .post(createNewSport);
+    .post(upload.single("foto"),createNewSport);
 
 router.route("/:id")
     .get(getSport)

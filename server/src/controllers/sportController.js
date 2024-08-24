@@ -14,7 +14,7 @@ export const getSports = async (req, res) => {
 export const createNewSport = async (req, res) => {
     try {
         const datos = req.body;
-        const sport = await createSport(datos);
+        const sport = await createSport(datos, req.file);
         return res.status(201).json(sport);
     } catch (error) {
         return res.status(500).json({ error: error.message });

@@ -42,6 +42,7 @@ import { ObservationAthlete } from './pages/logged_in/Coach/Evaluaciones/Registr
 import { AdminOptions } from './pages/logged_in/Admin/AdminOptions.jsx';
 import { AddDeportes } from './AddDeportes.jsx';
 import { RegisterCoach } from './RegisterCoach.jsx';
+import AdminRoute from './components/routes/AdminRoute.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -251,64 +252,67 @@ const router = createBrowserRouter([
   //
   // Rutas del Admin - Privadas
   {
-    path: "/Selecciones",
-    element: (
-      <>
+    path: "/admin",
+    element: <AdminRoute/>,
+    children: [
+      {
+        path: "Selecciones",
+        element: (
+          <>
 
-        <Header />
-        <Selecciones />
-      </>
-    ),
-  },
-  {
-    path: "/MiembrosCat",
-    element: (
-      <>
+            <Header />
+            <Selecciones />
+          </>
+        ),
+      },
+      {
+        path: "MiembrosCat",
+        element: (
+          <>
 
-        <Header />
-        <MiembrosCat />
-      </>
-    ),
-  },
-  {
-    path: "/menuOpciones",
-    element: (
-      <>
-        <Header />
-        <AdminOptions />
-      </>
-    ),
-  },
+            <Header />
+            <MiembrosCat />
+          </>
+        ),
+      },
+      {
+        path: "menuOpciones",
+        element: (
+          <>
+            <Header />
+            <AdminOptions />
+          </>
+        ),
+      },
 
-
-
-  {
-    path: "/AddDeportes",
-    element: (
-      <>
-        <Header />
-        <AddDeportes />
-      </>
-    ),
-  },
-
-  {
-    path: "/RegisterCoach",
-    element: (
-      <>
-        <Header />
-        <RegisterCoach />
-      </>
-    ),
-  },
-  {
-    path: "/RegisterObservation",
-    element: (
-      <>
-      <Header />
-      <ObservationAthlete />
-      </>
-    )
+      {
+        path: "AddDeportes",
+        element: (
+          <>
+            <Header />
+            <AddDeportes />
+          </>
+        ),
+      },
+      {
+        path: "RegisterCoach",
+        element: (
+          <>
+            <Header />
+            <RegisterCoach />
+          </>
+        ),
+      },
+      {
+        path: "RegisterObservation",
+        element: (
+          <>
+            <Header />
+            <ObservationAthlete />
+          </>
+        )
+      }
+    ]
   }
 ]);
 

@@ -15,7 +15,7 @@ export const Error404 = () => {
                                 Parece que te has perdido!
                             </h1>
                             <p className="my-2 text-gray-800">Nuestras disculpas por ello, regresa de nuevo a nuestra página principal para que puedas accesar con lo que contamos.</p>
-                            <Link to="/home">
+                            <Link to="/redirect">
                                 <button className="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">Vamos allá!!</button>
                             </Link>
 
