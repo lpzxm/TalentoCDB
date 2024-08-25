@@ -4,9 +4,11 @@ import { clientAxios } from '../../../../../config/clientAxios';
 import { useSession } from '../../../../../hooks/useSession';
 import { useNavigate } from 'react-router-dom';
 
-export const ObservationAthlete = () => {
+export const ObservationAthlete = ({type = 'jugadores'}) => {
     const backgroundImage = 'https://scontent-gua1-1.xx.fbcdn.net/v/t39.30808-6/453387999_901552668681356_8860159141904411930_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=VttaKdEEyqoQ7kNvgE4RaF8&_nc_ht=scontent-gua1-1.xx&oh=00_AYBUJqFMkdMHS5dPnJOnUNxTRly7t9mPOUcDbQarXjOSWA&oe=66CBD3E0';
-
+    const fetch_url = type == "coach" ? "entrenadores" : "jugadores"
+    const object = type == "coach" ? "Entrenador" : "Jugador"
+    const post_url = "coach" ? "/observaciones/entrenadores" : "/observaciones"
     const { register, handleSubmit, reset } = useForm();
     const [loading, setLoading] = useState(false);
     const [athletes, setAthletes] = useState([]);
@@ -15,7 +17,7 @@ export const ObservationAthlete = () => {
     useEffect(() => {
         const fetchAthletes = async () => {
             try {
-                const response = await clientAxios.get('/jugadores');
+                const response = await clientAxios.get('/'+fetch_url);
                 setAthletes(response.data);
             } catch (error) {
                 console.error("Error fetching athletes", error);
@@ -29,7 +31,7 @@ export const ObservationAthlete = () => {
     const onSubmit = async (data) => {
         setLoading(true);
         try {
-            await clientAxios.post('/observaciones', data, {
+            await clientAxios.post(post_url, data, {
                 headers: {
                     'Authorization': 'Bearer '+userToken
                 }
@@ -51,18 +53,18 @@ export const ObservationAthlete = () => {
 
             <div className="relative max-w-lg w-full bg-white p-4 rounded-lg shadow-md dark:bg-white dark:text-black">
                 <div className='border-2 border-dashed border-amber-400 p-6 rounded-xl'>
-                    <h2 className="text-2xl font-semibold mb-4">Observación del Atleta</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Observación del {object}</h2>
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div>
-                            <label htmlFor="athleteName" className="block text-sm font-medium text-gray-700">Nombre del Atleta</label>
+                            <label htmlFor="athleteName" className="block text-sm font-medium text-gray-700">Nombre del {object}</label>
                             <select
                                 id="athleteName"
                                 name="id_atleta"
-                                {...register("id_atleta", { required: true, valueAsNumber: true  })}
+                                {...register(type!="coach" ? "id_atleta" : "id_entrenador", { required: true, valueAsNumber: true  })}
                                 className="mt-1 block w-full rounded-md shadow-sm border-1 border solid border-gray-300"
                                 required
                             >
-                                <option value="" disabled selected>Seleccionar Atleta</option>
+                                <option value="" disabled selected>Seleccionar {object}</option>
                                 {athletes.map(athlete => (
                                     <option key={athlete.id} value={athlete.id}>
                                         {athlete.nombres}

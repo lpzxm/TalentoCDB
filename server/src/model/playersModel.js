@@ -34,6 +34,22 @@ export const getPlayerById = async (id_player) => {
         const player = await prisma.jugador.findFirst({
             where: {
                 id: id_player
+            },
+            include: {
+                categories_joined: {
+                    include: {
+                        category: {
+                            include: {
+                                sport: {
+                                    include: {
+                                        rubricFields: true  
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                category_assist: true
             }
         })
         return player
