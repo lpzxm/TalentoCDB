@@ -266,7 +266,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "MiembrosCat",
+        path: "MiembrosCat/:id_deporte/:id_categoria",
         element: (
           <>
 
@@ -309,6 +309,15 @@ const router = createBrowserRouter([
           <>
             <Header />
             <ObservationAthlete />
+          </>
+        )
+      },
+      {
+        path: "RegisterObservationCoach",
+        element: (
+          <>
+            <Header />
+            <ObservationAthlete type="coach"/>
           </>
         )
       }

@@ -9,6 +9,7 @@ import { TbShirtSport } from "react-icons/tb";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { LuCalendarDays } from "react-icons/lu";
 import { useState } from 'react';
+import { clientAxios } from '../../../config/clientAxios';
 
 const PlayerDetail = ({ icon: Icon, text }) => (
     <div className='bg-slate-100 w-full flex flex-row justify-center items-center space-x-4 text-center p-3 rounded-full'>
@@ -28,8 +29,8 @@ const PlayerProfileImage = ({ background, profile }) => (
 
 export const PlayerProfile = () => {
 
-    const { usuario } = useSession();
-
+    const { usuario, userToken } = useSession();
+    console.log(usuario)
     const [file1, setFile1] = useState(null);
     const [file2, setFile2] = useState(null);
 
@@ -52,26 +53,33 @@ export const PlayerProfile = () => {
     };
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         if (!file1 || !file2) {
             alert('Por favor, selecciona ambos archivos antes de subir.');
             return;
         }
 
-        const formData = new FormData();
-        formData.append('file1', file1);
-        formData.append('file2', file2);
+        const formData1 = new FormData();
+        const formData2 = new FormData();
+        formData1.append('img', file1);
+        formData2.append('img', file2);
 
-        /* try {
-            const response = await axios.post('/upload', formData, {
+        try {
+            const response1 = await clientAxios.postForm('/jugadores/academico', formData1, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + userToken
                 },
             });
-            console.log(response.data);
+            const response2 = await clientAxios.postForm('/jugadores/conductual', formData2, {
+                headers: {
+                    'Authorization': 'Bearer ' + userToken
+                },
+            });
+            alert("Archivos enviados")
         } catch (error) {
             console.error('Error al subir los archivos:', error);
-        } */
+        }
     };
 
     const calculateAge = (birthDate) => {
@@ -110,8 +118,10 @@ export const PlayerProfile = () => {
                 <form className="w-full h-full flex flex-col justify-around items-center mb-20">
                     <div><p className='font-semibold'>Sube tus notas de periodo aqui (una foto por favor)</p></div>
                     <FileUpload label="Sube tu imagen aquí (1)" file={file1} onFileChange={handleFileChange1} onFileRemove={handleFileRemove1} />
+                    {usuario.status_img_academic && <button type='button' onClick={()=>window.open(usuario.status_img_academic)} className='bg-green-500 text-white px-4 py-2 rounded-lg'>Ver actual</button>}
                     <div><p className='font-semibold'>Sube tu reporte conductual aqui (una foto por favor)</p></div>
                     <FileUpload label="Sube tu archivo aquí (2)" file={file2} onFileChange={handleFileChange2} onFileRemove={handleFileRemove2} />
+                    {usuario.status_img_behaviour && <button type='button' onClick={()=>window.open(usuario.status_img_behaviour)} className='bg-green-500 text-white px-4 py-2 rounded-lg'>Ver actual</button>}
                     <button
                         className="bg-blue-500 text-white px-4 py-2 rounded-lg"
                         onClick={handleSubmit}

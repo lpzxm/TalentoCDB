@@ -78,7 +78,7 @@ export const uploadReporteAcademicoFile = async (req, res) => {
         })
 
 
-        const category = await uploadReporteAcademico(id_player, img.url);
+        const category = await uploadReporteAcademico(id_player, img.secure_url);
         return res.json(category)
     } catch (error) {
         console.log(error)
@@ -98,7 +98,7 @@ export const uploadReporteConductualFile = async (req, res) => {
         })
 
 
-        const category = await uploadReporteConductual(id_player, img.url);
+        const category = await uploadReporteConductual(id_player, img.secure_url);
         return res.json(category)
     } catch (error) {
         return res.status(500).json({ error: "hubo un error en el servidor" });

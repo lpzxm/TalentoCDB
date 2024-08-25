@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { TbShirtSport } from "react-icons/tb";
 import { useSession } from "../../../hooks/useSession";
-import Modal from './Componets/Modal'; 
+import Modal from './Componets/Modal';
+import { useAtletaResultados } from '../../../hooks/useAtletaResultados';
 
 export const PlayerResults = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { data, loading } = useAtletaResultados()
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-    
-    const { usuario } = useSession();
 
+    const { usuario } = useSession();
     const criterios = [
         {
             criterio: "Condición Física",
@@ -35,7 +36,7 @@ export const PlayerResults = () => {
     ];
 
     const ponderacionFinal = "100%";
-
+    if (loading) return <p>Cargando...</p>
     return (
         <>
             <div>
@@ -51,11 +52,17 @@ export const PlayerResults = () => {
                     </div>
                 </div>
 
-                <CriteriosTable criterios={criterios} ponderacionFinal={ponderacionFinal} />
+                <CriteriosTable criterios={data.map(criterio => {
+                    return ({
+                        criterio: criterio.name,
+                        descripcion: criterio.description,
+                        ponderacion: criterio.max_score
+                    })
+                })} ponderacionFinal={data.map(criterio => criterio.max_score).reduce((a,b)=>a+b,0)} />
 
                 {/* Botón para abrir el modal */}
                 <div className="mt-6 flex justify-center">
-                    <button 
+                    <button
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
                         onClick={openModal}
                     >
@@ -67,7 +74,7 @@ export const PlayerResults = () => {
                 <Modal isOpen={isModalOpen} onClose={closeModal}>
                     <h2 className="text-xl font-semibold">¡Felicidades! Has sido seleccionado.</h2>
                     <p className="mt-4">Al parecer tu rendimiento es excelente, tu entrenador decidió agregarte a una selección, ¡eres genial!</p>
-                    <button 
+                    <button
                         className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
                         onClick={closeModal}
                     >
