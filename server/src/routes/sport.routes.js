@@ -24,7 +24,7 @@ router.route("/")
 
 router.route("/:id")
     .get(getSport)
-    .put(upload.single("foto"),updateSportDetails)
+    .put(updateSportDetails)
     .delete(deleteSportRecord);
 
 router.route("/:id/categorias")

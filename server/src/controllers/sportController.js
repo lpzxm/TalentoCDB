@@ -39,7 +39,7 @@ export const updateSportDetails = async (req, res) => {
     try {
         const id_deporte = +req.params.id;
         const datos = req.body;
-        const sport = await updateSport(id_deporte, datos, req.file);
+        const sport = await updateSport(id_deporte, datos);
         if (sport) {
             return res.json(sport);
         } else {

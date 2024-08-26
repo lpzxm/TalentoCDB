@@ -40,7 +40,7 @@ export const getSportById = async (id_deporte) => {
     }
 }
 
-export const createSport = async (datos, file) => {
+export const createSport = async (datos,file) => {
     try {
         const sportValidado = sportSchema.parse(datos)
 
@@ -62,29 +62,16 @@ export const createSport = async (datos, file) => {
         return "Hubo un error con el servidor"
     }
 }
-export const updateSport = async (id_deporte, datos, file) => {
+export const updateSport = async (id_deporte, datos) => {
     try {
         const sportValidado = sportSchema.parse(datos)
-
-        const data = {
-            name: sportValidado.nombre,
-        }
-
-        if (file) {
-            const b64 = Buffer.from(file.buffer).toString("base64");
-            let dataURI = "data:" + file.mimetype + ";base64," + b64;
-
-            const uploadedFile = await cloudinary.uploader.upload(dataURI)
-            data.url = uploadedFile.secure_url
-            data.cloudinary_id = uploadedFile.public_id
-        }
 
 
         const sportUpdated = await prisma.sport.update({
             where: {
                 id: id_deporte
             },
-            data
+            data: sportValidado
         })
 
         return sportUpdated
