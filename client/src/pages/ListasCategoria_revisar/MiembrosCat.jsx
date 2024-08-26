@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import img from "../../assets/usuario.png";
 import { useCategoriaDeporte } from "../../hooks/useCategoriasDeportes";
 
@@ -17,13 +17,15 @@ export const MiembrosCat = () => {
           <h2 className="text-lg font-bold text-center">Categoría {categoria.name}</h2>
         </div>
         <div className="grid grid-cols-2">
-          {categoria.players.map(({player}) => (
+          {categoria.players.map(({ player }) => (
             <div key={player.id} className="bg-white rounded shadow p-4">
               <img className="h-24 w-24 rounded-full mx-auto mb-4" src={img} alt="Avatar" />
               <h3 className="text-center font-bold">{player.nombres} {player.apellidos}</h3>
               <div className="text-center mt-4">
-                <button className="text-red-600 hover:text-red-700">Eliminar</button>
-                <button className="text-blue-600 hover:text-blue-700 ml-2">Editar</button>
+                <Link to={"/admin/perfilAtleta/" + player.id}>
+                  <button className="text-blue-600 hover:text-blue-700 ml-2">Ir a perfil</button>
+
+                </Link>
               </div>
             </div>
           ))}

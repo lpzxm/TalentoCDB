@@ -20,11 +20,11 @@ const router = Router();
 
 router.route("/")
     .get(getSports)
-    .post(upload.single("foto"),createNewSport);
+    .post(upload.single("foto"), createNewSport);
 
 router.route("/:id")
     .get(getSport)
-    .put(updateSportDetails)
+    .put(upload.single("foto"), updateSportDetails)
     .delete(deleteSportRecord);
 
 router.route("/:id/categorias")

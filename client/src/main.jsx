@@ -4,45 +4,39 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { FadeIn } from './components/ui/fadeIn/fadeIn.jsx';
 import { BackButton } from './components/ui/goBack/GoBack.jsx';
 import "./index.css";
-
 // Importaciones componentes - publicos
 import { SessionProvider } from './context/Session.jsx';
 import Redirect from "./pages/redirect.jsx"
 import ProtectedRoute from "./components/routes/ProtectedRoute.jsx"
-
 import { Header } from './components/Header/Header';
 import { Welcome } from './pages/public/Welcome/welcome.jsx';
 import { Login } from './pages/public/Login/login';
 import { Error404 } from './pages/public/404Error/404err.jsx';
 import Translate from './components/ui/translate/translate.jsx';
-
 // Atleta - Rutas privadas
 import { PlayerResults } from './pages/logged_in/Atleta/Results.jsx';
 import { PlayerProfile } from './pages/logged_in/Atleta/PlayerProfile.jsx';
-
-
 // Coach - Rutas privadas
 import { Home } from './pages/public/Home/home.jsx';
 import { Selecciones } from './pages/logged_in/Admin/Selecciones.jsx';
 import { MiembrosCat } from './pages/ListasCategoria_revisar/MiembrosCat.jsx';
 import { AtletasSelec } from './pages/logged_in/Coach/Jugadores/AtletasSeleccionados.jsx';
 import { ReviewPlayer } from './pages/logged_in/Coach/Evaluaciones/CalificarRubrica/ReviewPlayer.jsx';
-
 import { RegisterCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/NuevaCategoria.jsx';
 import { EditCategory } from './pages/logged_in/Coach/Evaluaciones/RegistrarCategoria/editarCategoria.jsx';
 import { PerfilCoach } from './pages/logged_in/Coach/Perfil/perfilcoach.jsx'
-
 import { ViewCategories } from './pages/logged_in/Coach/Jugadores/ListCategory.jsx';
 import { RegisterAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/RegisterAthlete.jsx';
 import { Registrar_Rubrica } from './pages/logged_in/Coach/Evaluaciones/Registrar_Rubrica/Registrar_Rubrica.jsx';
 import { EditAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Atleta/EditAthlete.jsx';
 import { ObservationAthlete } from './pages/logged_in/Coach/Evaluaciones/Registrar_Observacion/ObservationAthlete.jsx';
-
 //  Admin
 import { AdminOptions } from './pages/logged_in/Admin/AdminOptions.jsx';
 import { AddDeportes } from './AddDeportes.jsx';
 import { RegisterCoach } from './RegisterCoach.jsx';
 import AdminRoute from './components/routes/AdminRoute.jsx';
+import { EditDeporte } from './EditDeporte.jsx';
+import { AdminPlayerProfile } from './AdminPlayerProfile.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -50,9 +44,7 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <>
-
         <Error404 />
-
       </>
     ),
   },
@@ -117,7 +109,6 @@ const router = createBrowserRouter([
     path: "/coach/perfil",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <PerfilCoach />
         <Translate />
@@ -129,12 +120,10 @@ const router = createBrowserRouter([
     path: "/coach/registrarRubrica",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <Registrar_Rubrica />
         <BackButton />
-
       </ProtectedRoute>
     ),
   },
@@ -152,12 +141,10 @@ const router = createBrowserRouter([
     path: "/coach/categorias",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <ViewCategories />
         <BackButton />
-
       </ProtectedRoute>
     ),
   },
@@ -165,21 +152,17 @@ const router = createBrowserRouter([
     path: "/coach/categorias/editar/:id",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <EditCategory />
         <BackButton />
-
       </ProtectedRoute>
     ),
   },
-
   {
     path: "/coach/categorias/nuevaCategoria",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <RegisterCategory />
@@ -191,7 +174,6 @@ const router = createBrowserRouter([
     path: "/coach/categorias/jugadores/:id",
     element: (
       <ProtectedRoute needLogged>
-
         <Header />
         <Translate />
         <AtletasSelec />
@@ -203,7 +185,6 @@ const router = createBrowserRouter([
     path: "/coach/categoria/:id/jugadores/nuevoJugador",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <RegisterAthlete />
@@ -215,7 +196,6 @@ const router = createBrowserRouter([
     path: "/coach/editarJugador/:id",
     element: (
       <ProtectedRoute needLogged={true}>
-
         <Header />
         <Translate />
         <EditAthlete />
@@ -227,14 +207,12 @@ const router = createBrowserRouter([
     path: "/evaluarJugador",
     element: (
       <>
-
         <Header />
         <ReviewPlayer />
         <BackButton />
       </>
     ),
   },
-
   /*{
       path: "/jugadores",
      element: (
@@ -242,7 +220,6 @@ const router = createBrowserRouter([
  
            <Header />
            <Players />
-
  
        </>
      ),
@@ -259,7 +236,6 @@ const router = createBrowserRouter([
         path: "selecciones",
         element: (
           <>
-
             <Header />
             <Selecciones />
             <BackButton />
@@ -270,7 +246,6 @@ const router = createBrowserRouter([
         path: "MiembrosCat/:id_deporte/:id_categoria",
         element: (
           <>
-
             <Header />
             <MiembrosCat />
             <BackButton />
@@ -286,7 +261,6 @@ const router = createBrowserRouter([
           </>
         ),
       },
-
       {
         path: "nuevoDeporte",
         element: (
@@ -296,6 +270,26 @@ const router = createBrowserRouter([
             <BackButton />
           </>
         ),
+      },
+      {
+        path: "editarDeporte/:id",
+        element: (
+          <>
+            <Header />
+            <EditDeporte />
+            <BackButton />
+          </>
+        ),
+      },
+      {
+        path: "perfilAtleta/:id",
+        element: (
+          <>
+            <Header />
+            <AdminPlayerProfile />
+            <BackButton />
+          </>
+        )
       },
       {
         path: "registerCoach",
@@ -330,9 +324,6 @@ const router = createBrowserRouter([
     ]
   }
 ]);
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <SessionProvider>
