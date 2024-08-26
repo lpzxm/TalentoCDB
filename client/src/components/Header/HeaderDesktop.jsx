@@ -34,7 +34,7 @@ export const NavBar = () => {
                             {usuario.rol == "Coach" && (
                                 <>
                                     <NavButton to="/home" activeDeskLink={activeDeskLink}>
-                                        Home
+                                        Inicio
                                     </NavButton>
                                     <NavButton to="/coach/categorias" activeDeskLink={activeDeskLink}>
                                         Ver categorías
@@ -59,11 +59,17 @@ export const NavBar = () => {
                             )}
                             {usuario.rol == "Admin" && (
                                 <>
-                                    <NavButton to="/admin/AddDeportes" activeDeskLink={activeDeskLink}>
+                                    <NavButton to="/admin/home" activeDeskLink={activeDeskLink}>
+                                        Inicio
+                                    </NavButton>
+                                    <NavButton to="/admin/nuevoDeporte" activeDeskLink={activeDeskLink}>
                                         Nuevo deporte
                                     </NavButton>
-                                    <NavButton to="/atleta/perfilJugador" activeDeskLink={activeDeskLink}>
-                                        Perfil Personal
+                                    <NavButton to="/admin/registerCoach" activeDeskLink={activeDeskLink}>
+                                        Nuevo entrenador
+                                    </NavButton>
+                                    <NavButton to="/admin/selecciones" activeDeskLink={activeDeskLink}>
+                                        Deportes
                                     </NavButton>
                                 </>
                             )}

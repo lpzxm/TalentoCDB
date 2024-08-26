@@ -43,6 +43,8 @@ export const RegisterCoach = () => {
     }
   };
 
+
+
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
       <div
@@ -61,7 +63,12 @@ export const RegisterCoach = () => {
             <input
               type="file"
               accept="image/*"
-              {...register('foto', { required: 'Subir una foto es obligatorio' })}
+              {...register('foto', {
+                required: 'Subir una foto es obligatorio',
+                validate: {
+                  isImage: (file) => ['image/jpeg', 'image/png', 'image/gif'].includes(file[0]?.type) || 'El archivo debe ser una imagen (jpeg, png, gif)',
+                }
+              })}
               className="block mx-auto text-blue-600 border border-blue-600 rounded-md py-1 px-3 hover:bg-blue-50 transition duration-150 ease-in-out"
             />
             {errors.foto && <p className="text-red-500 text-sm mt-2">{errors.foto.message}</p>}
@@ -75,10 +82,16 @@ export const RegisterCoach = () => {
             <input
               type="text"
               id="nombre"
-              {...register('nombres', { required: 'Este campo es obligatorio' })}
-              className={`w-full px-3 py-2 border ${errors.nombre ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
+              {...register('nombres', {
+                required: 'Este campo es obligatorio',
+                pattern: {
+                  value: /^[a-zA-Z\s]+$/,
+                  message: 'El nombre solo debe contener letras',
+                }
+              })}
+              className={`w-full px-3 py-2 border ${errors.nombres ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            {errors.nombre && <p className="text-red-500 text-sm mt-2">{errors.nombre.message}</p>}
+            {errors.nombres && <p className="text-red-500 text-sm mt-2">{errors.nombres.message}</p>}
           </div>
 
           {/* Deporte Asignado */}
@@ -88,12 +101,12 @@ export const RegisterCoach = () => {
             </label>
             <select
               {...register('id_sport', { required: 'Este campo es obligatorio' })}
-              className={`w-full px-3 py-2 border ${errors.deporte ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.id_sport ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             >
               <option disabled selected value="">Selecciona un deporte</option>
               {deportes.map((item, index) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
-            {errors.deporte && <p className="text-red-500 text-sm mt-2">{errors.deporte.message}</p>}
+            {errors.id_sport && <p className="text-red-500 text-sm mt-2">{errors.id_sport.message}</p>}
           </div>
 
           {/* Fecha de Nacimiento */}
@@ -104,10 +117,15 @@ export const RegisterCoach = () => {
             <input
               type="date"
               id="fechaNacimiento"
-              {...register('birthDay', { required: 'Este campo es obligatorio' })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+              {...register('birthDay', {
+                required: 'Este campo es obligatorio',
+                validate: {
+                  before2020: value => new Date(value) <= new Date('2020-12-31') || 'La fecha debe ser antes de 2021',
+                }
+              })}
+              className={`w-full px-3 py-2 ${errors.birthDay ? 'border-red-500' : 'border-gray-300'} border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            {errors.fechaNacimiento && <p className="text-red-500 text-sm mt-2">{errors.fechaNacimiento.message}</p>}
+            {errors.birthDay && <p className="text-red-500 text-sm mt-2">{errors.birthDay.message}</p>}
           </div>
 
           {/* Correo Electrónico */}
@@ -120,11 +138,22 @@ export const RegisterCoach = () => {
               id="correo"
               {...register('email', {
                 required: 'Este campo es obligatorio',
-                pattern: { value: /^\S+@\S+$/i, message: 'Correo no válido' },
+                pattern: {
+                  value: /^[\w-]+@cdb\.edu\.sv$/,
+                  message: 'El correo debe tener el dominio @cdb.edu.sv',
+                },
+                // validate: {
+                //   uniqueEmail: async (email) => {
+                    
+                //     const { data } = await clientAxios.get(`/entrenadores?email=${email}`);
+                //     console.log (data)
+                //     return data.length === 0 || 'Este correo ya está registrado';
+                //   }
+                // }
               })}
-              className={`w-full px-3 py-2 border ${errors.correo ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
+              className={`w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            {errors.correo && <p className="text-red-500 text-sm mt-2">{errors.correo.message}</p>}
+            {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email.message}</p>}
           </div>
 
           {/* Contraseña */}
@@ -135,10 +164,21 @@ export const RegisterCoach = () => {
             <input
               type="password"
               id="contraseña"
-              {...register('password', { required: 'Este campo es obligatorio' })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+              {...register('password',
+                {
+                  required: 'Este campo es obligatorio',
+                  minLength: {
+                    value: 8,
+                    message: 'La contraseña debe tener al menos 8 caracteres'
+                  },
+                  pattern: {
+                    value: /^(?=.*[A-Z])/,
+                    message: 'La contraseña debe tener al menos una letra mayúscula',
+                  },
+                })}
+              className={`w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            {errors.contraseña && <p className="text-red-500 text-sm mt-2">{errors.contraseña.message}</p>}
+            {errors.password && <p className="text-red-500 text-sm mt-2">{errors.password.message}</p>}
           </div>
 
           {/* Descripción */}
@@ -149,8 +189,8 @@ export const RegisterCoach = () => {
             <textarea
               id="descripcion"
               {...register('descripcion', { required: 'Este campo es obligatorio' })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
-              rows="4"
+              className={`w-full px-3 py-2 border ${errors.descripcion ? 'border-red-500' : 'border-gray-300'} border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+              rows="4`}
             />
             {errors.descripcion && <p className="text-red-500 text-sm mt-2">{errors.descripcion.message}</p>}
           </div>

@@ -256,7 +256,7 @@ const router = createBrowserRouter([
     element: <AdminRoute />,
     children: [
       {
-        path: "Selecciones",
+        path: "selecciones",
         element: (
           <>
 
@@ -278,7 +278,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "menuOpciones",
+        path: "home",
         element: (
           <>
             <Header />
@@ -288,7 +288,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "AddDeportes",
+        path: "nuevoDeporte",
         element: (
           <>
             <Header />
@@ -298,7 +298,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "RegisterCoach",
+        path: "registerCoach",
         element: (
           <>
             <Header />
@@ -308,7 +308,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "AthleteObservation",
+        path: "observacionAtleta",
         element: (
           <>
             <Header />
@@ -318,7 +318,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "RegisterObservationCoach",
+        path: "observacionCoach",
         element: (
           <>
             <Header />

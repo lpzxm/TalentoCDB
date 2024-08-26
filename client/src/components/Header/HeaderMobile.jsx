@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { MdOutlineSports, MdOutlineAdd } from "react-icons/md";
 import { RiHome5Fill } from "react-icons/ri";
 import { BiCategory } from "react-icons/bi";
 import { LuPenSquare } from "react-icons/lu";
@@ -32,17 +33,14 @@ export const MobileNavBar = () => {
                     {usuario.rol == "Coach" && (
                         <>
                             <NavButton to="/home" activeLink={activeLink}>
-                                <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Home" />
+                                <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Inicio" />
                             </NavButton>
-
                             <NavButton to="/coach/categorias" activeLink={activeLink}>
                                 <NavItem icon={<BiCategory size={icon.size} color={icon.color} />} text="Categorías" />
                             </NavButton>
-
                             <NavButton to="/coach/registrarRubrica" activeLink={activeLink}>
                                 <NavItem icon={<LuPenSquare size={icon.size} color={icon.color} />} text="Rubrica" />
                             </NavButton>
-
                             <NavButton to="/coach/perfil" activeLink={activeLink}>
                                 <NavItem icon={<CgProfile size={icon.size} color={icon.color} />} text="Perfil" />
                             </NavButton>
@@ -52,11 +50,27 @@ export const MobileNavBar = () => {
                     {usuario.rol == "Jugador" && (
                         <>
                             <NavButton to="/atleta/resultados" activeLink={activeLink}>
-                                <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Home" />
+                                <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Resultados" />
                             </NavButton>
-
                             <NavButton to="/coach/perfil" activeLink={activeLink}>
                                 <NavItem icon={<CgProfile size={icon.size} color={icon.color} />} text="Perfil" />
+                            </NavButton>
+                        </>
+
+                    )}
+                    {usuario.rol == "Admin" && (
+                        <>
+                            <NavButton to="/admin/home" activeLink={activeLink}>
+                                <NavItem icon={<RiHome5Fill size={icon.size} color={icon.color} />} text="Inicio" />
+                            </NavButton>
+                            <NavButton to="/admin/nuevoDeporte" activeLink={activeLink}>
+                                <NavItem icon={<MdOutlineAdd size={icon.size} color={icon.color} />} text="Deporte" />
+                            </NavButton>
+                            <NavButton to="/admin/registerCoach" activeLink={activeLink}>
+                                <NavItem icon={<MdOutlineSports size={icon.size} color={icon.color} />} text="Coach" />
+                            </NavButton>
+                            <NavButton to="/admin/selecciones" activeLink={activeLink}>
+                                <NavItem icon={<BiCategory size={icon.size} color={icon.color} />} text="Selecciones"/>
                             </NavButton>
                         </>
 

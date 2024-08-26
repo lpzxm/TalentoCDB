@@ -26,7 +26,7 @@ export const NavItem = ({ icon, text }) => {
     return (
         <div className="w-full flex flex-col items-center justify-center">
             {icon}
-            <p className="font-semibold text-white">{text}</p>
+            <p className="text-xs text-white">{text}</p>
         </div>
     )
 }
