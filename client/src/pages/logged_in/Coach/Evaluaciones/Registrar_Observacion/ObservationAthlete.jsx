@@ -8,7 +8,7 @@ export const ObservationAthlete = ({ type = 'jugadores' }) => {
     const backgroundImage = 'https://scontent-gua1-1.xx.fbcdn.net/v/t39.30808-6/453387999_901552668681356_8860159141904411930_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=VttaKdEEyqoQ7kNvgE4RaF8&_nc_ht=scontent-gua1-1.xx&oh=00_AYBUJqFMkdMHS5dPnJOnUNxTRly7t9mPOUcDbQarXjOSWA&oe=66CBD3E0';
     const fetch_url = type == "coach" ? "entrenadores" : "jugadores"
     const object = type == "coach" ? "Entrenador" : "Jugador"
-    const post_url = "coach" ? "/observaciones/entrenadores" : "/observaciones"
+    const post_url = type == "coach" ? "/observaciones/entrenadores" : "/observaciones"
     const { register, handleSubmit, reset, setValue, watch } = useForm();
 
     const [loading, setLoading] = useState(false);
@@ -97,7 +97,7 @@ export const ObservationAthlete = ({ type = 'jugadores' }) => {
                                 name="observacion"
                                 {...register("observacion", {
                                     required: true,
-                                    validate: value => /A-Za-zÀ-ÖØ-öø-ÿ\s,./.test(value) || "Solo se permiten letras"
+                                    // validate: value => /A-Za-zÀ-ÖØ-öø-ÿ\s,./.test(value) || "Solo se permiten letras"
                                 })}
                                 rows="4"
                                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border solid"
