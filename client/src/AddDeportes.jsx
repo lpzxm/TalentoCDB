@@ -33,12 +33,12 @@ export const AddDeportes = () => {
 
   useEffect(() => {
     if (nameValue) {
-        // Capitaliza la primera letra
-        const capitalized = nameValue.charAt(0).toUpperCase() + nameValue.slice(1);
-        const sanitized = capitalized.replace(/[^A-Za-z\s]/g, ''); // Elimina caracteres no permitidos
-        setValue('nombre', sanitized, { shouldValidate: true });
+      // Capitaliza la primera letra
+      const capitalized = nameValue.charAt(0).toUpperCase() + nameValue.slice(1);
+      const sanitized = capitalized.replace(/[^A-Za-z\s]/g, ''); // Elimina caracteres no permitidos
+      setValue('nombre', sanitized, { shouldValidate: true });
     }
-}, [nameValue, setValue]);
+  }, [nameValue, setValue]);
 
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
@@ -67,10 +67,10 @@ export const AddDeportes = () => {
               required: "Sube una imagen",
               validate: (FileList) =>
                 FileList[0] && FileList[0].type.startsWith('image/') || "El archivo debe ser una imagen",
-            }
-            )}
-            className="block mx-auto text-blue-600 border border-blue-600 rounded-md py-1 px-3 hover:bg-blue-50 transition duration-150 ease-in-out"
+            })}
+            className="block w-full text-blue-600 border border-blue-600 rounded-md py-2 px-4 hover:bg-blue-50 transition duration-150 ease-in-out"
           />
+
           {errors.foto && <p className="text-red-500 text-sm mt-2">{errors.foto.message}</p>}
         </div>
 

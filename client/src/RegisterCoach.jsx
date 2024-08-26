@@ -54,7 +54,7 @@ export const RegisterCoach = () => {
 
 
   return (
-    <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
+    <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden pb-32 md:pb-5">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${backgroundImage})`, filter: 'blur(8px)' }}
@@ -71,14 +71,14 @@ export const RegisterCoach = () => {
             <input
               type="file"
               accept="image/*"
-              {...register('foto', {
-                required: 'Subir una foto es obligatorio',
-                validate: {
-                  isImage: (file) => ['image/jpeg', 'image/png', 'image/gif'].includes(file[0]?.type) || 'El archivo debe ser una imagen (jpeg, png, gif)',
-                }
+              {...register("foto", {
+                required: "Sube una imagen",
+                validate: (FileList) =>
+                  FileList[0] && FileList[0].type.startsWith('image/') || "El archivo debe ser una imagen",
               })}
-              className="block mx-auto text-blue-600 border border-blue-600 rounded-md py-1 px-3 hover:bg-blue-50 transition duration-150 ease-in-out"
+              className="block w-full text-blue-600 border border-blue-600 rounded-md py-2 px-4 hover:bg-blue-50 transition duration-150 ease-in-out"
             />
+
             {errors.foto && <p className="text-red-500 text-sm mt-2">{errors.foto.message}</p>}
           </div>
 

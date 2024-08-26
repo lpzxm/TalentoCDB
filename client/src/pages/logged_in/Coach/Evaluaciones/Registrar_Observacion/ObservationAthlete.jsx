@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { clientAxios } from '../../../../../config/clientAxios';
 import { useSession } from '../../../../../hooks/useSession';
 import { useNavigate } from 'react-router-dom';
+import backgroundImage from "../../../../../assets/selección.jpg";
 
 export const ObservationAthlete = ({ type = 'jugadores' }) => {
-    const backgroundImage = 'https://scontent-gua1-1.xx.fbcdn.net/v/t39.30808-6/453387999_901552668681356_8860159141904411930_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=VttaKdEEyqoQ7kNvgE4RaF8&_nc_ht=scontent-gua1-1.xx&oh=00_AYBUJqFMkdMHS5dPnJOnUNxTRly7t9mPOUcDbQarXjOSWA&oe=66CBD3E0';
     const fetch_url = type == "coach" ? "entrenadores" : "jugadores"
     const object = type == "coach" ? "Entrenador" : "Jugador"
     const post_url = "coach" ? "/observaciones/entrenadores" : "/observaciones"
