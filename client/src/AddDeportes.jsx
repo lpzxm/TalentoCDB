@@ -26,7 +26,7 @@ export const AddDeportes = () => {
     await clientAxios.postForm("/deportes", payload)
 
     setLoading(false)
-    navigate("/admin/menuOpciones");
+    navigate("/admin/home");
   }
 
   const nameValue = watch('nombre') || '';

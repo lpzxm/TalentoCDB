@@ -8,7 +8,7 @@ import backgroundImage from "../../../../../assets/selección.jpg";
 export const ObservationAthlete = ({ type = 'jugadores' }) => {
     const fetch_url = type == "coach" ? "entrenadores" : "jugadores"
     const object = type == "coach" ? "Entrenador" : "Jugador"
-    const post_url = "coach" ? "/observaciones/entrenadores" : "/observaciones"
+    const post_url = type == "coach" ? "/observaciones/entrenadores" : "/observaciones"
     const { register, handleSubmit, reset, setValue, watch } = useForm();
 
     const [loading, setLoading] = useState(false);
@@ -97,7 +97,7 @@ export const ObservationAthlete = ({ type = 'jugadores' }) => {
                                 name="observacion"
                                 {...register("observacion", {
                                     required: true,
-                                    validate: value => /A-Za-zÀ-ÖØ-öø-ÿ\s,./.test(value) || "Solo se permiten letras"
+                                    // validate: value => /A-Za-zÀ-ÖØ-öø-ÿ\s,./.test(value) || "Solo se permiten letras"
                                 })}
                                 rows="4"
                                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border solid"

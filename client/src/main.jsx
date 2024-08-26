@@ -43,6 +43,8 @@ import { AdminOptions } from './pages/logged_in/Admin/AdminOptions.jsx';
 import { AddDeportes } from './AddDeportes.jsx';
 import { RegisterCoach } from './RegisterCoach.jsx';
 import AdminRoute from './components/routes/AdminRoute.jsx';
+import { EditDeporte } from './EditDeporte.jsx';
+import { AdminPlayerProfile } from './AdminPlayerProfile.jsx';
 
 const router = createBrowserRouter([
   // Rutas publicas - acceso libre
@@ -296,6 +298,26 @@ const router = createBrowserRouter([
             <BackButton />
           </>
         ),
+      },
+      {
+        path: "editarDeporte/:id",
+        element: (
+          <>
+            <Header />
+            <EditDeporte />
+            <BackButton />
+          </>
+        ),
+      },
+      {
+        path: "perfilAtleta/:id",
+        element: (
+          <>
+            <Header />
+            <AdminPlayerProfile />
+            <BackButton />
+          </>
+        )
       },
       {
         path: "registerCoach",
