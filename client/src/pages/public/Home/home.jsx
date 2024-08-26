@@ -77,7 +77,7 @@ export const Home = () => {
                             <BiCategoryAlt size="25px" />
                         </Link>
                         <Link to="/coach/categorias" className='border-2 w-full flex flex-row flex-wrap justify-around items-center 880:space-x-28'>
-                            <p className='py-4 px-1'>
+                            <p className='py-4'>
                                 Ver categorías
                             </p>
                             <PiCourtBasketballBold size="25px" />

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { loginRequest } from "../../../api/auth";
 import { useSession } from "../../../hooks/useSession";
 
-export const    Login = () => {
+export const Login = () => {
     const [seePsw, setSeePsw] = useState(false);
     const [authError, setAuthError] = useState("");  // Estado para manejar el error de autenticación
 
@@ -96,7 +96,7 @@ export const    Login = () => {
                                     placeholder="Contraseña"
                                     className={`w-full placeholder:text-slate-400 bg-[#F9F9F9] border ${errors.password ? 'border-red-500' : 'border-[#CCC9C9]'} rounded-[8px] px-4 py-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1`}
                                 />
-                                <div className="absolute right-[70px] top-3 space-x-7">
+                                <div className="absolute right-[50px] top-3 space-x-7">
                                     <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute" />
                                     <div onClick={toggleSeePsw}>
                                         {seePsw ? (
@@ -118,7 +118,7 @@ export const    Login = () => {
                             )}
 
                             <div className="relative right-12">
-                                
+
                             </div>
                         </div>
                     </div>

@@ -1,15 +1,23 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { FiLock } from "react-icons/fi";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import backgroundImage from "../src/assets/foto1.jpg"
+
 import { useEffect, useState } from 'react';
 import { clientAxios } from './config/clientAxios';
 import { useNavigate } from 'react-router-dom';
 
-const backgroundImage = 'https://scontent.fsal13-1.fna.fbcdn.net/v/t39.30808-6/453096382_902236175279672_1482644661368440795_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2ZVMrC_g_1oQ7kNvgEzPP-8&_nc_ht=scontent.fsal13-1.fna&oh=00_AYCiNinmoPajpGVI-qUw8JYKBD3GWNCjsDp4QGFOuVBRdw&oe=66C9F06F';
-
 export const RegisterCoach = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ id_sport: "" });
+  const [seePsw, setSeePsw] = useState(false);
+
   const [deportes, setDeportes] = useState([]);
   const [cargando, setCargando] = useState(false);
+
+  const toggleSeePsw = () => {
+    setSeePsw((prevShowPsw) => !prevShowPsw);
+  };
 
   const navigate = useNavigate()
 
@@ -144,7 +152,7 @@ export const RegisterCoach = () => {
                 },
                 // validate: {
                 //   uniqueEmail: async (email) => {
-                    
+
                 //     const { data } = await clientAxios.get(`/entrenadores?email=${email}`);
                 //     console.log (data)
                 //     return data.length === 0 || 'Este correo ya está registrado';
@@ -162,7 +170,7 @@ export const RegisterCoach = () => {
               Contraseña
             </label>
             <input
-              type="password"
+              type={seePsw ? "text" : "password"}
               id="contraseña"
               {...register('password',
                 {
@@ -178,6 +186,16 @@ export const RegisterCoach = () => {
                 })}
               className={`w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
+            <div className="right-[70px] top-3 space-x-7">
+              <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute" />
+              <div onClick={toggleSeePsw}>
+                {seePsw ? (
+                  <FaRegEyeSlash style={{ fontSize: '20px' }} className="cursor-pointer" />
+                ) : (
+                  <FaRegEye style={{ fontSize: '20px' }} className="cursor-pointer" />
+                )}
+              </div>
+            </div>
             {errors.password && <p className="text-red-500 text-sm mt-2">{errors.password.message}</p>}
           </div>
 

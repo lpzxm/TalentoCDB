@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import foto1 from "../src/assets/foto1.jpg"
 import { useForm } from 'react-hook-form';
 import { clientAxios } from './config/clientAxios';
 import { useNavigate } from 'react-router-dom';
 
-const backgroundImage = 'https://scontent.fsal13-1.fna.fbcdn.net/v/t39.30808-6/453177677_902235635279726_4070072107231846285_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_ohc=PtW0SZzYlQcQ7kNvgEfV1mi&_nc_ht=scontent.fsal13-1.fna&oh=00_AYCjE4U-1Cwflsu0fVcNyUkPpF51C5tKCh6ktWchuSSGPw&oe=66C9D459';
+
 
 export const AddDeportes = () => {
   const [error, setError] = useState('');
@@ -43,7 +44,7 @@ export const AddDeportes = () => {
     <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${backgroundImage})`, filter: 'blur(8px)' }}
+        style={{ backgroundImage: `url(${foto1})`, filter: 'blur(8px)' }}
       >
 
       </div>
