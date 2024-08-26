@@ -20,7 +20,7 @@ const TranslateDesk = () => {
             const translateDiv = document.createElement('div');
             translateDiv.classList.add(
                 'z-50',
-                'bottom-14',
+                '-bottom-10',
                 'bg-white',
                 'right-0',
                 'w-fit',
@@ -47,7 +47,7 @@ const TranslateDesk = () => {
         }
     }, []);
 
-    const toggleLanguageSelector = () => {
+    const toggleLanguageselector = () => {
         const translateElement = document.getElementById('google_translate_element');
         setIsLanguageSelectorVisible(!isLanguageSelectorVisible);
         if (isLanguageSelectorVisible) {
@@ -63,7 +63,7 @@ const TranslateDesk = () => {
         <div className="fixed bottom-0 right-10 z-50 p-4">
             <button
                 className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition duration-300"
-                onClick={toggleLanguageSelector}
+                onClick={toggleLanguageselector}
             >
                 Seleccionar idioma
             </button>

@@ -21,7 +21,7 @@ const TranslateMobi = () => {
             const translateDiv = document.createElement('div');
             translateDiv.classList.add(
                 'z-50',
-                'bottom-8',
+                'bottom-36',
                 'bg-white',
                 'right-0',
                 'w-fit',
