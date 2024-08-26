@@ -57,6 +57,16 @@ export const NavBar = () => {
                                     </NavButton>
                                 </>
                             )}
+                            {usuario.rol == "Admin" && (
+                                <>
+                                    <NavButton to="/admin/AddDeportes" activeDeskLink={activeDeskLink}>
+                                        Nuevo deporte
+                                    </NavButton>
+                                    <NavButton to="/atleta/perfilJugador" activeDeskLink={activeDeskLink}>
+                                        Perfil Personal
+                                    </NavButton>
+                                </>
+                            )}
                         </nav>
                         <ul>
                             <div onClick={logout}>

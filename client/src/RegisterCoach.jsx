@@ -7,16 +7,12 @@ import { useNavigate } from 'react-router-dom';
 const backgroundImage = 'https://scontent.fsal13-1.fna.fbcdn.net/v/t39.30808-6/453096382_902236175279672_1482644661368440795_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2ZVMrC_g_1oQ7kNvgEzPP-8&_nc_ht=scontent.fsal13-1.fna&oh=00_AYCiNinmoPajpGVI-qUw8JYKBD3GWNCjsDp4QGFOuVBRdw&oe=66C9F06F';
 
 export const RegisterCoach = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    id_sport: ""
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm({ id_sport: "" });
   const [deportes, setDeportes] = useState([]);
   const [cargando, setCargando] = useState(false);
+
   const navigate = useNavigate()
+
   useEffect(() => {
     (async () => {
       try {
@@ -36,13 +32,12 @@ export const RegisterCoach = () => {
       payload.append("data", JSON.stringify(data))
       payload.append("foto", formData.foto[0])
       const response = await clientAxios.postForm("/entrenadores", payload);
-      if(response.data.error){
+      if (response.data.error) {
         return
       }
       navigate("/redirect")
     } catch (error) {
       console.error("Error al registrar el entrenador:", error);
-      // Aquí puedes manejar los errores, como mostrar un mensaje de error al usuario.
     } finally {
       setCargando(false);
     }

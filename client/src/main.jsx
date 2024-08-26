@@ -253,7 +253,7 @@ const router = createBrowserRouter([
   // Rutas del Admin - Privadas
   {
     path: "/admin",
-    element: <AdminRoute/>,
+    element: <AdminRoute />,
     children: [
       {
         path: "Selecciones",
@@ -262,6 +262,7 @@ const router = createBrowserRouter([
 
             <Header />
             <Selecciones />
+            <BackButton />
           </>
         ),
       },
@@ -272,6 +273,7 @@ const router = createBrowserRouter([
 
             <Header />
             <MiembrosCat />
+            <BackButton />
           </>
         ),
       },
@@ -291,6 +293,7 @@ const router = createBrowserRouter([
           <>
             <Header />
             <AddDeportes />
+            <BackButton />
           </>
         ),
       },
@@ -300,15 +303,17 @@ const router = createBrowserRouter([
           <>
             <Header />
             <RegisterCoach />
+            <BackButton />
           </>
         ),
       },
       {
-        path: "RegisterObservation",
+        path: "AthleteObservation",
         element: (
           <>
             <Header />
             <ObservationAthlete />
+            <BackButton />
           </>
         )
       },
@@ -317,7 +322,8 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
-            <ObservationAthlete type="coach"/>
+            <ObservationAthlete type="coach" />
+            <BackButton />
           </>
         )
       }

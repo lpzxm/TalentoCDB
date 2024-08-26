@@ -3,21 +3,25 @@ import { useForm } from 'react-hook-form';
 import { clientAxios } from '../../../../../config/clientAxios';
 import { useSession } from '../../../../../hooks/useSession';
 import { useNavigate } from 'react-router-dom';
+import { Watch } from 'react-loader-spinner';
 
-export const ObservationAthlete = ({type = 'jugadores'}) => {
+export const ObservationAthlete = ({ type = 'jugadores' }) => {
     const backgroundImage = 'https://scontent-gua1-1.xx.fbcdn.net/v/t39.30808-6/453387999_901552668681356_8860159141904411930_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=VttaKdEEyqoQ7kNvgE4RaF8&_nc_ht=scontent-gua1-1.xx&oh=00_AYBUJqFMkdMHS5dPnJOnUNxTRly7t9mPOUcDbQarXjOSWA&oe=66CBD3E0';
     const fetch_url = type == "coach" ? "entrenadores" : "jugadores"
     const object = type == "coach" ? "Entrenador" : "Jugador"
     const post_url = "coach" ? "/observaciones/entrenadores" : "/observaciones"
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue, watch } = useForm();
+
     const [loading, setLoading] = useState(false);
     const [athletes, setAthletes] = useState([]);
+
     const navigate = useNavigate()
+
     // Fetch de atletas
     useEffect(() => {
         const fetchAthletes = async () => {
             try {
-                const response = await clientAxios.get('/'+fetch_url);
+                const response = await clientAxios.get('/' + fetch_url);
                 setAthletes(response.data);
             } catch (error) {
                 console.error("Error fetching athletes", error);
@@ -26,14 +30,15 @@ export const ObservationAthlete = ({type = 'jugadores'}) => {
         fetchAthletes();
     }, []);
 
-    const {userToken} = useSession();
+    const { userToken } = useSession();
+
     // Función para manejar el envío del formulario
     const onSubmit = async (data) => {
         setLoading(true);
         try {
             await clientAxios.post(post_url, data, {
                 headers: {
-                    'Authorization': 'Bearer '+userToken
+                    'Authorization': 'Bearer ' + userToken
                 }
             });
             navigate("/redirect")
@@ -43,6 +48,20 @@ export const ObservationAthlete = ({type = 'jugadores'}) => {
             setLoading(false);
         }
     };
+
+
+    // Observa el cambio de valor del textarea
+    const observationValue = watch('observacion') || '';
+
+    useEffect(() => {
+        if (observationValue) {
+            // Capitaliza la primera letra
+            const capitalized = observationValue.charAt(0).toUpperCase() + observationValue.slice(1);
+            const sanitized = capitalized.replace(/[^A-Za-z\s,\.]/g, ''); // Elimina caracteres no permitidos
+            setValue('observacion', sanitized, { shouldValidate: true });
+        }
+    }, [observationValue, setValue]);
+
 
     return (
         <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-1 overflow-hidden">
@@ -60,7 +79,7 @@ export const ObservationAthlete = ({type = 'jugadores'}) => {
                             <select
                                 id="athleteName"
                                 name="id_atleta"
-                                {...register(type!="coach" ? "id_atleta" : "id_entrenador", { required: true, valueAsNumber: true  })}
+                                {...register(type != "coach" ? "id_atleta" : "id_entrenador", { required: true, valueAsNumber: true })}
                                 className="mt-1 block w-full rounded-md shadow-sm border-1 border solid border-gray-300"
                                 required
                             >
@@ -77,7 +96,10 @@ export const ObservationAthlete = ({type = 'jugadores'}) => {
                             <textarea
                                 id="observation"
                                 name="observacion"
-                                {...register("observacion", { required: true })}
+                                {...register("observacion", {
+                                    required: true,
+                                    validate: value => /A-Za-zÀ-ÖØ-öø-ÿ\s,./.test(value) || "Solo se permiten letras"
+                                })}
                                 rows="4"
                                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm border solid"
                                 required
