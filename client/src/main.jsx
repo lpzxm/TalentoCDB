@@ -204,13 +204,13 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/evaluarJugador",
+    path: "/coach/evaluarJugador/:id",
     element: (
-      <>
+      <ProtectedRoute>
         <Header />
         <ReviewPlayer />
         <BackButton />
-      </>
+      </ProtectedRoute>
     ),
   },
   /*{

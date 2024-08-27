@@ -3,8 +3,10 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { obtenerCategoriaDeporte } from "../../../../api/deporte";
-import { eliminarJugador } from "../../../../api/players";
+import { eliminarJugador } from "../../../../api/players"; // Asumiendo que agregas esta función en tu API
 import { useSession } from "../../../../hooks/useSession";
+import { IoMdClipboard } from "react-icons/io";
+import { clientAxios } from "../../../../config/clientAxios";
 
 export const AtletasSelec = () => {
   const [categoryData, setCategoryData] = useState("loading");
@@ -29,6 +31,18 @@ export const AtletasSelec = () => {
     setIsModalOpen(false);
   };
 
+  const toggleSportStatus = async (playerId) => {
+    const updatedPlayersData = playersData.map(player => {
+      if (player.id === playerId) {
+        player.status_main_sport = player.status_main_sport === "aceptado" ? "rechazado" : "aceptado";
+      }
+      return player;
+    });
+    setPlayersData(updatedPlayersData);
+    console.log(updatedPlayersData)
+    await clientAxios.post("/jugadores/estado/"+playerId, {status_main_sport: updatedPlayersData[0].status_main_sport})
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -40,14 +54,14 @@ export const AtletasSelec = () => {
         navigate("/coach/categorias");
       }
     })();
-  }, []);
+  }, [usuario.id_sport, params.id, navigate]);
 
   if (categoryData === "loading") return <p>Cargando Jugadores...</p>;
 
   const renderTableHeader = () => (
     <thead>
       <tr>
-        {["Nombre", "Sección", "Año que cursa", "Edad", "Estado académico", "Estado deportivo", ""].map((header, index) => (
+        {["Nombre", "Sección", "Año que cursa", "Edad", "Estado académico", "Estado conductual", "Estado deportivo", ""].map((header, index) => (
           <th
             key={index}
             className="py-4 px-6 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300"
@@ -71,11 +85,22 @@ export const AtletasSelec = () => {
             <img width={50} src={player.status_img_academic} alt="" />
           </td>
           <td className="py-4 px-6 border-b border-gray-300">
-            <img width={50} src={player.status_main_sport} alt="" />
+            <img width={50} src={player.status_img_behaviour} alt="" />
+          </td>
+          <td className="py-4 px-6 border-b border-gray-300">
+            <button
+              onClick={() => toggleSportStatus(player.id)}
+              className={`p-2 rounded-md ${player.status_main_sport === "aceptado" ? "bg-green-300" : "bg-red-300"}`}
+            >
+              {player.status_main_sport == "aceptado" ? "Aceptado" : "Rechazado"}
+            </button>
           </td>
           <td className="flex flex-row justify-center items-center space-x-2 mt-2">
             <Link to={`/coach/editarJugador/${player.id}`}>
               <button className="p-2 bg-yellow-300 rounded-md"><MdEdit size={"20px"} /></button>
+            </Link>
+            <Link to={`/coach/evaluarJugador/${player.id}`}>
+              <button className="p-2 bg-green-300 rounded-md"><IoMdClipboard size={"20px"} /></button>
             </Link>
             <button onClick={() => handleDeleteClick(player.id)} className="p-2 bg-red-400 rounded-md">
               <MdDeleteForever size={"20px"} />

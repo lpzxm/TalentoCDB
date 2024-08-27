@@ -3,40 +3,18 @@ import { TbShirtSport } from "react-icons/tb";
 import { useSession } from "../../../hooks/useSession";
 import Modal from './Componets/Modal';
 import { useAtletaResultados } from '../../../hooks/useAtletaResultados';
+import { useResultados } from '../../../hooks/useResultados';
+import PlayerScoreCard from './PlayerScoreCard';
 
 export const PlayerResults = () => {
+    const { usuario } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { data, loading } = useAtletaResultados()
-
+    const { data: resultadosData, loading: cargando } = useResultados(usuario.id);
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const { usuario } = useSession();
-    const criterios = [
-        {
-            criterio: "Condición Física",
-            descripcion: "Evalúa la resistencia, fuerza y flexibilidad del atleta.",
-            ponderacion: "30%"
-        },
-        {
-            criterio: "Técnica",
-            descripcion: "Medición de la habilidad técnica en el deporte.",
-            ponderacion: "40%"
-        },
-        {
-            criterio: "Disciplina",
-            descripcion: "Evalúa la asistencia y comportamiento en los entrenamientos.",
-            ponderacion: "20%"
-        },
-        {
-            criterio: "Trabajo en equipo",
-            descripcion: "Capacidad de colaborar y trabajar en conjunto con otros.",
-            ponderacion: "10%"
-        }
-    ];
-
-    const ponderacionFinal = "100%";
-    if (loading) return <p>Cargando...</p>
+    if (loading || cargando) return <p>Cargando...</p>
     return (
         <>
             <div>
@@ -58,7 +36,7 @@ export const PlayerResults = () => {
                         descripcion: criterio.description,
                         ponderacion: criterio.max_score
                     })
-                })} ponderacionFinal={data.map(criterio => criterio.max_score).reduce((a,b)=>a+b,0)} />
+                })} ponderacionFinal={data.map(criterio => criterio.max_score).reduce((a, b) => a + b, 0)} />
 
                 {/* Botón para abrir el modal */}
                 <div className="mt-6 flex justify-center">
@@ -72,14 +50,32 @@ export const PlayerResults = () => {
 
                 {/* Modal */}
                 <Modal isOpen={isModalOpen} onClose={closeModal}>
-                    <h2 className="text-xl font-semibold">¡Felicidades! Has sido seleccionado.</h2>
-                    <p className="mt-4">Al parecer tu rendimiento es excelente, tu entrenador decidió agregarte a una selección, ¡eres genial!</p>
-                    <button
-                        className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-                        onClick={closeModal}
-                    >
-                        Cerrar
-                    </button>
+                    {usuario.status_main_sport == "aceptado" ? (
+                        <>
+                            <h2 className="text-xl font-semibold">¡Felicidades! Has sido seleccionado.</h2>
+                            <p className="mt-4">Al parecer tu rendimiento es excelente, tu entrenador decidió agregarte a una selección, ¡eres genial!</p>
+                            {
+                                resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
+                            }
+                            <button
+                                className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                                onClick={closeModal}
+                            >
+                                Cerrar
+                            </button>
+                        </>
+                    ) : <>
+                        <h2 className="text-xl font-semibold">No has sido seleccionado</h2>
+                        {
+                            resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
+                        }
+                        <button
+                            className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                            onClick={closeModal}
+                        >
+                            Cerrar
+                        </button>
+                    </>}
                 </Modal>
             </div>
         </>
