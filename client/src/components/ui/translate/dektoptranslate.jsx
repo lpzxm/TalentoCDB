@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { MdOutlineTranslate } from "react-icons/md";
+
 
 const TranslateDesk = () => {
     const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] = useState(false);
@@ -20,7 +22,7 @@ const TranslateDesk = () => {
             const translateDiv = document.createElement('div');
             translateDiv.classList.add(
                 'z-50',
-                '-bottom-10',
+                'bottom-2',
                 'bg-white',
                 'right-0',
                 'w-fit',
@@ -65,7 +67,7 @@ const TranslateDesk = () => {
                 className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition duration-300"
                 onClick={toggleLanguageselector}
             >
-                Seleccionar idioma
+                <MdOutlineTranslate size={'25px'}/>
             </button>
         </div>
     );

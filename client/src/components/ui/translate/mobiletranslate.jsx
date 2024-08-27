@@ -21,9 +21,9 @@ const TranslateMobi = () => {
             const translateDiv = document.createElement('div');
             translateDiv.classList.add(
                 'z-50',
-                'bottom-36',
+                'bottom-32',
                 'bg-white',
-                'right-0',
+                'right-5',
                 'w-fit',
                 'fixed',
                 'transition-all',
@@ -69,7 +69,7 @@ const TranslateMobi = () => {
                 className="bg-blue-500 p-4 rounded-full hover:bg-blue-800"
                 
             >
-                <MdOutlineTranslate/>
+                <MdOutlineTranslate size={'20px'} color="white"/>
             </button>
         </div>
     );
