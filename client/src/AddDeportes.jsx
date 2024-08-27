@@ -41,7 +41,7 @@ export const AddDeportes = () => {
   }, [nameValue, setValue]);
 
   return (
-    <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden">
+    <div className="relative flex justify-center items-center min-h-screen bg-gray-100 p-6 overflow-hidden pb-24 md:pb-0">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${foto1})`, filter: 'blur(8px)' }}

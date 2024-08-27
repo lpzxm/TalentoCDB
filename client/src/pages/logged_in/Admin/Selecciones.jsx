@@ -42,7 +42,7 @@ export const Selecciones = () => {
         <h1 className="text-xl">Selecciones</h1>
       </header>
 
-      <div className="flex flex-wrap justify-around p-5 shadow-xl">
+      <div className="flex flex-wrap justify-around p-5 pb-36 md:pb-10 shadow-xl">
         {deportes && deportes.map(deporte => (
           <div key={deporte.id} className="max-w-sm rounded overflow-hidden shadow-lg m-2">
             <img className="w-80 h-60" src={deporte.url} alt="Volleyball" />
