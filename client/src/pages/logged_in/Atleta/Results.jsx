@@ -55,7 +55,7 @@ export const PlayerResults = () => {
                             <h2 className="text-xl font-semibold">¡Felicidades! Has sido seleccionado.</h2>
                             <p className="mt-4">Al parecer tu rendimiento es excelente, tu entrenador decidió agregarte a una selección, ¡eres genial!</p>
                             {
-                                resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
+                              resultadosData && resultadosData.length &&  resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
                             }
                             <button
                                 className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
