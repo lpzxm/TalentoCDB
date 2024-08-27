@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { clientAxios } from "../config/clientAxios";
 
 const useResultados = (id) => {
-  const [data, setCategoria] = useState(null);
+  const [data, setCategoria] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

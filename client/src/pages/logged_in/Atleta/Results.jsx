@@ -9,12 +9,17 @@ import PlayerScoreCard from './PlayerScoreCard';
 export const PlayerResults = () => {
     const { usuario } = useSession();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { data, loading } = useAtletaResultados()
+    const { data, loading } = useAtletaResultados();
     const { data: resultadosData, loading: cargando } = useResultados(usuario.id);
+
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    if (loading || cargando) return <p>Cargando...</p>
+    if (loading || cargando) return <p>Cargando...</p>;
+    if (!data || data.length === 0) {
+        return <p>No se encontraron resultados disponibles, mantente al tanto</p>;
+    }
+
     return (
         <>
             <div>
@@ -30,15 +35,12 @@ export const PlayerResults = () => {
                     </div>
                 </div>
 
-                <CriteriosTable criterios={data.map(criterio => {
-                    return ({
-                        criterio: criterio.name,
-                        descripcion: criterio.description,
-                        ponderacion: criterio.max_score
-                    })
-                })} ponderacionFinal={data.map(criterio => criterio.max_score).reduce((a, b) => a + b, 0)} />
+                <CriteriosTable criterios={data.map(criterio => ({
+                    criterio: criterio.name,
+                    descripcion: criterio.description,
+                    ponderacion: criterio.max_score
+                }))} ponderacionFinal={data.reduce((a, b) => a + b.max_score, 0)} />
 
-                {/* Botón para abrir el modal */}
                 <div className="mt-6 flex justify-center">
                     <button
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -48,15 +50,16 @@ export const PlayerResults = () => {
                     </button>
                 </div>
 
-                {/* Modal */}
                 <Modal isOpen={isModalOpen} onClose={closeModal}>
-                    {usuario.status_main_sport == "aceptado" ? (
+                    {usuario.status_main_sport === "aceptado" ? (
                         <>
                             <h2 className="text-xl font-semibold">¡Felicidades! Has sido seleccionado.</h2>
                             <p className="mt-4">Al parecer tu rendimiento es excelente, tu entrenador decidió agregarte a una selección, ¡eres genial!</p>
-                            {
-                                resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
-                            }
+                            {resultadosData && resultadosData.length > 0 ? (
+                                resultadosData.map(result => <PlayerScoreCard key={result.id} scoreData={result} />)
+                            ) : (
+                                <p>No se encontraron resultados.</p>
+                            )}
                             <button
                                 className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
                                 onClick={closeModal}
@@ -64,18 +67,22 @@ export const PlayerResults = () => {
                                 Cerrar
                             </button>
                         </>
-                    ) : <>
-                        <h2 className="text-xl font-semibold">No has sido seleccionado</h2>
-                        {
-                            resultadosData.map(result => <PlayerScoreCard scoreData={result} />)
-                        }
-                        <button
-                            className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-                            onClick={closeModal}
-                        >
-                            Cerrar
-                        </button>
-                    </>}
+                    ) : (
+                        <>
+                            <h2 className="text-xl font-semibold">No has sido seleccionado</h2>
+                            {resultadosData && resultadosData.length > 0 ? (
+                                resultadosData.map(result => <PlayerScoreCard key={result.id} scoreData={result} />)
+                            ) : (
+                                <p>No se encontraron resultados.</p>
+                            )}
+                            <button
+                                className="mt-6 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                                onClick={closeModal}
+                            >
+                                Cerrar
+                            </button>
+                        </>
+                    )}
                 </Modal>
             </div>
         </>
