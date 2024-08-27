@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export const RegisterCategory = () => {
     const [categoryGenere, setCategoryGenere] = useState();
     const [categoryAge, setCategoryAge] = useState();
-    const [categoryRule, setCategoryRule] = useState();
+    const [categoryRule, setCategoryRule] = useState("");
 
     const [file, setFile] = useState(null);
 
@@ -23,7 +23,7 @@ export const RegisterCategory = () => {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
         if (!allowedTypes.includes(file.type)) {
             toast.error('Por favor, selecciona una imagen válida (JPEG, PNG, GIF).', {
-                position: "bottom-right",
+                position: "top-right",
                 autoClose: 5000,
             });
             setFile(null);
@@ -47,6 +47,14 @@ export const RegisterCategory = () => {
         e.preventDefault();
         if (!file) {
             toast.error('Por favor, selecciona una imagen antes de subir.', {
+                position: "bottom-right",
+                autoClose: 5000,
+            });
+            return;
+        }
+
+        if (!categoryRule.trim()) {
+            toast.error('Por favor, el campo de reglamento no puede estar vacio.', {
                 position: "bottom-right",
                 autoClose: 5000,
             });
