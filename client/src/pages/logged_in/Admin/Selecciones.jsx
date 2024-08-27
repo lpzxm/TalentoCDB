@@ -42,16 +42,16 @@ export const Selecciones = () => {
         <h1 className="text-xl">Selecciones</h1>
       </header>
 
-      <div className="flex flex-wrap justify-around p-4">
+      <div className="flex flex-wrap justify-around p-5 shadow-xl">
         {deportes && deportes.map(deporte => (
           <div key={deporte.id} className="max-w-sm rounded overflow-hidden shadow-lg m-2">
-            <img className="w-128" src={deporte.url} alt="Volleyball" />
-            <div className="px-6 py-4">
+            <img className="w-80 h-60" src={deporte.url} alt="Volleyball" />
+            <div className="py-5 px-2">
               <div className="flex justify-between">
                 <p className="font-bold text-xl mb-2">{deporte.name}</p>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Link to={"/admin/editarDeporte/" + deporte.id}>
-                    <p>Editar</p>
+                    <p className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Editar</p>
                   </Link>
 
                   <button
