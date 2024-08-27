@@ -62,7 +62,7 @@ export const ReviewPlayer = () => {
                                         name={`field_${campo.id}`}
                                         rules={{ max: campo.max_score }}
                                         control={control}
-                                        defaultValue={rubricaScore && rubricaScore[index] ? rubricaScore[index].score : 0}
+                                        defaultValue={rubricaScore && rubricaScore.length && rubricaScore[index] ? rubricaScore[index].score : 0}
                                         render={({ field }) => (
                                             <input
                                                 {...field}
