@@ -186,7 +186,7 @@ export const RegisterCoach = () => {
                 })}
               className={`w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            <div className="right-[70px] top-3 space-x-7">
+            <div className="absolute right-[40px] top-[738px] space-x-7">
               <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute" />
               <div onClick={toggleSeePsw}>
                 {seePsw ? (
