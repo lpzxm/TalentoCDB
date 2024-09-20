@@ -208,6 +208,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Header />
+        <Translate />
         <ReviewPlayer />
         <BackButton />
       </ProtectedRoute>
@@ -237,6 +238,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
+            <Translate />
             <Selecciones />
             <BackButton />
           </>
@@ -247,6 +249,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
+            <Translate />
             <MiembrosCat />
             <BackButton />
           </>
@@ -257,6 +260,9 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
+            <Translate />
+
+            <AdminRoute />,
             <AdminOptions />
           </>
         ),
@@ -266,6 +272,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
+            <Translate />
             <AddDeportes />
             <BackButton />
           </>
@@ -276,6 +283,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Header />
+            <Translate />
             <EditDeporte />
             <BackButton />
           </>
@@ -287,6 +295,7 @@ const router = createBrowserRouter([
           <>
             <Header />
             <AdminPlayerProfile />
+            <Translate />
             <BackButton />
           </>
         )
@@ -297,6 +306,7 @@ const router = createBrowserRouter([
           <>
             <Header />
             <RegisterCoach />
+            <Translate />
             <BackButton />
           </>
         ),
@@ -307,6 +317,7 @@ const router = createBrowserRouter([
           <>
             <Header />
             <ObservationAthlete />
+            <Translate />
             <BackButton />
           </>
         )
@@ -317,6 +328,7 @@ const router = createBrowserRouter([
           <>
             <Header />
             <ObservationAthlete type="coach" />
+            <Translate />
             <BackButton />
           </>
         )
