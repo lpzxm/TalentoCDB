@@ -2,8 +2,11 @@ import jwt from "jsonwebtoken";
 import { prisma } from "../config/prisma.js";
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
 
+
+
 export const auth = async (req, res, next) => {
     const token = req.header("Authorization")?.replace("Bearer ", "");
+    console.log("Token recibido", token)
     if (!token) {
         return res.status(401).json({ error: "Access denied" });
     }
