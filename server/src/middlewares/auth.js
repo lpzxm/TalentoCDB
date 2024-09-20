@@ -6,7 +6,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key";
 
 export const auth = async (req, res, next) => {
     const token = req.header("Authorization")?.replace("Bearer ", "");
-    console.log("Token recibido", token)
+    console.log("Token recibido", token || null );
     if (!token) {
         return res.status(401).json({ error: "Access denied" });
     }

@@ -40,7 +40,7 @@ export const AtletasSelec = () => {
     });
     setPlayersData(updatedPlayersData);
     console.log(updatedPlayersData)
-    await clientAxios.post("/jugadores/estado/"+playerId, {status_main_sport: updatedPlayersData[0].status_main_sport})
+    await clientAxios.post("/jugadores/estado/" + playerId, { status_main_sport: updatedPlayersData[0].status_main_sport })
   };
 
   useEffect(() => {
@@ -77,15 +77,27 @@ export const AtletasSelec = () => {
     <tbody>
       {playersData.map((player, rowIndex) => (
         <tr key={rowIndex} className="hover:bg-gray-100">
-          <td className="py-4 px-6 border-b border-gray-300">{player.nombres}</td>
+          <td className="py-4 px-6 border-b border-gray-300"><Link to={"/coach/evaluarJugador/" + player.id}>{player.nombres}</Link></td>
           <td className="py-4 px-6 border-b border-gray-300">{player.seccion}</td>
           <td className="py-4 px-6 border-b border-gray-300">{player.grado}</td>
           <td className="py-4 px-6 border-b border-gray-300">{new Date().getFullYear() - new Date(player.birthDay).getFullYear()}</td>
           <td className="py-4 px-6 border-b border-gray-300">
-            <img width={50} src={player.status_img_academic} alt="" />
+            {
+              player.status_img_academic ? (
+                <img width={50} src={player.status_img_academic} alt="Status Académico" />
+              ) : (
+                <span>Inexistente</span>
+              )
+            }
           </td>
           <td className="py-4 px-6 border-b border-gray-300">
-            <img width={50} src={player.status_img_behaviour} alt="" />
+            {
+              player.status_img_behaviour ? (
+                <img width={50} src={player.status_img_behaviour} alt="Status Conductual" />
+              ) : (
+                <span>Inexistente</span>
+              )
+            }
           </td>
           <td className="py-4 px-6 border-b border-gray-300">
             <button

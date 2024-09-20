@@ -65,9 +65,9 @@ export const RegisterCoach = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Foto */}
           <div className="mb-6 text-center">
-            <div className="w-48 h-48 border-2 border-dashed border-yellow-500 rounded-lg mx-auto mb-4 overflow-hidden">
+            {/* <div className="w-48 h-48 border-2 border-dashed border-yellow-500 rounded-lg mx-auto mb-4 overflow-hidden">
               <p className="text-gray-600">Sube una foto</p>
-            </div>
+            </div> */}
             <input
               type="file"
               accept="image/*"
@@ -165,8 +165,8 @@ export const RegisterCoach = () => {
           </div>
 
           {/* Contraseña */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="contraseña">
+          <div className="mb-4 flex flex-col justify-center">
+            <label className="block text-sm  font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="contraseña">
               Contraseña
             </label>
             <input
@@ -186,7 +186,7 @@ export const RegisterCoach = () => {
                 })}
               className={`w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500`}
             />
-            <div className="absolute right-[40px] top-[738px] space-x-7">
+            <div className="absolute right-[40px] mt-6  space-x-7">
               <FiLock style={{ fontSize: '20px', color: 'gray' }} className="absolute" />
               <div onClick={toggleSeePsw}>
                 {seePsw ? (
